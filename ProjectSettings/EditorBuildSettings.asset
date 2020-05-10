@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/TempMenu.unity
+    guid: 76fffd01774a46c4eb73a96b29bf7d5e
+  - enabled: 1
+    path: Assets/Scenes/Jerome.unity
+    guid: e02dfbb177b61014b9b8695af22cf7ac
   m_configObjects: {}
