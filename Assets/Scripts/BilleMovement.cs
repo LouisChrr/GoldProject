@@ -83,7 +83,7 @@ public class BilleMovement : MonoBehaviour
 
         if (!IsDead)
         {
-            Score += Time.deltaTime;
+            Score += Time.deltaTime* 2.0f;
             ScoreText91.text = "Ton score : " + Score.ToString("F0");
 
             foreach (GameObject go in generator.Circles)
@@ -112,7 +112,7 @@ public class BilleMovement : MonoBehaviour
         // Rotation locale de la bille pour toujours orienter le bas vers le cylindre
         transform.localEulerAngles = new Vector3(0, 0, (-Mathf.Atan2(Mathf.Cos(angle) * Mathf.Rad2Deg, Mathf.Sin(angle) * Mathf.Rad2Deg) * Mathf.Rad2Deg) - 180.0f);
 
-        BilleAnimator.speed = Mathf.Abs(speed) + 1;
+        BilleAnimator.speed = (Mathf.Abs(speed)/10.0f + 2f);
     }
 
     void SpeedTouchDragInput()
@@ -168,7 +168,7 @@ public class BilleMovement : MonoBehaviour
     public void Death()
     {
         IsDead = true;
-        WinScoreText91.text = "Ton score : " + Score.ToString();
+        WinScoreText91.text = "Ton score : " + Score.ToString("F0");
         DeathUI.SetActive(IsDead);
         foreach (GameObject go in generator.Circles)
         {

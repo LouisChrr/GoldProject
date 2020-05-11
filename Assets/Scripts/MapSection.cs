@@ -40,7 +40,7 @@ public class MapSection : MonoBehaviour
 
     public void Update()
     {
-        Xmovement = ((Camera.main.WorldToScreenPoint(BilleObj.transform.position).x - Screen.width/2) / Screen.width) * maxXmovement;
+        Xmovement = -((Camera.main.WorldToScreenPoint(BilleObj.transform.position).x - Screen.width/2) / Screen.width) * maxXmovement;
 
         transform.position -= new Vector3(0, 0,Time.deltaTime * speed);
 
