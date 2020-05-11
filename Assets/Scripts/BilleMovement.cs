@@ -36,7 +36,7 @@ public class BilleMovement : MonoBehaviour
     private void Awake()
     {
         Vector3 widthToWorld = GetWorldPositionOnPlane(new Vector3((Screen.width - (Screen.width / 8)), 0, 0), 1);
-        print(widthToWorld);
+        //print(widthToWorld);
         width = widthToWorld.x;
         height = width;
     }

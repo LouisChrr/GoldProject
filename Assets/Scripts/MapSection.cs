@@ -59,7 +59,7 @@ public class MapSection : MonoBehaviour
 
         if (transform.position.z <= 0)
         {
-            IsObstacle = Random.Range(0, 5) == 1;
+            IsObstacle = Random.Range(0, 4) == 1;
             ResetCircle();
             transform.position = new Vector3(0, 0, 30);
         }

@@ -18,7 +18,7 @@ public class CircleGenerator : MonoBehaviour
         {
             GameObject newCircle = Instantiate(Circle, new Vector3(0, 0, 1 * i), Quaternion.identity);
 
-            if (i < 5)
+            if (i < 4)
                 newCircle.GetComponent<MapSection>().IsObstacle = false;
 
             Circles.Add(newCircle);
