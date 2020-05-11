@@ -5,10 +5,17 @@ using UnityEngine;
 public class GameManager2 : MonoBehaviour
 {
     public GameObject _panelPause;
-    public GameObject _panelMenu;
 
     public GameObject imgPause;
     public GameObject imgPlay;
+
+    public GameObject menu;
+    public GameObject options;
+    public GameObject game;
+
+    public GameObject greyPanel;
+
+    public AudioSource audio1;
 
     private bool _isPause;
 
@@ -19,9 +26,17 @@ public class GameManager2 : MonoBehaviour
         Time.timeScale = 1;
 
         _panelPause.SetActive(false);
-        _panelMenu.SetActive(true);
-        imgPause.SetActive(false);
+
+        imgPause.SetActive(true);
         imgPlay.SetActive(false);
+
+        menu.SetActive(true);
+        options.SetActive(false);
+        game.SetActive(false);
+
+        greyPanel.SetActive(true);
+
+        audio1.Play();
 
     }
 
@@ -37,6 +52,20 @@ public class GameManager2 : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene(nameScene);
     }
 
+    public void Options()
+    {
+        options.SetActive(true);
+        menu.SetActive(false);
+
+    }
+
+    public void Menu()
+    {
+        menu.SetActive(true);
+        options.SetActive(false);
+
+    }
+
     public void DoPause()
     {
         Pause(!_isPause);
@@ -44,8 +73,9 @@ public class GameManager2 : MonoBehaviour
 
     public void DoPlay()
     {
-        _panelMenu.SetActive(false);
-        imgPause.SetActive(true);
+        menu.SetActive(false);
+        greyPanel.SetActive(false);
+        game.SetActive(true);
     }
 
     private void Pause(bool pause)
@@ -58,6 +88,8 @@ public class GameManager2 : MonoBehaviour
             imgPause.SetActive(false);
             imgPlay.SetActive(true);
 
+            audio1.Pause();
+
             Debug.Log("On Pause");
         }
         else
@@ -65,6 +97,8 @@ public class GameManager2 : MonoBehaviour
             Time.timeScale = 1;
             imgPause.SetActive(true);
             imgPlay.SetActive(false);
+
+            audio1.UnPause();
 
             Debug.Log("On Play");
         }
