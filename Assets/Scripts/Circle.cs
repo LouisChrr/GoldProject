@@ -40,7 +40,7 @@ public class Circle : MonoBehaviour
  
 
 
-        maxXmovement = BilleObj.GetComponent<BilleMovement>().width * 32;
+        maxXmovement = BilleObj.GetComponent<BilleMovement>().width * 8;
     }
 
     public void Update()
