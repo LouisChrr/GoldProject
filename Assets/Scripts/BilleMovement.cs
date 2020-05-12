@@ -30,6 +30,7 @@ public class BilleMovement : MonoBehaviour
     private Touch touch;
     private int screenWidth;
     private float dragOrigin;
+
     // Start is called before the first frame update
 
     private void Awake()
