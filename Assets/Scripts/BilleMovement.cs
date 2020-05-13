@@ -8,12 +8,11 @@ using UnityEngine.UIElements;
 public class BilleMovement : MonoBehaviour
 {
     [Header("Adjust values here")]
-    public CircleGenerator generator;
-    public Text ScoreText91;
-    public Text WinScoreText91;
+    public Transform InactiveBullets, ActiveBullets;
+    public GameObject BulletPrefab;
     public GameObject DeathUI;
-    public bool IsDead = false;
-    public float Score = 0;
+    public float BulletSpeed, ShootSpeed;
+    private float ShootCooldown;
     public Text speedtxt;
     public float maxSpeed;
     public float speedDecreaseSmooth;
@@ -25,12 +24,13 @@ public class BilleMovement : MonoBehaviour
     public GameObject touchFeedback;// --- A DELETE --- //////
     [Header("Do not modify!")]
     public float speed;
- 
 
+    private GameManager gm;
     // Mobile device related
     private Touch touch;
     private int screenWidth;
     private float dragOrigin;
+
     // Start is called before the first frame update
 
     private void Awake()
@@ -43,11 +43,8 @@ public class BilleMovement : MonoBehaviour
 
     void Start()
     {
+        gm = GameManager.Instance;
         screenWidth = Screen.width;
-
-        //Vector3 widthToWorld = Camera.main.ScreenToWorldPoint(new Vector3((screenWidth), 0, 0));
-
-        
 
         touchFeedback.transform.position = new Vector3(0.0f, -3.0f, 0.0f);// --- A DELETE --- //////
         angle = -1.5f; // Set de la bille en bas au milieu
@@ -57,7 +54,7 @@ public class BilleMovement : MonoBehaviour
         transform.localPosition = targetPos;
 
         BilleAnimator = GetComponent<Animator>();
-
+        SpawnBullets();
 
     }
 
@@ -73,26 +70,47 @@ public class BilleMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PlayerUpdate();
-        if (IsDead) return;
+        if (gm.IsPlayerDead) return;
         BilleUpdate();
+        Shoot();
     }
 
-    void PlayerUpdate()
+    void Shoot()
     {
-
-        if (!IsDead)
+        ShootCooldown += Time.deltaTime;
+        if(ShootCooldown >= ShootSpeed)
         {
-            Score += Time.deltaTime* 2.0f;
-            ScoreText91.text = "Ton score : " + Score.ToString("F0");
+            ShootCooldown = 0;
+            InactiveBullets.GetChild(0).transform.position = new Vector3(Mathf.Cos(angle) * (width * 0.8f), Mathf.Sin(angle) * (height * 0.8f), transform.position.z);
+            InactiveBullets.GetChild(0).transform.rotation = Quaternion.identity;
+            InactiveBullets.GetChild(0).transform.parent = ActiveBullets;
+            InactiveBullets.GetChild(0).GetComponent<Bullet>().ResetBullet(this.transform);
 
-            foreach (GameObject go in generator.Circles)
-            {
-                go.GetComponent<MapSection>().speed += Time.deltaTime * Score * 0.001f;
-            }
+            // GameObject bullet = Instantiate(BulletPrefab, new Vector3(Mathf.Cos(angle)*(width*0.8f), Mathf.Sin(angle) * (height*0.8f),transform.position.z), Quaternion.identity);
+            // bullet.GetComponent<Bullet>().speed = BulletSpeed;
         }
-        
+
     }
+
+    void SpawnBullets()
+    {
+        int BulletsNb = Mathf.RoundToInt((gm.CirclesNumber/BulletSpeed)/ShootSpeed);
+        // Si une bullet a speed = 5 et maxZ = 30 elle prend 30/5 = 6s à aller au bout
+        //t=d/v
+        // Si shootspeed = 2 alors il faut 6/2 = 3 bullets en amont
+
+        // 
+        //print("BulletsNb: " + BulletsNb);
+
+        for(int i = 0;i < BulletsNb; i++)
+        {
+            GameObject bullet = Instantiate(BulletPrefab, new Vector3(0,0,0), Quaternion.identity, InactiveBullets);
+            bullet.GetComponent<Bullet>().speed = BulletSpeed;
+            bullet.GetComponent<Bullet>().ActiveBullets = ActiveBullets;
+            bullet.GetComponent<Bullet>().InactiveBullets = InactiveBullets;
+        }
+    }
+
 
     void BilleUpdate()
     {
@@ -159,24 +177,15 @@ public class BilleMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.name == "DangerZone")
+        if (collision.transform.tag == "Obstacle")
         {
-            Death();
+            gm.Death();
         }
-    }
-
-    public void Death()
-    {
-        IsDead = true;
-        WinScoreText91.text = "Ton score : " + Score.ToString("F0");
-        DeathUI.SetActive(IsDead);
-        foreach (GameObject go in generator.Circles)
+        if (collision.transform.tag == "Coin")
         {
-            go.GetComponent<MapSection>().speed = 0;
+            Destroy(collision.gameObject);
+            ScoreManager.Instance.PickupCoin();
         }
-
-        touchFeedback.SetActive(false);
-
     }
 
 }
