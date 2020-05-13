@@ -11,7 +11,7 @@ public class CoinSpawner : MonoBehaviour
     public float Yoffset;
     public static CoinSpawner Instance;
 
-    void Start()
+    void Awake()
     {
         if (Instance != null)
         {

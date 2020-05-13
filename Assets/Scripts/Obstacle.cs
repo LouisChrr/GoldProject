@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-    public BoxCollider HeliceCollider, MuretCollider;
+    public BoxCollider HeliceCollider, MuretCollider, MurEtapeCollider;
     public int HP;
     public bool IsMuret;
     public bool IsBumper;
+    public bool IsMurEtape;
 
     public void SetSprite()
     {

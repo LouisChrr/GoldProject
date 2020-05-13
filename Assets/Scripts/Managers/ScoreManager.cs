@@ -9,7 +9,7 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager Instance;
     private GameManager gm;
     public Text ScoreText;
-    public Text WinScoreText;
+
 
     [Header("DO NOT MODIFY")]
     public float PlayerScore;
@@ -38,16 +38,18 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!gm.IsPlayerDead)
+        if (!gm.IsPlayerDead && gm.HasGameStarted)
         {
             PlayerScore += Time.deltaTime * 2.0f;
-            ScoreText.text = "Ton score: " + PlayerScore.ToString("F0");
+            ScoreText.text = "Score: " + PlayerScore.ToString("F0");
         }
         else
         {
-            WinScoreText.text = "Ton score: " + PlayerScore.ToString("F0");
+            ScoreText.text = "";
+
         }
-        
+
+
     }
 
     public void PickupCoin()

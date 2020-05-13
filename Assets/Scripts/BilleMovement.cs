@@ -13,7 +13,6 @@ public class BilleMovement : MonoBehaviour
     public GameObject DeathUI;
     public float BulletSpeed, ShootSpeed;
     private float ShootCooldown;
-    public Text speedtxt;
     public float maxSpeed;
     public float speedDecreaseSmooth;
     public float width, height;
@@ -70,7 +69,7 @@ public class BilleMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gm.IsPlayerDead) return;
+        if (gm.IsPlayerDead || !gm.HasGameStarted) return;
         BilleUpdate();
         Shoot();
     }
@@ -116,7 +115,7 @@ public class BilleMovement : MonoBehaviour
     {
         // Touch input
         SpeedTouchDragInput();
-        speedtxt.text = "SPEED: " + speed.ToString("F2") + "      MAXSPEED: " + maxSpeed;
+  
 
         if (speed == 0) return;
         // Déplacement de la bille suivant un cercle (width, height)

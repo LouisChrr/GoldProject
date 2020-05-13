@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    
+
+    public bool HasGameStarted;
     public int LevelNb;
     public float LevelSpeed;
     public static GameManager Instance;
@@ -18,7 +21,7 @@ public class GameManager : MonoBehaviour
     private ScoreManager sm;
     public int CirclesNumber { get => circlesNumber; }
 
-    public GameObject DeathUI; // TEMPO, A REMPLACER PAR UN MENUMANAGERT
+
 
     public CircleGenerator generator;
     public GameObject touchFeedback; // TEMPO, A DELETE
@@ -35,30 +38,44 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        
+        NewLevel(0);
         sm = ScoreManager.Instance;
-        NewLevel(LevelNb);
+
+    }
+
+   
+    public void StartGame()
+    {
+        IsPlayerDead = false;
+        HasGameStarted = true;
+        //foreach (GameObject go in generator.Circles)
+        //{
+        //    go.GetComponent<Circle>().ChangeBonusSpeed(0);
+        //}
+        NewLevel(1);
     }
 
     public void NewLevel(int levelNb) // A APPELER A CHAQUE NEW LEVEL ISSOUm
     {
-        LevelSpeed = levelNb * 2;
+        LevelNb = levelNb;
+        LevelSpeed = levelNb;
         foreach (GameObject go in generator.Circles)
         {
-            go.GetComponent<Circle>().bonusSpeed = LevelSpeed;
+            go.GetComponent<Circle>().ChangeBonusSpeed(LevelSpeed);
         }
 
     }
 
+
+
     public void Death()
     {
         IsPlayerDead = true;
-
-        DeathUI.SetActive(IsPlayerDead);
+        MenuManager.Instance.EndGame();
 
         foreach (GameObject go in generator.Circles)
         {
-            go.GetComponent<Circle>().speed = 0;
+            go.GetComponent<Circle>().ChangeBonusSpeed(0);
         }
 
         touchFeedback.SetActive(false);

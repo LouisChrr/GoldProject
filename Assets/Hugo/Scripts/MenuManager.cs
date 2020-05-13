@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class GameManager2 : MonoBehaviour
+public class MenuManager : MonoBehaviour
 {
+    public static MenuManager Instance;
     public GameObject _panelPause;
 
     public GameObject imgPause;
@@ -17,8 +19,19 @@ public class GameManager2 : MonoBehaviour
     public GameObject greyPanel;
 
     public AudioSource audio1;
-
+    public Text ScoreText, MoneyText, BestScoreText;
     private bool _isPause;
+
+
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            Debug.LogError("2 MenuManager??");
+            return;
+        }
+        Instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -42,15 +55,22 @@ public class GameManager2 : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
+    public void EndGame()
     {
+        end.SetActive(true);
+        ScoreText.text = "Score: " + ScoreManager.Instance.PlayerScore.ToString("F0");
+        MoneyText.text = "Money: " + ScoreManager.Instance.PlayerMoney.ToString("F0");
+        if (ScoreManager.Instance.PlayerScore > PlayerPrefs.GetFloat("BestScore", 0)){
+            PlayerPrefs.SetFloat("BestScore", ScoreManager.Instance.PlayerScore);
+        }
+        BestScoreText.text = "Best Score: " + PlayerPrefs.GetFloat("BestScore", 0).ToString("F0");
+
 
     }
 
     public void MyLoadScene(string nameScene)
     {
-        Debug.Log(nameScene);
+        //Debug.Log(nameScene);
         UnityEngine.SceneManagement.SceneManager.LoadScene(nameScene);
     }
 
@@ -65,7 +85,7 @@ public class GameManager2 : MonoBehaviour
     {
         menu.SetActive(true);
         options.SetActive(false);
-
+        end.SetActive(false);
     }
 
     public void DoPause()
@@ -75,7 +95,10 @@ public class GameManager2 : MonoBehaviour
 
     public void DoPlay()
     {
-        menu.SetActive(false);
+        GameManager.Instance.HasGameStarted = true;
+        GameManager.Instance.StartGame();
+  
+       menu.SetActive(false);
         greyPanel.SetActive(false);
         game.SetActive(true);
     }
