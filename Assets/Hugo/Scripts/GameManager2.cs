@@ -12,6 +12,7 @@ public class GameManager2 : MonoBehaviour
     public GameObject menu;
     public GameObject options;
     public GameObject game;
+    public GameObject end;
 
     public GameObject greyPanel;
 
@@ -33,6 +34,7 @@ public class GameManager2 : MonoBehaviour
         menu.SetActive(true);
         options.SetActive(false);
         game.SetActive(false);
+        end.SetActive(false);
 
         greyPanel.SetActive(true);
 
