@@ -5,7 +5,7 @@ using UnityEngine;
 public class Coin : MonoBehaviour
 {
 
-    public float BonusSpeed = 1;
+
 
     [HideInInspector]
     public int MaxZ;
@@ -14,6 +14,7 @@ public class Coin : MonoBehaviour
     private float Xmovement;
     private float maxXmovement;
     private float baseX;
+    private float bonusSpeed, speed;
 
     void Start()
     {
@@ -23,7 +24,7 @@ public class Coin : MonoBehaviour
         maxXmovement = BilleObj.GetComponent<BilleMovement>().width * 8;
         baseX = transform.position.x;
         BonusSpeed = GameManager.Instance.LevelSpeed;
-
+        speed = GameManager.Instance.InitialCircleSpeed;
     }
 
 
@@ -31,7 +32,10 @@ public class Coin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position -= new Vector3(0, 0, Time.deltaTime * BonusSpeed); // 
+        if (!GameManager.Instance.HasGameStarted || GameManager.Instance.IsPlayerDead) Destroy(this.gameObject);
+        bonusSpeed = GameManager.Instance.LevelSpeed;
+
+        transform.position -= new Vector3(0, 0, Time.deltaTime * bonusSpeed* speed); // 
 
         Xmovement = -((Camera.main.WorldToScreenPoint(BilleObj.transform.position).x - Screen.width / 2) / Screen.width) * maxXmovement;
         transform.position = new Vector3(baseX + (Xmovement * ((transform.position.z / CirclesNb))), transform.position.y, transform.position.z);
