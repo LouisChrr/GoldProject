@@ -5,7 +5,8 @@ using UnityEngine;
 public class ImageEffectController : MonoBehaviour
 {
 
-    public Material CircleMaterial, ObstacleMaterial, Skybox;
+    public Material[] Materials;
+    public Material Skybox, Player;
     public float ColorShiftFactor, SkyboxShiftFactor;
 
     private Color HSVColor = Color.clear;
@@ -25,8 +26,12 @@ public class ImageEffectController : MonoBehaviour
             ColorBalance = 0;
 
         HSVColor = Color.HSVToRGB(ColorBalance, 0.8f, 4.0f, true);
-        CircleMaterial.SetColor("_Color", HSVColor);
-        ObstacleMaterial.SetColor("_Color", HSVColor);
+
+        foreach (Material mat in Materials)
+        {
+            mat.SetColor("_Color", HSVColor);
+        }
+
     }
 
     private void RotateSkybox(float shift)

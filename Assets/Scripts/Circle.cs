@@ -14,6 +14,9 @@ public class Circle : MonoBehaviour
     public bool IsObstacle;
     [Tooltip("0: Obstacle Helice / 1: Circle de base / 2: Bumper / 3: Obstacle du + au - cassé / 8: Mur etape")]
     public Sprite[] sprites;
+
+    public Material[] materials;
+
     SpriteRenderer spriterenderer;
     private float baseAngle;
 
@@ -66,7 +69,8 @@ public class Circle : MonoBehaviour
             //if ((transform.GetChild(0).gameObject.transform.rotation.z - baseZRot) >= 350 || (transform.GetChild(0).gameObject.transform.rotation.z - baseZRot) <= -350)
            if(Player.GetComponent<BilleMovement>().angle - baseAngle > 6 || Player.GetComponent<BilleMovement>().angle - baseAngle < -6)
             {
-                spriterenderer.sprite = sprites[1];
+                //spriterenderer.sprite = sprites[1];
+                spriterenderer.material = materials[1];
                 transform.GetChild(0).gameObject.GetComponent<Obstacle>().MurEtapeCollider.enabled = false;
                 transform.GetChild(0).gameObject.GetComponent<Obstacle>().IsMurEtape = false;
                 transform.GetChild(0).gameObject.SetActive(false);
@@ -89,7 +93,7 @@ public class Circle : MonoBehaviour
 
         if (transform.GetChild(0).gameObject.GetComponent<Obstacle>().IsMurEtape == false) // SI MUR ETAPE ON ROTATEA PAS ISSOU
         {
-          //  transform.rotation *= Quaternion.Euler(0, 0, rotationSpeed * speed);
+            transform.rotation *= Quaternion.Euler(0, 0, rotationSpeed * speed);
         }
 
 
@@ -138,7 +142,8 @@ public class Circle : MonoBehaviour
             transform.GetChild(0).gameObject.GetComponent<Obstacle>().HeliceCollider.enabled = false;
             transform.GetChild(0).gameObject.GetComponent<Obstacle>().MurEtapeCollider.enabled = true;
             transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = true;
-            spriterenderer.sprite = sprites[1];
+            //spriterenderer.sprite = sprites[1];
+            spriterenderer.material = materials[1];
             transform.GetChild(0).gameObject.SetActive(true);
         }else if (IsObstacle)
         {
@@ -147,11 +152,13 @@ public class Circle : MonoBehaviour
             transform.GetChild(0).gameObject.GetComponent<Obstacle>().HeliceCollider.enabled = !transform.GetChild(0).gameObject.GetComponent<Obstacle>().IsMuret;
             if (transform.GetChild(0).gameObject.GetComponent<Obstacle>().IsMuret)
             {
-                spriterenderer.sprite = sprites[7];
+                //spriterenderer.sprite = sprites[7];
+                spriterenderer.material = materials[7];
             }
             else
             {
-                spriterenderer.sprite = sprites[0];
+                //spriterenderer.sprite = sprites[0];
+                spriterenderer.material = materials[0];
             }
 
             transform.GetChild(0).gameObject.SetActive(true);
@@ -160,7 +167,8 @@ public class Circle : MonoBehaviour
         else
         {
             transform.GetChild(0).gameObject.SetActive(false);
-            spriterenderer.sprite = sprites[1];
+            //spriterenderer.sprite = sprites[1];
+            spriterenderer.material = materials[1];
         }
 
         transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
