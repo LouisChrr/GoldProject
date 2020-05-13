@@ -68,6 +68,9 @@ public class Bullet : MonoBehaviour
             {
                 ScoreManager.Instance.ComboValue *= 2;
                 Obstacle.GetComponentInParent<Circle>().IsObstacle = false;
+                Obstacle.GetComponent<Obstacle>().IsBumper = false;
+                Obstacle.GetComponent<Obstacle>().MuretCollider.enabled = false;
+                Obstacle.GetComponentInParent<Circle>().GetComponent<SpriteRenderer>().sprite = Obstacle.GetComponentInParent<Circle>().sprites[1];
                 Obstacle.SetActive(false);
             }
 
