@@ -13,6 +13,7 @@ public class CoinSpawner : MonoBehaviour
 
     public LayerManager layerManager;
 
+    void Awake()
     {
         layerManager = LayerManager.Instance;
 
