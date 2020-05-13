@@ -15,7 +15,7 @@ public class CoinSpawner : MonoBehaviour
 
     void Awake()
     {
-        layerManager = LayerManager.Instance;
+      
 
         if (Instance != null)
         {
@@ -23,6 +23,11 @@ public class CoinSpawner : MonoBehaviour
             return;
         }
         Instance = this;
+    }
+
+    private void Start()
+    {
+        layerManager = LayerManager.Instance;
     }
 
 
@@ -35,6 +40,4 @@ public class CoinSpawner : MonoBehaviour
             layerManager.AllActiveSprites.Add(InstantiatedCoin.GetComponent<SpriteRenderer>());
         }
     }
-
-
 }

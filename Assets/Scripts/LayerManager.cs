@@ -15,6 +15,8 @@ public class LayerManager : MonoBehaviour
             return;
         }
         Instance = this;
+
+        AllActiveSprites.Clear();
     }
 
     void Update()
@@ -26,8 +28,11 @@ public class LayerManager : MonoBehaviour
     {
         foreach (SpriteRenderer sprite in AllActiveSprites)
         {
-            float currentSpriteDepth = sprite.transform.position.z;
-            ChangeLayer(sprite, currentSpriteDepth);
+            if (sprite)
+            {
+                float currentSpriteDepth = sprite.transform.position.z;
+                ChangeLayer(sprite, currentSpriteDepth);
+            }
         }
     }
 
