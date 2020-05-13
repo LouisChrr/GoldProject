@@ -23,7 +23,7 @@ public class Coin : MonoBehaviour
         CirclesNb = GameManager.Instance.CirclesNumber;
         maxXmovement = BilleObj.GetComponent<BilleMovement>().width * 8;
         baseX = transform.position.x;
-        BonusSpeed = GameManager.Instance.LevelSpeed;
+        bonusSpeed = GameManager.Instance.LevelSpeed;
         speed = GameManager.Instance.InitialCircleSpeed;
     }
 
