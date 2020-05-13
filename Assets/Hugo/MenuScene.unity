@@ -229,7 +229,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -56, y: 602}
+  m_AnchoredPosition: {x: -56, y: 581}
   m_SizeDelta: {x: 851.9623, y: 1499.1155}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &152438812
@@ -465,11 +465,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-<<<<<<< HEAD:Assets/Scenes/Hugo.unity
-          m_StringArgument: OptionsMenu
-=======
           m_StringArgument: Hugo
->>>>>>> 11d83da16185fba2f82f64851e29e3d480b5b542:Assets/Hugo/Scenes/Hugo.unity
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &163384465
@@ -491,7 +487,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 42d3e70fc62a2ab4eac5ea967fde9b8b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ac684507765d4c342bc4d2d2a5a2d60d, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1142,7 +1138,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ff16ec4dcf16cc14bac9e73c2478fe7f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1d71859edad154a409d4635014cbe4f2, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1635,7 +1631,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &931395850
 Transform:
   m_ObjectHideFlags: 0
@@ -1958,7 +1954,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c608d89e5c57e1d4db1bcb95d84bf436, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e6503a537e86de44eada7b75cf66023b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -2543,7 +2539,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 91f3f9e630fb2b24181fde3b051329c0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a896acc5e0daaa948a850cfc402cd5b5, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -2798,7 +2794,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Hugo
+          m_StringArgument: MenuScene
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1676105317
@@ -2820,7 +2816,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 34efbbd0a2f5827478c46d6dd452d814, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8becd8a115edddb4584741b4236b2668, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -3119,7 +3115,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 23bfc6276adade94ca415ca96e475301, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 852853aa508b12e4483bf6a23bff5244, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -3174,65 +3170,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
-<<<<<<< HEAD:Assets/Scenes/Hugo.unity
---- !u!114 &1676105316
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1676105314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1676105317}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1921897039}
-        m_MethodName: MyLoadScene
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: MainMenu
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1676105317
-=======
 --- !u!114 &1745805289
->>>>>>> 11d83da16185fba2f82f64851e29e3d480b5b542:Assets/Hugo/Scenes/Hugo.unity
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3673,7 +3611,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1921897037}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee28ffb4d74b1e142a42a928f6b2d5e6, type: 3}
+  m_Script: {fileID: 11500000, guid: 46299871b48f0c947a126adca29aab3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: eb6953ca0345d6f41add8abbb848e6c3, type: 2}
@@ -3794,18 +3732,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<< HEAD:Assets/Scenes/Hugo.unity
-  - component: {fileID: 1921897038}
-  - component: {fileID: 1921897039}
-  m_Layer: 0
-  m_Name: MenuManager
-=======
   - component: {fileID: 2020676594}
   - component: {fileID: 2020676596}
   - component: {fileID: 2020676595}
   m_Layer: 5
   m_Name: Fill
->>>>>>> 11d83da16185fba2f82f64851e29e3d480b5b542:Assets/Hugo/Scenes/Hugo.unity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3817,13 +3748,8 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD:Assets/Scenes/Hugo.unity
-  m_GameObject: {fileID: 1921897037}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-=======
   m_GameObject: {fileID: 2020676593}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
->>>>>>> 11d83da16185fba2f82f64851e29e3d480b5b542:Assets/Hugo/Scenes/Hugo.unity
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []

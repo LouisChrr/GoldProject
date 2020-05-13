@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Louis.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Hugo/MenuScene.unity
+    guid: 2e93a01859341644a9d830a731b9ec10
   m_configObjects: {}
