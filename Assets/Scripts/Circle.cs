@@ -15,7 +15,7 @@ public class Circle : MonoBehaviour
     [Tooltip("0: Obstacle Helice / 1: Circle de base / 2: Bumper / 3: Obstacle du + au - cassé / 8: Mur etape")]
     public Sprite[] sprites;
     SpriteRenderer spriterenderer;
-
+    private float baseAngle;
 
     private float rotationSpeed;
 
@@ -26,6 +26,8 @@ public class Circle : MonoBehaviour
     private ScoreManager sm;
     private GameManager gm;
     private GameObject Player;
+    private Vector3 baseRot;
+    private float baseZRot;
 
     public void Start()
     {
@@ -43,36 +45,54 @@ public class Circle : MonoBehaviour
 
 
         maxXmovement = BilleObj.GetComponent<BilleMovement>().width * 8;
+
     }
 
     public void Update()
     {
-        if (gm.IsPlayerDead) return;
+        if (gm.IsPlayerDead || !gm.HasGameStarted) return;
 
         if(transform.GetChild(0).gameObject.GetComponent<Obstacle>().IsMurEtape == true && transform.GetChild(0).gameObject.transform.position.z < gm.CirclesNumber/3)
         {
-           // transform.GetChild(0).gameObject.transform.eulerAngles = new Vector3(0, 0, Player.GetComponent<BilleMovement>().angle * 60);
-            transform.GetChild(0).gameObject.transform.rotation = Quaternion.Euler(0, 0, Player.GetComponent<BilleMovement>().angle * 60);
+           // transform.GetChild(0).gameObject.transform.rotation = Quaternion.Euler(0, 0, (Player.GetComponent<BilleMovement>().angle - baseAngle) * 60);
+            transform.GetChild(0).gameObject.transform.localRotation = Quaternion.Euler(0, 0, (Player.GetComponent<BilleMovement>().angle - baseAngle) * 60);
 
-            if ((transform.GetChild(0).gameObject.transform.rotation.z+180 >= 360 || transform.GetChild(0).gameObject.transform.rotation.z-180 <= 360))
+            // Debug.Log("ANGLE ISSOUMs: " + Vector3.Angle(Player.transform.position, baseRot));
+            //Debug.Log("ANGLE ISSOUMs: " + transform.GetChild(0).gameObject.transform.rotation.z);
+
+            Debug.Log("ANGLE ISSOUMs: " + Player.GetComponent<BilleMovement>().angle);
+
+            // if (Vector3.Angle(Player.transform.position, baseRot) > 350)
+            //if ((transform.GetChild(0).gameObject.transform.rotation.z - baseZRot) >= 350 || (transform.GetChild(0).gameObject.transform.rotation.z - baseZRot) <= -350)
+           if(Player.GetComponent<BilleMovement>().angle - baseAngle > 6 || Player.GetComponent<BilleMovement>().angle - baseAngle < -6)
             {
                 spriterenderer.sprite = sprites[1];
                 transform.GetChild(0).gameObject.GetComponent<Obstacle>().MurEtapeCollider.enabled = false;
                 transform.GetChild(0).gameObject.GetComponent<Obstacle>().IsMurEtape = false;
                 transform.GetChild(0).gameObject.SetActive(false);
                 gm.NewLevel(gm.LevelNb + 1);
-                print("mur etape detruit");
+               /// print("mur etape detruit");
             }
+        }else if(transform.GetChild(0).gameObject.GetComponent<Obstacle>().IsMurEtape == true && transform.GetChild(0).gameObject.transform.position.z > gm.CirclesNumber / 3)
+        {
+            baseAngle = Player.GetComponent<BilleMovement>().angle;
+            baseRot = transform.GetChild(0).transform.up;
+            baseZRot = gameObject.transform.rotation.z;
         }
+        
 
         Xmovement = -((Camera.main.WorldToScreenPoint(BilleObj.transform.position).x - Screen.width/2) / Screen.width) * maxXmovement;
 
-        transform.position -= new Vector3(0, 0,Time.deltaTime * speed);
+        transform.position -= new Vector3(0, 0,Time.deltaTime * speed * bonusSpeed);
 
         transform.position = new Vector3(Xmovement * ((transform.position.z/CirclesNb)) , transform.position.y, transform.position.z);
-        transform.rotation *= Quaternion.Euler(0,0,rotationSpeed * speed);
 
-        
+        if (transform.GetChild(0).gameObject.GetComponent<Obstacle>().IsMurEtape == false) // SI MUR ETAPE ON ROTATEA PAS ISSOU
+        {
+          //  transform.rotation *= Quaternion.Euler(0, 0, rotationSpeed * speed);
+        }
+
+
         if (transform.position.z <= BilleZ)
         {
             spriterenderer.sortingOrder = 0;
@@ -91,12 +111,12 @@ public class Circle : MonoBehaviour
     public void ChangeBonusSpeed(float newBonusSpeed)
     {
         bonusSpeed = newBonusSpeed;
-        speed = bonusSpeed;
     }
 
 
     public void ResetCircle()
     {
+        //transform.GetChild(0).gameObject.transform.rotation = Quaternion.Euler(Vector3.zero);
 
         IsObstacle = Random.Range(0, 4) == 1;
 
@@ -114,13 +134,13 @@ public class Circle : MonoBehaviour
 
         if (Mathf.RoundToInt(sm.PlayerScore) % 20 == 0 && Mathf.RoundToInt(sm.PlayerScore) >= 10)
         {
-            print("next level");
+           
             transform.GetChild(0).gameObject.GetComponent<Obstacle>().IsMurEtape = true;
             transform.GetChild(0).gameObject.GetComponent<Obstacle>().MuretCollider.enabled = false;
             transform.GetChild(0).gameObject.GetComponent<Obstacle>().HeliceCollider.enabled = false;
             transform.GetChild(0).gameObject.GetComponent<Obstacle>().MurEtapeCollider.enabled = true;
             transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = true;
-
+            spriterenderer.sprite = sprites[1];
             transform.GetChild(0).gameObject.SetActive(true);
         }else if (IsObstacle)
         {
@@ -146,6 +166,11 @@ public class Circle : MonoBehaviour
         }
 
         transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
+
+        if(transform.GetChild(0).gameObject.GetComponent<Obstacle>().IsMurEtape == true)
+        {
+           // transform.rotation = Quaternion.Euler(Vector3.zero);
+        }
 
         rotationSpeed = Time.deltaTime * Random.Range(-20, 20);
 

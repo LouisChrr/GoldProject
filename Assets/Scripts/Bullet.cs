@@ -34,6 +34,8 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!GameManager.Instance.HasGameStarted || GameManager.Instance.IsPlayerDead) Destroy(this.gameObject);
+        bonusSpeed = GameManager.Instance.LevelSpeed;
         transform.position += new Vector3(0, 0, Time.deltaTime * speed * bonusSpeed);
 
         Xmovement = -((Camera.main.WorldToScreenPoint(BilleObj.transform.position).x - Screen.width / 2) / Screen.width) * maxXmovement;
@@ -42,6 +44,8 @@ public class Bullet : MonoBehaviour
 
         if (transform.position.z >= MaxZ) this.transform.parent = InactiveBullets;
     }
+
+
 
     public void ResetBullet(Transform PlayerTransform)
     {
