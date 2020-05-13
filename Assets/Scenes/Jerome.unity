@@ -153,7 +153,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Circle: {fileID: 3557496550061782010, guid: 98da6a2bc5cf4eb4ea2c6235e8763e89, type: 3}
   Circles: []
-  Player: {fileID: 0}
   canDestroy: 1
 --- !u!114 &34480667
 MonoBehaviour:
@@ -167,6 +166,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86c12c03100f3714888c07a7719b38b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LevelNb: 0
+  LevelSpeed: 0
+  Circles: {fileID: 0}
+  PlayerObj: {fileID: 0}
+  ObstacleHP: 0
+  IsPlayerDead: 0
+  InitialCircleSpeed: 0
+  circlesNumber: 0
+  DeathUI: {fileID: 0}
+  generator: {fileID: 0}
+  touchFeedback: {fileID: 0}
 --- !u!4 &34480668
 Transform:
   m_ObjectHideFlags: 0
@@ -257,12 +267,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 499ee99b5ed24b04ebef08e77d1b1d85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  generator: {fileID: 34480666}
-  ScoreText91: {fileID: 687126645}
-  WinScoreText91: {fileID: 1236574996}
+  InactiveBullets: {fileID: 0}
+  ActiveBullets: {fileID: 0}
+  BulletPrefab: {fileID: 0}
   DeathUI: {fileID: 341038739}
-  IsDead: 0
-  Score: 0
+  BulletSpeed: 0
+  ShootSpeed: 0
   speedtxt: {fileID: 1950273922}
   maxSpeed: 10
   speedDecreaseSmooth: 4
@@ -451,12 +461,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 499ee99b5ed24b04ebef08e77d1b1d85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  generator: {fileID: 0}
-  ScoreText91: {fileID: 0}
-  WinScoreText91: {fileID: 0}
+  InactiveBullets: {fileID: 0}
+  ActiveBullets: {fileID: 0}
+  BulletPrefab: {fileID: 0}
   DeathUI: {fileID: 0}
-  IsDead: 0
-  Score: 0
+  BulletSpeed: 0
+  ShootSpeed: 0
   speedtxt: {fileID: 1441594657}
   maxSpeed: 10
   speedDecreaseSmooth: 4
