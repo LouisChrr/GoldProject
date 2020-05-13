@@ -6,6 +6,7 @@ public class CircleGenerator : MonoBehaviour
 {
     private int CirclesNb;
     public GameObject Circle;
+    public LayerManager layerManager;
 
     [HideInInspector]
     public List<GameObject> Circles = new List<GameObject>();
@@ -16,6 +17,7 @@ public class CircleGenerator : MonoBehaviour
 
     void Start()
     {
+        layerManager = LayerManager.Instance;
         Player = GameManager.Instance.PlayerObj;
         CirclesNb = GameManager.Instance.CirclesNumber;
         for (int i = 0; i < CirclesNb; i++)
@@ -26,8 +28,8 @@ public class CircleGenerator : MonoBehaviour
                 newCircle.GetComponent<Circle>().IsObstacle = false;
 
             Circles.Add(newCircle);
+            layerManager.AllActiveSprites.Add(newCircle.GetComponent<SpriteRenderer>());
+            layerManager.AllActiveSprites.Add(newCircle.transform.GetChild(0).GetComponent<SpriteRenderer>());
         }
     }
-
-  
 }

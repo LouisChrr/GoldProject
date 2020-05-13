@@ -26,6 +26,7 @@ public class BilleMovement : MonoBehaviour
     public float speed;
 
     private GameManager gm;
+    public LayerManager layerManager;
     // Mobile device related
     private Touch touch;
     private int screenWidth;
@@ -43,6 +44,7 @@ public class BilleMovement : MonoBehaviour
 
     void Start()
     {
+        layerManager = LayerManager.Instance;
         gm = GameManager.Instance;
         screenWidth = Screen.width;
 
@@ -108,6 +110,8 @@ public class BilleMovement : MonoBehaviour
             bullet.GetComponent<Bullet>().speed = BulletSpeed;
             bullet.GetComponent<Bullet>().ActiveBullets = ActiveBullets;
             bullet.GetComponent<Bullet>().InactiveBullets = InactiveBullets;
+
+            layerManager.AllActiveSprites.Add(bullet.GetComponent<SpriteRenderer>());
         }
     }
 
@@ -183,6 +187,7 @@ public class BilleMovement : MonoBehaviour
         }
         if (collision.transform.tag == "Coin")
         {
+            layerManager.AllActiveSprites.Remove(collision.transform.GetComponent<SpriteRenderer>());
             Destroy(collision.gameObject);
             ScoreManager.Instance.PickupCoin();
         }

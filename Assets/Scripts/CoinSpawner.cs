@@ -11,8 +11,12 @@ public class CoinSpawner : MonoBehaviour
     public float Yoffset;
     public static CoinSpawner Instance;
 
+    public LayerManager layerManager;
+
     void Start()
     {
+        layerManager = LayerManager.Instance;
+
         if (Instance != null)
         {
             Debug.LogError("2 CoinSpawner??");
@@ -28,6 +32,7 @@ public class CoinSpawner : MonoBehaviour
         {
             Vector3 SpawnPos = new Vector3(0, Yoffset, GameManager.Instance.CirclesNumber);
             GameObject InstantiatedCoin = Instantiate(_CoinPrefab, SpawnPos, Quaternion.Euler(0, 0, 180), Coins);
+            layerManager.AllActiveSprites.Add(InstantiatedCoin.GetComponent<SpriteRenderer>());
         }
     }
 

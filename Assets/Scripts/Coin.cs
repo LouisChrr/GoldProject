@@ -23,6 +23,7 @@ public class Coin : MonoBehaviour
         maxXmovement = BilleObj.GetComponent<BilleMovement>().width * 8;
         baseX = transform.position.x;
         BonusSpeed = GameManager.Instance.LevelSpeed;
+
     }
 
 
@@ -35,6 +36,10 @@ public class Coin : MonoBehaviour
         Xmovement = -((Camera.main.WorldToScreenPoint(BilleObj.transform.position).x - Screen.width / 2) / Screen.width) * maxXmovement;
         transform.position = new Vector3(baseX + (Xmovement * ((transform.position.z / CirclesNb))), transform.position.y, transform.position.z);
 
-        if (transform.position.z < 0) Destroy(this.gameObject);
+        if (transform.position.z < 0)
+        {
+            LayerManager.Instance.AllActiveSprites.Remove(GetComponent<SpriteRenderer>());
+            Destroy(this.gameObject);
+        }
     }
 }

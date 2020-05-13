@@ -100,8 +100,6 @@ public class Circle : MonoBehaviour
 
         IsObstacle = Random.Range(0, 4) == 1;
 
-        spriterenderer.sortingOrder = -1;
-
         transform.GetChild(0).gameObject.GetComponent<Obstacle>().IsBumper = false;
         transform.GetChild(0).gameObject.GetComponent<Obstacle>().IsMurEtape = false;
         transform.GetChild(0).gameObject.GetComponent<Obstacle>().IsMuret = false;
