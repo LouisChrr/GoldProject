@@ -10,7 +10,7 @@ public class BilleMovement : MonoBehaviour
     [Header("Adjust values here")]
     public Transform InactiveBullets, ActiveBullets;
     public GameObject BulletPrefab;
-    public GameObject DeathUI;
+
     public float BulletSpeed, ShootSpeed;
     private float ShootCooldown;
     public float maxSpeed;
@@ -47,14 +47,14 @@ public class BilleMovement : MonoBehaviour
         gm = GameManager.Instance;
         screenWidth = Screen.width;
 
-        touchFeedback.transform.position = new Vector3(0.0f, -3.0f, 0.0f);// --- A DELETE --- //////
+       // touchFeedback.transform.position = new Vector3(0.0f, -3.0f, 0.0f);// --- A DELETE --- //////
         angle = -1.5f; // Set de la bille en bas au milieu
         targetPos.z = transform.position.z;
         targetPos.x = Mathf.Cos(angle) * width;
         targetPos.y = Mathf.Sin(angle) * height;
         transform.localPosition = targetPos;
 
-        BilleAnimator = GetComponent<Animator>();
+       // BilleAnimator = GetComponent<Animator>();
         SpawnBullets();
 
     }
@@ -122,7 +122,8 @@ public class BilleMovement : MonoBehaviour
   
 
         if (speed == 0) return;
-        // Déplacement de la bille suivant un cercle (width, height)
+        // Déplacement de la bille suivant un cercle (width, height)*
+        
         angle += Time.deltaTime * speed;
         targetPos.x = Mathf.Cos(angle) * width;
         targetPos.y = Mathf.Sin(angle) * height;
@@ -133,7 +134,7 @@ public class BilleMovement : MonoBehaviour
         // Rotation locale de la bille pour toujours orienter le bas vers le cylindre
         transform.localEulerAngles = new Vector3(0, 0, (-Mathf.Atan2(Mathf.Cos(angle) * Mathf.Rad2Deg, Mathf.Sin(angle) * Mathf.Rad2Deg) * Mathf.Rad2Deg) - 180.0f);
 
-        BilleAnimator.speed = (Mathf.Abs(speed)/10.0f + 2f);
+        //BilleAnimator.speed = (Mathf.Abs(speed)/10.0f + 2f);
     }
 
     void SpeedTouchDragInput()
@@ -143,7 +144,7 @@ public class BilleMovement : MonoBehaviour
             touch = Input.GetTouch(0); // On prend le premier doigt
             if (touch.phase == TouchPhase.Moved) // Si il a bougé, update le speed
             {
-                speed = ((touch.position.x - dragOrigin) / screenWidth) * maxSpeed;
+                speed = (((touch.position.x - dragOrigin) / screenWidth) * maxSpeed) * (gm.LevelSpeed/2.0f);
                 
             }
             else if(touch.phase == TouchPhase.Began) // Si il vient d'arriver, update le dragOrigin
@@ -158,7 +159,7 @@ public class BilleMovement : MonoBehaviour
                 speedLerpTimer = 0;
             }
             
-            touchFeedback.GetComponent<RectTransform>().localPosition = new Vector3(touch.position.x - screenWidth / 2.0f, touch.position.y - Screen.height/2, 0.0f);
+           // touchFeedback.GetComponent<RectTransform>().localPosition = new Vector3(touch.position.x - screenWidth / 2.0f, touch.position.y - Screen.height/2, 0.0f);
         }
         else // Si pas d'input détecté
         {
@@ -172,7 +173,7 @@ public class BilleMovement : MonoBehaviour
                 speedLerpTimer = 0;
                 speed = 0;
             }
-            touchFeedback.GetComponent<RectTransform>().localPosition = new Vector3(0.0f, -1000.0f,0.0f) *  2; // --- A DELETE --- //////
+           // touchFeedback.GetComponent<RectTransform>().localPosition = new Vector3(0.0f, -1000.0f,0.0f) *  2; // --- A DELETE --- //////
         }
 
         speed = Mathf.Clamp(speed, -maxSpeed, maxSpeed); // Clamp du speed selon maxSpeed

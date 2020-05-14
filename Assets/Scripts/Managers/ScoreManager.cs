@@ -8,8 +8,8 @@ public class ScoreManager : MonoBehaviour
     public int CoinValue;
     public static ScoreManager Instance;
     private GameManager gm;
-    public Text ScoreText;
-
+    public Text ScoreText, MoneyText;
+    public float lastScore;
 
     [Header("DO NOT MODIFY")]
     public float PlayerScore;
@@ -33,6 +33,7 @@ public class ScoreManager : MonoBehaviour
     void Start()
     {
         gm = GameManager.Instance;
+        PlayerMoney = PlayerPrefs.GetFloat("Money", 0);
     }
 
     // Update is called once per frame
@@ -42,10 +43,12 @@ public class ScoreManager : MonoBehaviour
         {
             PlayerScore += Time.deltaTime * 2.0f;
             ScoreText.text = "Score: " + PlayerScore.ToString("F0");
+            MoneyText.text = "Money: " + PlayerPrefs.GetFloat("Money", 0).ToString("F0");
         }
         else
         {
             ScoreText.text = "";
+            MoneyText.text = "";
 
         }
 
@@ -56,6 +59,7 @@ public class ScoreManager : MonoBehaviour
     {
         PlayerScore += CoinValue/5 * ComboValue;
         PlayerMoney += CoinValue * ComboValue;
+        PlayerPrefs.SetFloat("Money", PlayerMoney);
         ComboValue = 1;
     }
 

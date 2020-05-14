@@ -12,9 +12,11 @@ public class Obstacle : MonoBehaviour
 
     public void SetSprite()
     {
-        GetComponentInParent<SpriteRenderer>().sprite = GetComponentInParent<Circle>().sprites[HP + 2];
+       // GetComponentInParent<SpriteRenderer>().sprite = GetComponentInParent<Circle>().sprites[HP + 2];
+        GetComponentInParent<SpriteRenderer>().material = GetComponentInParent<Circle>().materials[HP + 2];
+
         // Sprite[2] le bumper
         // Apres: sprite du moins d'HP au plus d'HP 
     }
-    
+
 }

@@ -70,11 +70,14 @@ public class Bullet : MonoBehaviour
             }
             else if (Obstacle.GetComponent<Obstacle>().HP == -1)
             {
+                Obstacle.GetComponentInParent<Obstacle>().SetSprite();
                 ScoreManager.Instance.ComboValue *= 2;
                 Obstacle.GetComponentInParent<Circle>().IsObstacle = false;
                 Obstacle.GetComponent<Obstacle>().IsBumper = false;
                 Obstacle.GetComponent<Obstacle>().MuretCollider.enabled = false;
-                Obstacle.GetComponentInParent<Circle>().GetComponent<SpriteRenderer>().sprite = Obstacle.GetComponentInParent<Circle>().sprites[1];
+              //  Obstacle.GetComponentInParent<SpriteRenderer>().sprite = Obstacle.GetComponentInParent<Circle>().sprites[1];
+                Obstacle.GetComponentInParent<SpriteRenderer>().material = Obstacle.GetComponentInParent<Circle>().materials[1];
+
                 Obstacle.SetActive(false);
             }
 

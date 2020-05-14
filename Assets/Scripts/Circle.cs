@@ -31,6 +31,7 @@ public class Circle : MonoBehaviour
     private GameObject Player;
     private Vector3 baseRot;
     private float baseZRot;
+    private float lastScore = 0;
 
     public void Start()
     {
@@ -55,7 +56,7 @@ public class Circle : MonoBehaviour
     {
         if (gm.IsPlayerDead || !gm.HasGameStarted) return;
 
-        if(transform.GetChild(0).gameObject.GetComponent<Obstacle>().IsMurEtape == true && transform.GetChild(0).gameObject.transform.position.z < gm.CirclesNumber/3)
+        if(transform.GetChild(0).gameObject.GetComponent<Obstacle>().IsMurEtape == true && transform.GetChild(0).gameObject.transform.position.z < (gm.CirclesNumber/3) + bonusSpeed * 2)
         {
            // transform.GetChild(0).gameObject.transform.rotation = Quaternion.Euler(0, 0, (Player.GetComponent<BilleMovement>().angle - baseAngle) * 60);
             transform.GetChild(0).gameObject.transform.localRotation = Quaternion.Euler(0, 0, (Player.GetComponent<BilleMovement>().angle - baseAngle) * 60);
@@ -63,7 +64,7 @@ public class Circle : MonoBehaviour
             // Debug.Log("ANGLE ISSOUMs: " + Vector3.Angle(Player.transform.position, baseRot));
             //Debug.Log("ANGLE ISSOUMs: " + transform.GetChild(0).gameObject.transform.rotation.z);
 
-            Debug.Log("ANGLE ISSOUMs: " + Player.GetComponent<BilleMovement>().angle);
+           // Debug.Log("ANGLE ISSOUMs: " + Player.GetComponent<BilleMovement>().angle);
 
             // if (Vector3.Angle(Player.transform.position, baseRot) > 350)
             //if ((transform.GetChild(0).gameObject.transform.rotation.z - baseZRot) >= 350 || (transform.GetChild(0).gameObject.transform.rotation.z - baseZRot) <= -350)
@@ -71,8 +72,8 @@ public class Circle : MonoBehaviour
             {
                 //spriterenderer.sprite = sprites[1];
                 spriterenderer.material = materials[1];
-                transform.GetChild(0).gameObject.GetComponent<Obstacle>().MurEtapeCollider.enabled = false;
-                transform.GetChild(0).gameObject.GetComponent<Obstacle>().IsMurEtape = false;
+                transform.GetChild(0).GetComponent<Obstacle>().MurEtapeCollider.enabled = false;
+                transform.GetChild(0).GetComponent<Obstacle>().IsMurEtape = false;
                 transform.GetChild(0).gameObject.SetActive(false);
                 gm.NewLevel(gm.LevelNb + 1);
                /// print("mur etape detruit");
@@ -93,7 +94,7 @@ public class Circle : MonoBehaviour
 
         if (transform.GetChild(0).gameObject.GetComponent<Obstacle>().IsMurEtape == false) // SI MUR ETAPE ON ROTATEA PAS ISSOU
         {
-            transform.rotation *= Quaternion.Euler(0, 0, rotationSpeed * speed);
+            transform.rotation *= Quaternion.Euler(0, 0, rotationSpeed * speed * Time.timeScale);
         }
 
 
@@ -124,33 +125,37 @@ public class Circle : MonoBehaviour
 
         IsObstacle = Random.Range(0, 4) == 1;
 
-        transform.GetChild(0).gameObject.GetComponent<Obstacle>().IsBumper = false;
-        transform.GetChild(0).gameObject.GetComponent<Obstacle>().IsMurEtape = false;
-        transform.GetChild(0).gameObject.GetComponent<Obstacle>().IsMuret = false;
+        transform.GetChild(0).GetComponent<Obstacle>().IsBumper = false;
+        transform.GetChild(0).GetComponent<Obstacle>().IsMurEtape = false;
+        transform.GetChild(0).GetComponent<Obstacle>().IsMuret = false;
 
 
-        transform.GetChild(0).gameObject.GetComponent<Obstacle>().HP = gm.ObstacleHP;
-        transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = false;
-        transform.GetChild(0).gameObject.GetComponent<Obstacle>().MurEtapeCollider.enabled = false;
+        transform.GetChild(0).GetComponent<Obstacle>().HP = gm.ObstacleHP;
+        transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
+        transform.GetChild(0).GetComponent<Obstacle>().MurEtapeCollider.enabled = false;
 
 
-        if (Mathf.RoundToInt(sm.PlayerScore) % 20 == 0 && Mathf.RoundToInt(sm.PlayerScore) >= 10)
+        if (Mathf.RoundToInt(sm.PlayerScore) % (20 + Mathf.RoundToInt(gm.LevelSpeed)) == 0 && Mathf.RoundToInt(sm.PlayerScore) >= 10)
         {
-           
-            transform.GetChild(0).gameObject.GetComponent<Obstacle>().IsMurEtape = true;
-            transform.GetChild(0).gameObject.GetComponent<Obstacle>().MuretCollider.enabled = false;
-            transform.GetChild(0).gameObject.GetComponent<Obstacle>().HeliceCollider.enabled = false;
-            transform.GetChild(0).gameObject.GetComponent<Obstacle>().MurEtapeCollider.enabled = true;
-            transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            if (sm.PlayerScore - sm.lastScore < 10) return;
+            sm.lastScore = sm.PlayerScore;
+
+            transform.GetChild(0).GetComponent<Obstacle>().IsMurEtape = true;
+            transform.GetChild(0).GetComponent<Obstacle>().MuretCollider.enabled = false;
+            transform.GetChild(0).GetComponent<Obstacle>().HeliceCollider.enabled = false;
+            transform.GetChild(0).GetComponent<Obstacle>().MurEtapeCollider.enabled = true;
+            transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
+            transform.GetChild(0).GetComponent<SpriteRenderer>().material = materials[8];
+            //transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>()
             //spriterenderer.sprite = sprites[1];
             spriterenderer.material = materials[1];
             transform.GetChild(0).gameObject.SetActive(true);
         }else if (IsObstacle)
         {
-            transform.GetChild(0).gameObject.GetComponent<Obstacle>().IsMuret = Random.Range(0, 2) == 1;
-            transform.GetChild(0).gameObject.GetComponent<Obstacle>().MuretCollider.enabled = transform.GetChild(0).gameObject.GetComponent<Obstacle>().IsMuret;
-            transform.GetChild(0).gameObject.GetComponent<Obstacle>().HeliceCollider.enabled = !transform.GetChild(0).gameObject.GetComponent<Obstacle>().IsMuret;
-            if (transform.GetChild(0).gameObject.GetComponent<Obstacle>().IsMuret)
+            transform.GetChild(0).GetComponent<Obstacle>().IsMuret = Random.Range(0, 2) == 1;
+            transform.GetChild(0).GetComponent<Obstacle>().MuretCollider.enabled = transform.GetChild(0).gameObject.GetComponent<Obstacle>().IsMuret;
+            transform.GetChild(0).GetComponent<Obstacle>().HeliceCollider.enabled = !transform.GetChild(0).gameObject.GetComponent<Obstacle>().IsMuret;
+            if (transform.GetChild(0).GetComponent<Obstacle>().IsMuret)
             {
                 //spriterenderer.sprite = sprites[7];
                 spriterenderer.material = materials[7];

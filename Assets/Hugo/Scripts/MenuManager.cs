@@ -19,7 +19,7 @@ public class MenuManager : MonoBehaviour
     public GameObject greyPanel;
 
     public AudioSource audio1;
-    public Text ScoreText, MoneyText, BestScoreText;
+    public Text ScoreText, MoneyText, BestScoreText, MenuMoneyText;
     private bool _isPause;
 
 
@@ -51,7 +51,7 @@ public class MenuManager : MonoBehaviour
 
         greyPanel.SetActive(true);
 
-        audio1.Play();
+        MenuMoneyText.text = "Money: " + PlayerPrefs.GetFloat("Money", 0);
 
     }
 
@@ -59,7 +59,7 @@ public class MenuManager : MonoBehaviour
     {
         end.SetActive(true);
         ScoreText.text = "Score: " + ScoreManager.Instance.PlayerScore.ToString("F0");
-        MoneyText.text = "Money: " + ScoreManager.Instance.PlayerMoney.ToString("F0");
+        MoneyText.text = "Money: " + PlayerPrefs.GetFloat("Money", 0);
         if (ScoreManager.Instance.PlayerScore > PlayerPrefs.GetFloat("BestScore", 0)){
             PlayerPrefs.SetFloat("BestScore", ScoreManager.Instance.PlayerScore);
         }
