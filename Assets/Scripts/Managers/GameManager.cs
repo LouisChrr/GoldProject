@@ -68,7 +68,6 @@ public class GameManager : MonoBehaviour
 
         ScoreManager.Instance.ComboValue = 1;
 
-        print("ok");
         //fx.ShiftedColor(0.5f) * 4f; // On assigne la couleur du nouveau niveau, ne tkt pas ça va bien se passer, bien se passer ne tkt pas
 
         LevelNb = levelNb;
