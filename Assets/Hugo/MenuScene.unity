@@ -264,7 +264,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Money : 0'
+  m_Text: 'Gold: 0'
 --- !u!222 &152438813
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1079,6 +1079,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4eadd7f9d9bd5340aaf090780e72778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buyUI: {fileID: 0}
+  buyText: {fileID: 0}
+  moneyTxt: {fileID: 152438810}
+  money: 0
+  impossibleToBuy: {fileID: 0}
+  skins: []
 --- !u!114 &499236424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3737,6 +3743,9 @@ MonoBehaviour:
   end: {fileID: 1982663070}
   greyPanel: {fileID: 910892553}
   audio1: {fileID: 1921897040}
+  ScoreText: {fileID: 0}
+  MoneyText: {fileID: 0}
+  BestScoreText: {fileID: 0}
 --- !u!82 &1921897040
 AudioSource:
   m_ObjectHideFlags: 0
