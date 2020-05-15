@@ -27,17 +27,20 @@ public class Circle : MonoBehaviour
     private float Xmovement;
     private float maxXmovement;
     private ScoreManager sm;
+    private ImageEffectController fx;
     private GameManager gm;
     private GameObject Player;
     private Vector3 baseRot;
     private float baseZRot;
     private float lastScore = 0;
     public bool preventObstacleAtStart = false;
+
     public void Start()
     {
  
         gm = GameManager.Instance;
         sm = ScoreManager.Instance;
+        fx = ImageEffectController.Instance;
         CirclesNb = gm.CirclesNumber;
         Player = GameObject.FindWithTag("Player");
         spriterenderer = GetComponent<SpriteRenderer>();
@@ -220,5 +223,12 @@ public class Circle : MonoBehaviour
             rotationSpeed = 0;
         }
             CoinSpawner.Instance.SpawnCoin(CirclesNb);
+
+        AssignNewColor();
+    }
+
+    public void AssignNewColor()
+    {
+        spriterenderer.material.SetColor("_Color", fx.ShiftedColor(Time.deltaTime * 1f) * 4f);
     }
 }

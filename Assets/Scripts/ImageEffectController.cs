@@ -4,17 +4,35 @@ using UnityEngine;
 
 public class ImageEffectController : MonoBehaviour
 {
+    public static ImageEffectController Instance;
 
     public Material[] Materials;
     public Material Skybox, Player;
     public float ColorShiftFactor, SkyboxShiftFactor;
 
     private Color HSVColor = Color.clear;
+    public Color PreviousColor;
+
     private float ColorBalance, SkyboxRotation;
+
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            Debug.LogError("ImageEffectController is missing");
+            return;
+        }
+        Instance = this;
+    }
+
+    private void Start()
+    {
+        PreviousColor = Color.green;
+    }
 
     void Update()
     {
-        UpdateColor(ColorShiftFactor);
+     //   UpdateColor(ColorShiftFactor);
         RotateSkybox(SkyboxShiftFactor);
     }
 
@@ -42,5 +60,25 @@ public class ImageEffectController : MonoBehaviour
             SkyboxRotation = 0;
 
         Skybox.SetFloat("_Rotation", SkyboxRotation);
+    }
+
+    public Color ShiftedColor(float shift)
+    {
+        float h, s, v;
+
+        Color shiftedColor = new Color();
+
+        Color.RGBToHSV(PreviousColor, out h, out s, out v);
+
+        if (h <= 1)
+            h += shift;
+        else
+            h--;
+
+        shiftedColor = Color.HSVToRGB(h, s, v);
+
+        PreviousColor = shiftedColor;
+
+        return shiftedColor;
     }
 }

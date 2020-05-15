@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private int circlesNumber = 0;
     private ScoreManager sm;
+    private ImageEffectController fx;
     public int CirclesNumber { get => circlesNumber; }
 
 
@@ -40,7 +41,7 @@ public class GameManager : MonoBehaviour
     {
         NewLevel(0);
         sm = ScoreManager.Instance;
-        
+        fx = ImageEffectController.Instance;
     }
 
 
@@ -67,16 +68,16 @@ public class GameManager : MonoBehaviour
 
         ScoreManager.Instance.ComboValue = 1;
 
+        print("ok");
+        //fx.ShiftedColor(0.5f) * 4f; // On assigne la couleur du nouveau niveau, ne tkt pas ça va bien se passer, bien se passer ne tkt pas
+
         LevelNb = levelNb;
         LevelSpeed = levelNb*0.4f +2;
         foreach (GameObject go in generator.Circles)
         {
             go.GetComponent<Circle>().ChangeBonusSpeed(LevelSpeed);
         }
-
     }
-
-
 
     public void Death()
     {

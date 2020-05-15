@@ -15,8 +15,6 @@ public class CoinSpawner : MonoBehaviour
 
     void Awake()
     {
-      
-
         if (Instance != null)
         {
             Debug.LogError("2 CoinSpawner??");
