@@ -13,7 +13,15 @@ public class Obstacle : MonoBehaviour
     public void SetSprite()
     {
        // GetComponentInParent<SpriteRenderer>().sprite = GetComponentInParent<Circle>().sprites[HP + 2];
+
         GetComponentInParent<SpriteRenderer>().material = GetComponentInParent<Circle>().materials[HP + 2];
+        if(HP == 0)
+        {
+            IsBumper = true;
+            IsMuret = false;
+         
+            ScoreManager.Instance.KillEnnemy();
+        }
 
         // Sprite[2] le bumper
         // Apres: sprite du moins d'HP au plus d'HP 

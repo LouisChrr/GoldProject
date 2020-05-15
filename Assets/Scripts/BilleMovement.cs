@@ -10,7 +10,6 @@ public class BilleMovement : MonoBehaviour
     [Header("Adjust values here")]
     public Transform InactiveBullets, ActiveBullets;
     public GameObject BulletPrefab;
-
     public float BulletSpeed, ShootSpeed;
     private float ShootCooldown;
     public float maxSpeed;
@@ -30,7 +29,7 @@ public class BilleMovement : MonoBehaviour
     private Touch touch;
     private int screenWidth;
     private float dragOrigin;
-
+ 
     // Start is called before the first frame update
 
     private void Awake()
@@ -79,17 +78,37 @@ public class BilleMovement : MonoBehaviour
     void Shoot()
     {
         ShootCooldown += Time.deltaTime;
-        if(ShootCooldown >= ShootSpeed)
-        {
-            ShootCooldown = 0;
-            InactiveBullets.GetChild(0).transform.position = new Vector3(Mathf.Cos(angle) * (width * 0.8f), Mathf.Sin(angle) * (height * 0.8f), transform.position.z);
-            InactiveBullets.GetChild(0).transform.rotation = Quaternion.identity;
-            InactiveBullets.GetChild(0).transform.parent = ActiveBullets;
-            InactiveBullets.GetChild(0).GetComponent<Bullet>().ResetBullet(this.transform);
 
-            // GameObject bullet = Instantiate(BulletPrefab, new Vector3(Mathf.Cos(angle)*(width*0.8f), Mathf.Sin(angle) * (height*0.8f),transform.position.z), Quaternion.identity);
-            // bullet.GetComponent<Bullet>().speed = BulletSpeed;
+        RaycastHit hit;
+        if (Physics.Raycast(transform.localPosition,  transform.TransformDirection(Vector3.forward), out hit, 100))
+        {
+            Debug.DrawRay(transform.localPosition, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+            if (hit.collider.gameObject.GetComponent<Obstacle>() == null || hit.distance > gm.CirclesNumber/2)
+            {
+                return;
+            }
+            else if (hit.collider.gameObject.GetComponent<Obstacle>().IsMuret || hit.collider.gameObject.GetComponent<Obstacle>().IsMurEtape)
+            {
+                if (ShootCooldown >= ShootSpeed)
+                {
+                    ShootCooldown = 0;
+                    InactiveBullets.GetChild(0).transform.position = new Vector3(Mathf.Cos(angle) * (width * 0.8f), Mathf.Sin(angle) * (height * 0.8f), transform.position.z);
+                    InactiveBullets.GetChild(0).transform.rotation = Quaternion.identity;
+                    InactiveBullets.GetChild(0).transform.parent = ActiveBullets;
+                    InactiveBullets.GetChild(0).GetComponent<Bullet>().ResetBullet(this.transform);
+
+                    // GameObject bullet = Instantiate(BulletPrefab, new Vector3(Mathf.Cos(angle)*(width*0.8f), Mathf.Sin(angle) * (height*0.8f),transform.position.z), Quaternion.identity);
+                    // bullet.GetComponent<Bullet>().speed = BulletSpeed;
+                }
+            }
         }
+        else
+        {
+            Debug.DrawRay( transform.localPosition,  transform.TransformDirection(Vector3.forward) * 100, Color.red);
+
+        }
+
+        
 
     }
 
@@ -144,7 +163,7 @@ public class BilleMovement : MonoBehaviour
             touch = Input.GetTouch(0); // On prend le premier doigt
             if (touch.phase == TouchPhase.Moved) // Si il a bougé, update le speed
             {
-                speed = (((touch.position.x - dragOrigin) / screenWidth) * maxSpeed) * (gm.LevelSpeed/2.0f);
+                speed = (((touch.position.x - dragOrigin) / screenWidth) * maxSpeed) * ((gm.LevelSpeed/8.0f) + 1);
                 
             }
             else if(touch.phase == TouchPhase.Began) // Si il vient d'arriver, update le dragOrigin
@@ -183,7 +202,15 @@ public class BilleMovement : MonoBehaviour
     {
         if (collision.transform.tag == "Obstacle")
         {
-            gm.Death();
+            if (collision.transform.GetComponent<Obstacle>().IsBumper)
+            {
+                ScoreManager.Instance.ComboValue *= 2;
+            }
+            else
+            {
+                gm.Death();
+            }
+            
         }
         if (collision.transform.tag == "Coin")
         {

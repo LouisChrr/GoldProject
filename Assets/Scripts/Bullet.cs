@@ -60,26 +60,26 @@ public class Bullet : MonoBehaviour
             GameObject Obstacle = collision.transform.gameObject;
             this.transform.parent = InactiveBullets;
 
-            if (!Obstacle.GetComponent<Obstacle>().IsMuret && !Obstacle.GetComponent<Obstacle>().IsBumper) return;
+            if (!Obstacle.GetComponent<Obstacle>().IsMuret) return;
             Obstacle.GetComponent<Obstacle>().HP -= 1;
             Obstacle.GetComponentInParent<Obstacle>().SetSprite();
-            if (Obstacle.GetComponent<Obstacle>().HP == 0)
-            {
-                Obstacle.GetComponentInParent<Obstacle>().IsMuret = false;
-                Obstacle.GetComponentInParent<Obstacle>().IsBumper = true;
-            }
-            else if (Obstacle.GetComponent<Obstacle>().HP == -1)
-            {
-                Obstacle.GetComponentInParent<Obstacle>().SetSprite();
-                ScoreManager.Instance.ComboValue *= 2;
-                Obstacle.GetComponentInParent<Circle>().IsObstacle = false;
-                Obstacle.GetComponent<Obstacle>().IsBumper = false;
-                Obstacle.GetComponent<Obstacle>().MuretCollider.enabled = false;
-              //  Obstacle.GetComponentInParent<SpriteRenderer>().sprite = Obstacle.GetComponentInParent<Circle>().sprites[1];
-                Obstacle.GetComponentInParent<SpriteRenderer>().material = Obstacle.GetComponentInParent<Circle>().materials[1];
+            //if (Obstacle.GetComponent<Obstacle>().HP == 0)
+            //{
+            //    Obstacle.GetComponentInParent<Obstacle>().IsMuret = false;
+            //    Obstacle.GetComponentInParent<Obstacle>().IsBumper = true;
+            //}
+            //else if (Obstacle.GetComponent<Obstacle>().HP == -1)
+            //{
+            //    Obstacle.GetComponentInParent<Obstacle>().SetSprite();
+            //    ScoreManager.Instance.ComboValue *= 2;
+            //    Obstacle.GetComponentInParent<Circle>().IsObstacle = false;
+            //    Obstacle.GetComponent<Obstacle>().IsBumper = false;
+            //    Obstacle.GetComponent<Obstacle>().MuretCollider.enabled = false;
+            //  //  Obstacle.GetComponentInParent<SpriteRenderer>().sprite = Obstacle.GetComponentInParent<Circle>().sprites[1];
+            //    Obstacle.GetComponentInParent<SpriteRenderer>().material = Obstacle.GetComponentInParent<Circle>().materials[1];
 
-                Obstacle.SetActive(false);
-            }
+            //    Obstacle.SetActive(false);
+            //}
 
             // Destroy(this.gameObject);
             

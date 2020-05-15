@@ -65,6 +65,7 @@ public class GameManager : MonoBehaviour
             LevelUpText.GetComponent<Animator>().Play("TextFade", 0, 0);
         }
 
+        ScoreManager.Instance.ComboValue = 1;
 
         LevelNb = levelNb;
         LevelSpeed = levelNb*0.4f +2;

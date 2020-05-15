@@ -24,8 +24,14 @@ public class CircleGenerator : MonoBehaviour
         {
             GameObject newCircle = Instantiate(Circle, new Vector3(0, 0, 1 * i), Quaternion.identity, GameManager.Instance.Circles);
 
-            if (i < 4)
-                newCircle.GetComponent<Circle>().IsObstacle = false;
+            if (i < CirclesNb / 6)
+            {
+                // pas d'obstacle au debut
+                newCircle.GetComponent<Circle>().preventObstacleAtStart = true;
+                newCircle.GetComponent<Circle>().Start();
+                newCircle.GetComponent<Circle>().ResetObstacle();
+            }
+                 
 
             Circles.Add(newCircle);
             layerManager.AllActiveSprites.Add(newCircle.GetComponent<SpriteRenderer>());

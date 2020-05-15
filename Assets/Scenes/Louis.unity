@@ -277,7 +277,7 @@ MonoBehaviour:
   LevelSpeed: 0
   Circles: {fileID: 1718482339}
   PlayerObj: {fileID: 67924477}
-  ObstacleHP: 5
+  ObstacleHP: 4
   IsPlayerDead: 0
   InitialCircleSpeed: 1
   circlesNumber: 30
@@ -553,7 +553,6 @@ MonoBehaviour:
   _CoinPrefab: {fileID: 2231894987645692706, guid: 4db747a990922114095c67344414e3d8,
     type: 3}
   Yoffset: 0.23
-  layerManager: {fileID: 0}
 --- !u!4 &118627867
 Transform:
   m_ObjectHideFlags: 0
@@ -2885,7 +2884,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a643ad985e31fed459962370c130b4d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CoinValue: 20
+  CoinValue: 2
   ScoreText: {fileID: 687126645}
   MoneyText: {fileID: 1973752320}
   lastScore: 0
