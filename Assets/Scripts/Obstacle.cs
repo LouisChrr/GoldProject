@@ -10,12 +10,21 @@ public class Obstacle : MonoBehaviour
     public bool IsBumper;
     public bool IsMurEtape;
 
+    private SpriteRenderer ParentSprite;
+    private Circle ParentCircle;
+
+    public void Start()
+    {
+        ParentSprite = transform.parent.GetComponent<SpriteRenderer>();
+        ParentCircle = transform.parent.GetComponent<Circle>();
+    }
+
     public void SetSprite()
     {
        // GetComponentInParent<SpriteRenderer>().sprite = GetComponentInParent<Circle>().sprites[HP + 2];
 
-        GetComponentInParent<SpriteRenderer>().material = GetComponentInParent<Circle>().materials[HP + 2];
-        if(HP == 0)
+        ParentSprite.material = ParentCircle.materials[HP + 2];
+        if(HP <= 0)
         {
             IsBumper = true;
             IsMuret = false;

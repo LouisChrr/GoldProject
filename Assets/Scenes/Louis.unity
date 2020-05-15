@@ -2940,6 +2940,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 896f99013952ebe4f8f389e6c0adfb28, type: 2}
   - {fileID: 2100000, guid: 1260d922a35a3dc4497296da3f933966, type: 2}
   - {fileID: 2100000, guid: d4ba9a1fcb5878947ac207d3b2c77374, type: 2}
+  - {fileID: 2100000, guid: 3c55243dd82725147bcf7e550c9d5c36, type: 2}
   Skybox: {fileID: 2100000, guid: a65ad88f3784e8847b4bf98a49914fc3, type: 2}
   Player: {fileID: 0}
   ColorShiftFactor: 0.2
