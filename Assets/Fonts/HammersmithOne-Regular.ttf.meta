@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d8cd147b288fd3b438806578c0c7a24a
+guid: f04d97de5863a0044b686a697ae69b59
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -8,9 +8,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Linear Beam
+  fontName: HammersmithOne
   fontNames:
-  - Linear Beam
+  - HammersmithOne
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

@@ -507,6 +507,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Circle: {fileID: 3557496550061782010, guid: 98da6a2bc5cf4eb4ea2c6235e8763e89, type: 3}
+  layerManager: {fileID: 1326107682}
   Circles: []
   canDestroy: 1
 --- !u!4 &516408163
@@ -1070,6 +1071,7 @@ MonoBehaviour:
   angle: 0
   touchFeedback: {fileID: 1134737223}
   speed: 0
+  layerManager: {fileID: 1326107682}
 --- !u!212 &1072520213
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1108,7 +1110,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 950c2195ae3ceb84294b3e8c56145069, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1205,6 +1207,50 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1326107681
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1326107683}
+  - component: {fileID: 1326107682}
+  m_Layer: 0
+  m_Name: LayerManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1326107682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1326107681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d4c8ac06acde7046b6ff893a19c2859, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AllActiveSprites: []
+--- !u!4 &1326107683
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1326107681}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1424827489
 GameObject:
   m_ObjectHideFlags: 0
@@ -1650,6 +1696,7 @@ MonoBehaviour:
   _CoinPrefab: {fileID: 2231894987645692706, guid: 4db747a990922114095c67344414e3d8,
     type: 3}
   Yoffset: 0.23
+  layerManager: {fileID: 1326107682}
 --- !u!4 &1976865095
 Transform:
   m_ObjectHideFlags: 0

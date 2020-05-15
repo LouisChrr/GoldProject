@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    
 
+    public GameObject LevelUpText;
     public bool HasGameStarted;
     public int LevelNb;
     public float LevelSpeed;
@@ -40,10 +40,11 @@ public class GameManager : MonoBehaviour
     {
         NewLevel(0);
         sm = ScoreManager.Instance;
-
+        
     }
 
-   
+
+
     public void StartGame()
     {
         IsPlayerDead = false;
@@ -57,8 +58,17 @@ public class GameManager : MonoBehaviour
 
     public void NewLevel(int levelNb) // A APPELER A CHAQUE NEW LEVEL ISSOUm
     {
+
+        if(levelNb > 1)
+        {
+            LevelUpText.SetActive(true);
+            LevelUpText.GetComponent<Animator>().Play("TextFade", 0, 0);
+        }
+
+        ScoreManager.Instance.ComboValue = 1;
+
         LevelNb = levelNb;
-        LevelSpeed = levelNb;
+        LevelSpeed = levelNb*0.4f +2;
         foreach (GameObject go in generator.Circles)
         {
             go.GetComponent<Circle>().ChangeBonusSpeed(LevelSpeed);

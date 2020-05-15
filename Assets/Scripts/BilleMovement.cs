@@ -10,7 +10,6 @@ public class BilleMovement : MonoBehaviour
     [Header("Adjust values here")]
     public Transform InactiveBullets, ActiveBullets;
     public GameObject BulletPrefab;
-    public GameObject DeathUI;
     public float BulletSpeed, ShootSpeed;
     private float ShootCooldown;
     public float maxSpeed;
@@ -25,11 +24,12 @@ public class BilleMovement : MonoBehaviour
     public float speed;
 
     private GameManager gm;
+    public LayerManager layerManager;
     // Mobile device related
     private Touch touch;
     private int screenWidth;
     private float dragOrigin;
-
+ 
     // Start is called before the first frame update
 
     private void Awake()
@@ -42,17 +42,18 @@ public class BilleMovement : MonoBehaviour
 
     void Start()
     {
+        layerManager = LayerManager.Instance;
         gm = GameManager.Instance;
         screenWidth = Screen.width;
 
-        touchFeedback.transform.position = new Vector3(0.0f, -3.0f, 0.0f);// --- A DELETE --- //////
+       // touchFeedback.transform.position = new Vector3(0.0f, -3.0f, 0.0f);// --- A DELETE --- //////
         angle = -1.5f; // Set de la bille en bas au milieu
         targetPos.z = transform.position.z;
         targetPos.x = Mathf.Cos(angle) * width;
         targetPos.y = Mathf.Sin(angle) * height;
         transform.localPosition = targetPos;
 
-        BilleAnimator = GetComponent<Animator>();
+       // BilleAnimator = GetComponent<Animator>();
         SpawnBullets();
 
     }
@@ -77,17 +78,37 @@ public class BilleMovement : MonoBehaviour
     void Shoot()
     {
         ShootCooldown += Time.deltaTime;
-        if(ShootCooldown >= ShootSpeed)
-        {
-            ShootCooldown = 0;
-            InactiveBullets.GetChild(0).transform.position = new Vector3(Mathf.Cos(angle) * (width * 0.8f), Mathf.Sin(angle) * (height * 0.8f), transform.position.z);
-            InactiveBullets.GetChild(0).transform.rotation = Quaternion.identity;
-            InactiveBullets.GetChild(0).transform.parent = ActiveBullets;
-            InactiveBullets.GetChild(0).GetComponent<Bullet>().ResetBullet(this.transform);
 
-            // GameObject bullet = Instantiate(BulletPrefab, new Vector3(Mathf.Cos(angle)*(width*0.8f), Mathf.Sin(angle) * (height*0.8f),transform.position.z), Quaternion.identity);
-            // bullet.GetComponent<Bullet>().speed = BulletSpeed;
+        RaycastHit hit;
+        if (Physics.Raycast(transform.localPosition,  transform.TransformDirection(Vector3.forward), out hit, 100))
+        {
+            Debug.DrawRay(transform.localPosition, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+            if (hit.collider.gameObject.GetComponent<Obstacle>() == null || hit.distance > gm.CirclesNumber/2)
+            {
+                return;
+            }
+            else if (hit.collider.gameObject.GetComponent<Obstacle>().IsMuret || hit.collider.gameObject.GetComponent<Obstacle>().IsMurEtape)
+            {
+                if (ShootCooldown >= ShootSpeed)
+                {
+                    ShootCooldown = 0;
+                    InactiveBullets.GetChild(0).transform.position = new Vector3(Mathf.Cos(angle) * (width * 0.8f), Mathf.Sin(angle) * (height * 0.8f), transform.position.z);
+                    InactiveBullets.GetChild(0).transform.rotation = Quaternion.identity;
+                    InactiveBullets.GetChild(0).transform.parent = ActiveBullets;
+                    InactiveBullets.GetChild(0).GetComponent<Bullet>().ResetBullet(this.transform);
+
+                    // GameObject bullet = Instantiate(BulletPrefab, new Vector3(Mathf.Cos(angle)*(width*0.8f), Mathf.Sin(angle) * (height*0.8f),transform.position.z), Quaternion.identity);
+                    // bullet.GetComponent<Bullet>().speed = BulletSpeed;
+                }
+            }
         }
+        else
+        {
+            Debug.DrawRay( transform.localPosition,  transform.TransformDirection(Vector3.forward) * 100, Color.red);
+
+        }
+
+        
 
     }
 
@@ -107,6 +128,8 @@ public class BilleMovement : MonoBehaviour
             bullet.GetComponent<Bullet>().speed = BulletSpeed;
             bullet.GetComponent<Bullet>().ActiveBullets = ActiveBullets;
             bullet.GetComponent<Bullet>().InactiveBullets = InactiveBullets;
+
+            layerManager.AllActiveSprites.Add(bullet.GetComponent<SpriteRenderer>());
         }
     }
 
@@ -118,7 +141,8 @@ public class BilleMovement : MonoBehaviour
   
 
         if (speed == 0) return;
-        // Déplacement de la bille suivant un cercle (width, height)
+        // Déplacement de la bille suivant un cercle (width, height)*
+        
         angle += Time.deltaTime * speed;
         targetPos.x = Mathf.Cos(angle) * width;
         targetPos.y = Mathf.Sin(angle) * height;
@@ -129,7 +153,7 @@ public class BilleMovement : MonoBehaviour
         // Rotation locale de la bille pour toujours orienter le bas vers le cylindre
         transform.localEulerAngles = new Vector3(0, 0, (-Mathf.Atan2(Mathf.Cos(angle) * Mathf.Rad2Deg, Mathf.Sin(angle) * Mathf.Rad2Deg) * Mathf.Rad2Deg) - 180.0f);
 
-        BilleAnimator.speed = (Mathf.Abs(speed)/10.0f + 2f);
+        //BilleAnimator.speed = (Mathf.Abs(speed)/10.0f + 2f);
     }
 
     void SpeedTouchDragInput()
@@ -139,7 +163,7 @@ public class BilleMovement : MonoBehaviour
             touch = Input.GetTouch(0); // On prend le premier doigt
             if (touch.phase == TouchPhase.Moved) // Si il a bougé, update le speed
             {
-                speed = ((touch.position.x - dragOrigin) / screenWidth) * maxSpeed;
+                speed = (((touch.position.x - dragOrigin) / screenWidth) * maxSpeed) * ((gm.LevelSpeed/8.0f) + 1);
                 
             }
             else if(touch.phase == TouchPhase.Began) // Si il vient d'arriver, update le dragOrigin
@@ -154,7 +178,7 @@ public class BilleMovement : MonoBehaviour
                 speedLerpTimer = 0;
             }
             
-            touchFeedback.GetComponent<RectTransform>().localPosition = new Vector3(touch.position.x - screenWidth / 2.0f, touch.position.y - Screen.height/2, 0.0f);
+           // touchFeedback.GetComponent<RectTransform>().localPosition = new Vector3(touch.position.x - screenWidth / 2.0f, touch.position.y - Screen.height/2, 0.0f);
         }
         else // Si pas d'input détecté
         {
@@ -168,7 +192,7 @@ public class BilleMovement : MonoBehaviour
                 speedLerpTimer = 0;
                 speed = 0;
             }
-            touchFeedback.GetComponent<RectTransform>().localPosition = new Vector3(0.0f, -1000.0f,0.0f) *  2; // --- A DELETE --- //////
+           // touchFeedback.GetComponent<RectTransform>().localPosition = new Vector3(0.0f, -1000.0f,0.0f) *  2; // --- A DELETE --- //////
         }
 
         speed = Mathf.Clamp(speed, -maxSpeed, maxSpeed); // Clamp du speed selon maxSpeed
@@ -178,10 +202,19 @@ public class BilleMovement : MonoBehaviour
     {
         if (collision.transform.tag == "Obstacle")
         {
-            gm.Death();
+            if (collision.transform.GetComponent<Obstacle>().IsBumper)
+            {
+                ScoreManager.Instance.ComboValue *= 2;
+            }
+            else
+            {
+                gm.Death();
+            }
+            
         }
         if (collision.transform.tag == "Coin")
         {
+            layerManager.AllActiveSprites.Remove(collision.transform.GetComponent<SpriteRenderer>());
             Destroy(collision.gameObject);
             ScoreManager.Instance.PickupCoin();
         }
