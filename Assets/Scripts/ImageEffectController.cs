@@ -62,7 +62,6 @@ public class ImageEffectController : MonoBehaviour
         Skybox.SetFloat("_Rotation", SkyboxRotation);
     }
 
-
     public void ChangePreviousColor(Color newPreviousColor)
     {
         PreviousColor = newPreviousColor;
@@ -82,8 +81,6 @@ public class ImageEffectController : MonoBehaviour
             h--;
 
         shiftedColor = Color.HSVToRGB(h, s, v);
-
-        PreviousColor = shiftedColor;
 
         return shiftedColor;
     }

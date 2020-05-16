@@ -261,12 +261,14 @@ public class Circle : MonoBehaviour
         }
             CoinSpawner.Instance.SpawnCoin(CirclesNb);
 
-        AssignNewColor(Time.deltaTime *1);
+        AssignNewColor(Time.deltaTime * 0.2f);
     }
 
     public void AssignNewColor(float shift)
     {
-        
-        spriterenderer.material.SetColor("_Color", fx.ShiftedColor(shift) * 4f);
+        Color newCol = fx.ShiftedColor(shift);
+
+        fx.ChangePreviousColor(newCol);
+        spriterenderer.material.SetColor("_Color", newCol * 4f);
     }
 }

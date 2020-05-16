@@ -60,8 +60,13 @@ public class GameManager : MonoBehaviour
     public void NewLevel(int levelNb) // A APPELER A CHAQUE NEW LEVEL ISSOUm
     {
 
-        if(levelNb > 1)
+        Color newLevelColor = new Color();
+
+        if (levelNb > 1)
         {
+            newLevelColor = fx.ShiftedColor(Time.deltaTime * 2f);
+            fx.ChangePreviousColor(newLevelColor);
+
             LevelUpText.SetActive(true);
             LevelUpText.GetComponent<Animator>().Play("TextFade", 0, 0);
         }
@@ -72,26 +77,24 @@ public class GameManager : MonoBehaviour
 
         LevelNb = levelNb;
         LevelSpeed = levelNb*0.4f +2;
+
         foreach (GameObject go in generator.Circles)
         {
             go.GetComponent<Circle>().ChangeBonusSpeed(LevelSpeed);
             if (levelNb > 1)
             {
-                
-                for (int i = 0; i < generator.Circles.Count; i++)
-                {
-                    generator.Circles[i].GetComponent<Circle>().AssignNewColor(Time.deltaTime * i);
-                   
+                /* for (int i = generator.Circles.Count; i > 0; i--)
+                 {
+                     if (i == generator.Circles.Count)
+                         generator.Circles[0].GetComponent<Circle>().AssignNewColor(Time.deltaTime * 0.5f);
+                  //   else
+                 //        generator.Circles[i].GetComponent<Circle>().AssignNewColor(Time.deltaTime);
+                 }*/
 
-                }
-                fx.PreviousColor = generator.Circles[0].GetComponent<SpriteRenderer>().material.GetColor("_Color");
-
-                //  go.GetComponent<Circle>().AssignNewColor(0.5f );
-
+                go.GetComponent<SpriteRenderer>().material.SetColor("_Color", newLevelColor * 4f);           // on s'emmerde pas, on assigne la même couleur
+                                                                                                        //pour tous les cercles présents
 
             }
-            
-            
         }
     }
 
