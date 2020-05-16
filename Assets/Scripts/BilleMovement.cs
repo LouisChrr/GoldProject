@@ -29,7 +29,7 @@ public class BilleMovement : MonoBehaviour
     private Touch touch;
     private int screenWidth;
     private float dragOrigin;
- 
+  
     // Start is called before the first frame update
 
     private void Awake()
@@ -74,16 +74,17 @@ public class BilleMovement : MonoBehaviour
         BilleUpdate();
         Shoot();
     }
-
+    
     void Shoot()
     {
         ShootCooldown += Time.deltaTime;
 
         RaycastHit hit;
-        if (Physics.Raycast(transform.localPosition,  transform.TransformDirection(Vector3.forward), out hit, 100))
-        {
-            Debug.DrawRay(transform.localPosition, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
-            if (hit.collider.gameObject.GetComponent<Obstacle>() == null || hit.distance > gm.CirclesNumber/2)
+        if (Physics.SphereCast(transform.localPosition, 2f*0.03f,transform.TransformDirection(Vector3.forward), out hit, 100))
+        { 
+
+            if (hit.collider.gameObject.GetComponent<Obstacle>() == null || hit.distance > gm.CirclesNumber / 2)
+   
             {
                 return;
             }
@@ -102,16 +103,41 @@ public class BilleMovement : MonoBehaviour
                 }
             }
         }
-        else
-        {
-            Debug.DrawRay( transform.localPosition,  transform.TransformDirection(Vector3.forward) * 100, Color.red);
+     
 
-        }
+        //RaycastHit hit;
+        //if (Physics.Raycast(transform.localPosition,  transform.TransformDirection(Vector3.forward), out hit, 100))
+        //{
+        //    Debug.DrawRay(transform.localPosition, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+        //    if (hit.collider.gameObject.GetComponent<Obstacle>() == null || hit.distance > gm.CirclesNumber/2)
+        //    {
+        //        return;
+        //    }
+        //    else if (hit.collider.gameObject.GetComponent<Obstacle>().IsMuret || hit.collider.gameObject.GetComponent<Obstacle>().IsMurEtape)
+        //    {
+        //        if (ShootCooldown >= ShootSpeed)
+        //        {
+        //            ShootCooldown = 0;
+        //            InactiveBullets.GetChild(0).transform.position = new Vector3(Mathf.Cos(angle) * (width * 0.8f), Mathf.Sin(angle) * (height * 0.8f), transform.position.z);
+        //            InactiveBullets.GetChild(0).transform.rotation = Quaternion.identity;
+        //            InactiveBullets.GetChild(0).transform.parent = ActiveBullets;
+        //            InactiveBullets.GetChild(0).GetComponent<Bullet>().ResetBullet(this.transform);
+
+        //            // GameObject bullet = Instantiate(BulletPrefab, new Vector3(Mathf.Cos(angle)*(width*0.8f), Mathf.Sin(angle) * (height*0.8f),transform.position.z), Quaternion.identity);
+        //            // bullet.GetComponent<Bullet>().speed = BulletSpeed;
+        //        }
+        //    }
+        //}
+        //else
+        //{
+        //    Debug.DrawRay( transform.localPosition,  transform.TransformDirection(Vector3.forward) * 100, Color.red);
+
+        //}
 
         
 
     }
-
+  
     void SpawnBullets()
     {
         int BulletsNb = Mathf.RoundToInt((gm.CirclesNumber/BulletSpeed)/ShootSpeed);
@@ -204,6 +230,8 @@ public class BilleMovement : MonoBehaviour
         {
             if (collision.transform.GetComponent<Obstacle>().IsBumper)
             {
+                collision.transform.GetComponent<Obstacle>().HP -= 1;
+                collision.transform.GetComponent<Obstacle>().SetSprite();
                 ScoreManager.Instance.ComboValue *= 2;
             }
             else

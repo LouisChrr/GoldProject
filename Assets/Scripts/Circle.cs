@@ -12,7 +12,7 @@ public class Circle : MonoBehaviour
     public float bonusSpeed = 1;
 
     public bool IsObstacle;
-    [Tooltip("0: Obstacle Helice / 1: Circle de base / 2: Bumper / 3: Obstacle du + au - cassé / 8: Mur etape")]
+    [Tooltip("0: Helice / 1: Circle de base / 2: Bumper / 3: Obstacle du + au - cassé / 7: Mur etape / 8: JesusCross")]
     public Sprite[] sprites;
 
     public Material[] materials;
@@ -158,20 +158,22 @@ public class Circle : MonoBehaviour
           CoinSpawner.Instance.SpawnCoin(CirclesNb);
           return;
         }
-        IsObstacle = Random.Range(0, 4) == 1;
+        IsObstacle = Random.Range(0, 8) == 1;
 
         transform.GetChild(0).GetComponent<Obstacle>().IsBumper = false;
         transform.GetChild(0).GetComponent<Obstacle>().IsMurEtape = false;
         transform.GetChild(0).GetComponent<Obstacle>().IsMuret = false;
 
+        transform.GetChild(0).GetComponent<Obstacle>().IsJesusCross = false;
+
 
         transform.GetChild(0).GetComponent<Obstacle>().HP = gm.ObstacleHP;
         transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
         transform.GetChild(0).GetComponent<Obstacle>().MurEtapeCollider.enabled = false;
+        transform.GetChild(0).GetComponent<Obstacle>().JesusCollider2.enabled = false;
 
-     
 
-        if (Mathf.RoundToInt(sm.PlayerScore) % (gm.CirclesNumber + Mathf.RoundToInt(gm.LevelSpeed)) == 0 && Mathf.RoundToInt(sm.PlayerScore) >= 10)
+        if (Mathf.RoundToInt(sm.PlayerScore) % (gm.CirclesNumber/2 + Mathf.RoundToInt(gm.LevelSpeed)) == 0 && Mathf.RoundToInt(sm.PlayerScore) >= 10)
         {
             if (sm.PlayerScore - sm.lastScore < 10) return;
             sm.lastScore = sm.PlayerScore;
@@ -180,6 +182,8 @@ public class Circle : MonoBehaviour
             transform.GetChild(0).GetComponent<Obstacle>().MuretCollider.enabled = false;
             transform.GetChild(0).GetComponent<Obstacle>().HeliceCollider.enabled = false;
             transform.GetChild(0).GetComponent<Obstacle>().MurEtapeCollider.enabled = true;
+            transform.GetChild(0).GetComponent<Obstacle>().JesusCollider.enabled = false;
+            transform.GetChild(0).GetComponent<Obstacle>().JesusCollider2.enabled = false;
             transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
             transform.GetChild(0).GetComponent<SpriteRenderer>().material = materials[7];
             //transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>()
@@ -188,18 +192,51 @@ public class Circle : MonoBehaviour
             transform.GetChild(0).gameObject.SetActive(true);
         }else if (IsObstacle)
         {
-            transform.GetChild(0).GetComponent<Obstacle>().IsMuret = Random.Range(0, 2) == 1;
+            transform.GetChild(0).GetComponent<Obstacle>().IsMuret = Random.Range(0, 4) <= 2;
             transform.GetChild(0).GetComponent<Obstacle>().MuretCollider.enabled = transform.GetChild(0).gameObject.GetComponent<Obstacle>().IsMuret;
             transform.GetChild(0).GetComponent<Obstacle>().HeliceCollider.enabled = !transform.GetChild(0).gameObject.GetComponent<Obstacle>().IsMuret;
+            transform.GetChild(0).GetComponent<Obstacle>().JesusCollider.enabled = false;
+            transform.GetChild(0).GetComponent<Obstacle>().JesusCollider2.enabled = false;
+            transform.GetChild(0).GetComponent<Obstacle>().IsJesusCross = false;
             if (transform.GetChild(0).GetComponent<Obstacle>().IsMuret)
             {
-                //spriterenderer.sprite = sprites[6];
-                spriterenderer.material = materials[6];
+
+                transform.GetChild(0).GetComponent<Obstacle>().MuretCollider.enabled = true;
+                transform.GetChild(0).GetComponent<Obstacle>().HeliceCollider.enabled = false;
+                transform.GetChild(0).GetComponent<Obstacle>().MurEtapeCollider.enabled = false;
+                transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
+                transform.GetChild(0).GetComponent<SpriteRenderer>().material = materials[6];
+                //transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>()
+                //spriterenderer.sprite = sprites[1];
+                spriterenderer.material = materials[1];
+                transform.GetChild(0).gameObject.SetActive(true);
+  
             }
-            else
+            else if(Random.Range(0,4)<3) // IS HELICE
             {
-                //spriterenderer.sprite = sprites[0];
-                spriterenderer.material = materials[0];
+                transform.GetChild(0).GetComponent<Obstacle>().MuretCollider.enabled = false;
+                transform.GetChild(0).GetComponent<Obstacle>().HeliceCollider.enabled = true;
+                transform.GetChild(0).GetComponent<Obstacle>().MurEtapeCollider.enabled = false;
+                transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
+                transform.GetChild(0).GetComponent<SpriteRenderer>().material = materials[0];
+                //transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>()
+                //spriterenderer.sprite = sprites[1];
+                spriterenderer.material = materials[1];
+
+            }
+            else // IS JESUS
+            {
+                transform.GetChild(0).GetComponent<Obstacle>().MuretCollider.enabled = false;
+                transform.GetChild(0).GetComponent<Obstacle>().HeliceCollider.enabled = false;
+                transform.GetChild(0).GetComponent<Obstacle>().MurEtapeCollider.enabled = false;
+                transform.GetChild(0).GetComponent<Obstacle>().JesusCollider.enabled = true;
+                transform.GetChild(0).GetComponent<Obstacle>().JesusCollider2.enabled = true;
+                transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
+                transform.GetChild(0).GetComponent<SpriteRenderer>().material = materials[8];
+                //transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>()
+                //spriterenderer.sprite = sprites[1];
+                spriterenderer.material = materials[1];
+                transform.GetChild(0).GetComponent<Obstacle>().IsJesusCross = true;
             }
 
             transform.GetChild(0).gameObject.SetActive(true);
@@ -224,11 +261,12 @@ public class Circle : MonoBehaviour
         }
             CoinSpawner.Instance.SpawnCoin(CirclesNb);
 
-        AssignNewColor();
+        AssignNewColor(Time.deltaTime *1);
     }
 
-    public void AssignNewColor()
+    public void AssignNewColor(float shift)
     {
-        spriterenderer.material.SetColor("_Color", fx.ShiftedColor(Time.deltaTime * 1f) * 4f);
+        
+        spriterenderer.material.SetColor("_Color", fx.ShiftedColor(shift) * 4f);
     }
 }

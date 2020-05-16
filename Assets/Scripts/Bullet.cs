@@ -60,7 +60,7 @@ public class Bullet : MonoBehaviour
             GameObject Obstacle = collision.transform.gameObject;
             this.transform.parent = InactiveBullets;
 
-            if (!Obstacle.GetComponent<Obstacle>().IsMuret) return;
+            if (Obstacle.GetComponent<Obstacle>().IsJesusCross || Obstacle.GetComponent<Obstacle>().IsMurEtape || Obstacle.GetComponent<Obstacle>().IsBumper || Obstacle.GetComponent<Obstacle>().HP == 0) return;
             Obstacle.GetComponent<Obstacle>().HP -= 1;
             Obstacle.GetComponentInParent<Obstacle>().SetSprite();
             //if (Obstacle.GetComponent<Obstacle>().HP == 0)

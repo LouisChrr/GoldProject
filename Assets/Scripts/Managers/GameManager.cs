@@ -75,6 +75,23 @@ public class GameManager : MonoBehaviour
         foreach (GameObject go in generator.Circles)
         {
             go.GetComponent<Circle>().ChangeBonusSpeed(LevelSpeed);
+            if (levelNb > 1)
+            {
+                
+                for (int i = 0; i < generator.Circles.Count; i++)
+                {
+                    generator.Circles[i].GetComponent<Circle>().AssignNewColor(Time.deltaTime * i);
+                   
+
+                }
+                fx.PreviousColor = generator.Circles[0].GetComponent<SpriteRenderer>().material.GetColor("_Color");
+
+                //  go.GetComponent<Circle>().AssignNewColor(0.5f );
+
+
+            }
+            
+            
         }
     }
 

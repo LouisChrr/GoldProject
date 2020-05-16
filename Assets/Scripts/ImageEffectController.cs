@@ -62,6 +62,12 @@ public class ImageEffectController : MonoBehaviour
         Skybox.SetFloat("_Rotation", SkyboxRotation);
     }
 
+
+    public void ChangePreviousColor(Color newPreviousColor)
+    {
+        PreviousColor = newPreviousColor;
+    }
+
     public Color ShiftedColor(float shift)
     {
         float h, s, v;

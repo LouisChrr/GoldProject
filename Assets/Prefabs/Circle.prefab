@@ -108,7 +108,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7ca6a445d1bc3b646a40f778ae75fc47, type: 3}
   - {fileID: 21300000, guid: 2607a09699b4e0b479ea0e4f887d3f24, type: 3}
   materials:
-  - {fileID: 2100000, guid: 1260d922a35a3dc4497296da3f933966, type: 2}
+  - {fileID: 2100000, guid: 38c66476f20951c449e046605efca35c, type: 2}
   - {fileID: 2100000, guid: 896f99013952ebe4f8f389e6c0adfb28, type: 2}
   - {fileID: 2100000, guid: 3c55243dd82725147bcf7e550c9d5c36, type: 2}
   - {fileID: 2100000, guid: 80cb1f487f6bc934b92668807856fa8c, type: 2}
@@ -116,6 +116,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 80cb1f487f6bc934b92668807856fa8c, type: 2}
   - {fileID: 2100000, guid: 80cb1f487f6bc934b92668807856fa8c, type: 2}
   - {fileID: 2100000, guid: d4ba9a1fcb5878947ac207d3b2c77374, type: 2}
+  - {fileID: 2100000, guid: 749b23749c89c8f45851dbf89439f1b1, type: 2}
   preventObstacleAtStart: 0
 --- !u!1 &3557496550166228007
 GameObject:
@@ -132,6 +133,8 @@ GameObject:
   - component: {fileID: 2744738997657508903}
   - component: {fileID: 9031548184360541527}
   - component: {fileID: 2130166222587201040}
+  - component: {fileID: 4285125569603974317}
+  - component: {fileID: 2916588758021908956}
   m_Layer: 0
   m_Name: FullWall
   m_TagString: Obstacle
@@ -197,10 +200,13 @@ MonoBehaviour:
   HeliceCollider: {fileID: 3557496550166228005}
   MuretCollider: {fileID: 2744738997657508903}
   MurEtapeCollider: {fileID: 9031548184360541527}
+  JesusCollider: {fileID: 4285125569603974317}
+  JesusCollider2: {fileID: 2916588758021908956}
   HP: 0
   IsMuret: 0
   IsBumper: 0
   IsMurEtape: 0
+  IsJesusCross: 0
 --- !u!65 &2744738997657508903
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -277,3 +283,29 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!65 &4285125569603974317
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3557496550166228007}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 14.22, y: 0.9, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &2916588758021908956
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3557496550166228007}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.9, y: 14.22, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
