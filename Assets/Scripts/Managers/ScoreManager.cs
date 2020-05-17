@@ -40,6 +40,7 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         MoneyText.text = "Money: " + PlayerMoney;
         ComboText.text = "x" + ComboValue;
 
@@ -63,8 +64,9 @@ public class ScoreManager : MonoBehaviour
     public void PickupCoin()
     {
         PlayerScore += 20 * ComboValue;
-        PlayerMoney += 50000 * CoinValue * ComboValue;
+        PlayerMoney += CoinValue * ComboValue;
         PlayerPrefs.SetFloat("Money", PlayerMoney);
+
         FindObjectOfType<SkinMenu>().SaveMoney();
         ComboValue = 1;
     }

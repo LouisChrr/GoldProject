@@ -126,7 +126,7 @@ public class SkinMenu : MonoBehaviour
         DataScript data = SaveSystem.LoadMoney();
 
         //money = data.money;
-        FindObjectOfType<ScoreManager>().PlayerMoney = data.money;
+        ScoreManager.Instance.PlayerMoney = data.money;
 
     }
 
