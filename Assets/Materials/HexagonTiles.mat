@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: HexagonTiles
-  m_Shader: {fileID: -6465566751694194690, guid: 748b6ab00b441464fbaa788f61e390f3,
+  m_Shader: {fileID: -6465566751694194690, guid: b6fa9b4bb1f9c294b91c2e827ad41af9,
     type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
@@ -20,6 +20,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - MainTexture:
+        m_Texture: {fileID: 2800000, guid: 568344e5a9acc454a976f309f29ec34b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -61,6 +65,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Speed: 3
     - Vector1_8FF0B642: 10
     - _AlphaClip: 0
     - _Blend: 0
@@ -85,6 +90,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+    - MainColor: {r: 32, g: 32, b: 32, a: 1}
     - Vector2_2C301067: {r: 10, g: 10, b: 10, a: 10}
     - Vector3_7FE50973: {r: 500, g: 500, b: 0, a: 0}
     - Vector3_941249F2: {r: 0, g: 0, b: 0, a: 0}
