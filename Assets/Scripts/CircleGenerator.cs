@@ -38,4 +38,21 @@ public class CircleGenerator : MonoBehaviour
             layerManager.AllActiveSprites.Add(newCircle.transform.GetChild(0).GetComponent<SpriteRenderer>());
         }
     }
+
+    public Circle GetNearest()
+    {
+        float maxDist = CirclesNb;
+        Circle nearest = new Circle();
+
+        foreach (GameObject circle in Circles)
+        {
+            if (circle.transform.position.z < maxDist)
+            {
+                maxDist = circle.transform.position.z;
+                nearest = circle.GetComponent<Circle>();
+            }
+        }
+
+        return nearest;
+    }
 }
