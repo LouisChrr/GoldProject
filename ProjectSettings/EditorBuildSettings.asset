@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Louis.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Hugo/New MenuScene.unity
+    path: Assets/Hugo/FinalScene.unity
     guid: 08a4246c8fd2db8418d834b8a8d7e45a
   - enabled: 1
     path: Assets/Hugo/MenuSkin.unity

@@ -104,6 +104,10 @@ public class Circle : MonoBehaviour
 
         if (transform.position.z <= BilleZ)
         {
+            spriterenderer.material.SetFloat("_Alpha", Mathf.Lerp(spriterenderer.material.GetFloat("_Alpha"), 0, Time.deltaTime * 3f * gm.LevelSpeed));
+            transform.GetChild(0).GetComponent<SpriteRenderer>().material.SetFloat("_Alpha", Mathf.Lerp(transform.GetChild(0).GetComponent<SpriteRenderer>().material.GetFloat("_Alpha"), 0, Time.deltaTime * 3f * gm.LevelSpeed));
+
+           
             spriterenderer.sortingOrder = 0;
         }
 
@@ -185,14 +189,14 @@ public class Circle : MonoBehaviour
             transform.GetChild(0).GetComponent<Obstacle>().JesusCollider.enabled = false;
             transform.GetChild(0).GetComponent<Obstacle>().JesusCollider2.enabled = false;
             transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
-            transform.GetChild(0).GetComponent<SpriteRenderer>().material = materials[7];
+            transform.GetChild(0).GetComponent<SpriteRenderer>().material = materials[4];
             //transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>()
             //spriterenderer.sprite = sprites[1];
             spriterenderer.material = materials[1];
             transform.GetChild(0).gameObject.SetActive(true);
         }else if (IsObstacle)
         {
-            transform.GetChild(0).GetComponent<Obstacle>().IsMuret = Random.Range(0, 4) <= 2;
+            transform.GetChild(0).GetComponent<Obstacle>().IsMuret = Random.Range(0, 3) == 0;
             transform.GetChild(0).GetComponent<Obstacle>().MuretCollider.enabled = transform.GetChild(0).gameObject.GetComponent<Obstacle>().IsMuret;
             transform.GetChild(0).GetComponent<Obstacle>().HeliceCollider.enabled = !transform.GetChild(0).gameObject.GetComponent<Obstacle>().IsMuret;
             transform.GetChild(0).GetComponent<Obstacle>().JesusCollider.enabled = false;
@@ -205,7 +209,7 @@ public class Circle : MonoBehaviour
                 transform.GetChild(0).GetComponent<Obstacle>().HeliceCollider.enabled = false;
                 transform.GetChild(0).GetComponent<Obstacle>().MurEtapeCollider.enabled = false;
                 transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
-                transform.GetChild(0).GetComponent<SpriteRenderer>().material = materials[6];
+                transform.GetChild(0).GetComponent<SpriteRenderer>().material = materials[3];
                 //transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>()
                 //spriterenderer.sprite = sprites[1];
                 spriterenderer.material = materials[1];
@@ -232,7 +236,7 @@ public class Circle : MonoBehaviour
                 transform.GetChild(0).GetComponent<Obstacle>().JesusCollider.enabled = true;
                 transform.GetChild(0).GetComponent<Obstacle>().JesusCollider2.enabled = true;
                 transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
-                transform.GetChild(0).GetComponent<SpriteRenderer>().material = materials[8];
+                transform.GetChild(0).GetComponent<SpriteRenderer>().material = materials[5];
                 //transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>()
                 //spriterenderer.sprite = sprites[1];
                 spriterenderer.material = materials[1];
