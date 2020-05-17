@@ -8,7 +8,9 @@ public class DataScript
 
     public bool[] isLocked /*= new bool[6]*/;
 
-    public int money;
+    public float money;
+
+    public float bestScore;
 
 
     public DataScript(bool[] skins)
@@ -31,10 +33,16 @@ public class DataScript
         }
     }
 
-    public DataScript(SkinMenu player)
+    public DataScript(ScoreManager player)
     {
 
-        money = player.money;
+        money = player.PlayerMoney;
+    }
+
+    public DataScript(MenuManager player)
+    {
+
+        bestScore = player.PlayerBestScore;
     }
 }
 

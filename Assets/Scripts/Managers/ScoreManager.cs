@@ -14,9 +14,8 @@ public class ScoreManager : MonoBehaviour
     [Header("DO NOT MODIFY")]
     public float PlayerScore;
     public float PlayerMoney;
-
+    
     public float ComboValue = 1;
-
     
     private void Awake()
     {
@@ -26,29 +25,32 @@ public class ScoreManager : MonoBehaviour
             return;
         }
         Instance = this;
- 
+        
     }
 
     // Start is called before the first frame update
     void Start()
     {
         gm = GameManager.Instance;
- 
+        
+        FindObjectOfType<SkinMenu>().LoadMoney();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        MoneyText.text = "Money: " + PlayerMoney;
+
         if (!gm.IsPlayerDead && gm.HasGameStarted)
         {
             PlayerScore += Time.deltaTime * 2.0f * ComboValue;
             ScoreText.text = "Score: " + PlayerScore.ToString("F0");
-            MoneyText.text = "Money: " + PlayerMoney;
         }
         else
         {
             ScoreText.text = "";
-            MoneyText.text = "";
+            //MoneyText.text = "Money: " + PlayerMoney;
 
         }
 
@@ -60,6 +62,7 @@ public class ScoreManager : MonoBehaviour
         PlayerScore += 20 * ComboValue;
         PlayerMoney += CoinValue * ComboValue;
         PlayerPrefs.SetFloat("Money", PlayerMoney);
+        FindObjectOfType<SkinMenu>().SaveMoney();
         ComboValue = 1;
     }
 

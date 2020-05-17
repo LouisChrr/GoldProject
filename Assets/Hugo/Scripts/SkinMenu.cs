@@ -14,7 +14,7 @@ public class SkinMenu : MonoBehaviour
     public GameObject buyText;
 
     public GameObject moneyTxt;
-    public int money;
+    //public int money;
 
     public GameObject impossibleToBuy;
     
@@ -30,7 +30,8 @@ public class SkinMenu : MonoBehaviour
         imageSkin = GetComponent<Image>();
         buyUI.SetActive(false);
 
-        moneyTxt.GetComponent<Text>().text = "Gold: " + money;
+        //moneyTxt.GetComponent<Text>().text = "Gold: " + money;
+        //moneyTxt.GetComponent<Text>().text = "Gold: " + FindObjectOfType<ScoreManager>().PlayerMoney;
 
         impossibleToBuy.SetActive(false);
 
@@ -53,7 +54,8 @@ public class SkinMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        moneyTxt.GetComponent<Text>().text = "Gold: " + money;
+        //moneyTxt.GetComponent<Text>().text = "Gold: " + money;
+        //moneyTxt.GetComponent<Text>().text = "Gold: " + FindObjectOfType<ScoreManager>().PlayerMoney;
     }
 
     public void ChooseSkin()
@@ -84,12 +86,13 @@ public class SkinMenu : MonoBehaviour
     {
         for (int i = 0; i < skins.Length; i++)
         {
-            if (skins[i].GetComponent<SkinLock>().isSelected && skins[i].GetComponent<SkinLock>().price <= money)
+            if (skins[i].GetComponent<SkinLock>().isSelected && skins[i].GetComponent<SkinLock>().price <= /*money*/ FindObjectOfType<ScoreManager>().PlayerMoney)
             {
                 skins[i].GetComponent<SkinLock>().isLocked = false;
                 skins[i].GetComponent<SkinLock>().locker.SetActive(false);
 
-                money -= skins[i].GetComponent<SkinLock>().price;
+                //money -= skins[i].GetComponent<SkinLock>().price;
+                FindObjectOfType<ScoreManager>().PlayerMoney -= skins[i].GetComponent<SkinLock>().price;
                 SaveMoney();
 
                 buyUI.SetActive(false);
@@ -98,7 +101,7 @@ public class SkinMenu : MonoBehaviour
                 skinsLocked[i] = false;
 
             }
-            else if (skins[i].GetComponent<SkinLock>().isSelected && skins[i].GetComponent<SkinLock>().price >= money)
+            else if (skins[i].GetComponent<SkinLock>().isSelected && skins[i].GetComponent<SkinLock>().price >= /*money*/ FindObjectOfType<ScoreManager>().PlayerMoney)
             {
                 impossibleToBuy.SetActive(true);
             }
@@ -115,14 +118,15 @@ public class SkinMenu : MonoBehaviour
 
     public void SaveMoney()
     {
-        SaveSystem.SaveMoney(this);
+        SaveSystem.SaveMoney(FindObjectOfType<ScoreManager>());
     }
 
     public void LoadMoney()
     {
         DataScript data = SaveSystem.LoadMoney();
 
-        money = data.money;
+        //money = data.money;
+        FindObjectOfType<ScoreManager>().PlayerMoney = data.money;
 
     }
 

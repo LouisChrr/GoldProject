@@ -1587,7 +1587,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1179838701}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3485,7 +3485,6 @@ MonoBehaviour:
   buyUI: {fileID: 1165184358}
   buyText: {fileID: 911918279}
   moneyTxt: {fileID: 1976191000}
-  money: 800
   impossibleToBuy: {fileID: 335483242}
   skins:
   - {fileID: 83770551}
@@ -4877,8 +4876,8 @@ RectTransform:
   - {fileID: 2075042312}
   - {fileID: 762786919}
   - {fileID: 713967250}
-  - {fileID: 1976191001}
   - {fileID: 369533279}
+  - {fileID: 1976191001}
   - {fileID: 693249126}
   - {fileID: 425679260}
   - {fileID: 1056703791}
@@ -7471,6 +7470,56 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 195.9752, y: 197.374, z: 1}
   m_Center: {x: 98.13881, y: -98.463, z: 0}
+--- !u!1 &1941834699
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1941834700}
+  - component: {fileID: 1941834701}
+  m_Layer: 0
+  m_Name: ScoreManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1941834700
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1941834699}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.45126477, y: 0.096964076, z: 4.6424766}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1941834701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1941834699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a643ad985e31fed459962370c130b4d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CoinValue: 0
+  ScoreText: {fileID: 0}
+  MoneyText: {fileID: 1976191002}
+  lastScore: 0
+  PlayerScore: 0
+  PlayerMoney: 0
+  ComboValue: 1
 --- !u!1 &1964766916
 GameObject:
   m_ObjectHideFlags: 0
@@ -7708,7 +7757,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1179838701}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

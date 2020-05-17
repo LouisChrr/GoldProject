@@ -19,7 +19,10 @@ public class MenuManager : MonoBehaviour
     public GameObject greyPanel;
 
     public AudioSource audio1;
+
     public Text ScoreText, MoneyText, BestScoreText, MenuMoneyText;
+    public float PlayerBestScore = 0;
+
     private bool _isPause;
 
 
@@ -51,20 +54,23 @@ public class MenuManager : MonoBehaviour
 
         greyPanel.SetActive(true);
 
-        MenuMoneyText.text = "Money: " + PlayerPrefs.GetFloat("Money", 0);
+        MenuMoneyText.text = "Money: " + FindObjectOfType<ScoreManager>().PlayerMoney;
 
+        LoadBestScore();
     }
 
     public void EndGame()
     {
         end.SetActive(true);
-        ScoreText.text = "Score: " + ScoreManager.Instance.PlayerScore.ToString("F0");
-        MoneyText.text = "Money: " + PlayerPrefs.GetFloat("Money", 0);
-        if (ScoreManager.Instance.PlayerScore > PlayerPrefs.GetFloat("BestScore", 0)){
-            PlayerPrefs.SetFloat("BestScore", ScoreManager.Instance.PlayerScore);
-        }
-        BestScoreText.text = "Best Score: " + PlayerPrefs.GetFloat("BestScore", 0).ToString("F0");
+        ScoreText.text = "Score: " + (int)ScoreManager.Instance.PlayerScore;
+        MoneyText.text = "Money: " + FindObjectOfType<ScoreManager>().PlayerMoney;
 
+        if (ScoreManager.Instance.PlayerScore > PlayerBestScore){
+            //PlayerPrefs.SetFloat("BestScore", ScoreManager.Instance.PlayerScore);
+            PlayerBestScore = ScoreManager.Instance.PlayerScore;
+            SaveBestScore();
+        }
+        BestScoreText.text = "Best Score: " + (int)PlayerBestScore;
 
     }
 
@@ -129,5 +135,18 @@ public class MenuManager : MonoBehaviour
         }
 
         _panelPause.SetActive(_isPause);
+    }
+
+    public void SaveBestScore()
+    {
+        SaveSystem.SaveBestScore(this);
+    }
+
+    public void LoadBestScore()
+    {
+        DataScript data = SaveSystem.LoadBestScore();
+
+        PlayerBestScore = data.bestScore;
+
     }
 }

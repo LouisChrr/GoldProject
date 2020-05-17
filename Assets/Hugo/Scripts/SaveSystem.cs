@@ -56,7 +56,7 @@ public static class SaveSystem
         }
     }
 
-    public static void SaveMoney(SkinMenu money)
+    public static void SaveMoney(ScoreManager money)
     {
 
         BinaryFormatter formatter = new BinaryFormatter();
@@ -89,8 +89,46 @@ public static class SaveSystem
         }
         else
         {
+            Debug.Log("Money File not found");
+            return null;
+        }
+    }
 
-            return LoadSkin();
+    public static void SaveBestScore(MenuManager score)
+    {
+
+        BinaryFormatter formatter = new BinaryFormatter();
+
+        string path = Application.persistentDataPath + "/bestScore.data";
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        DataScript data = new DataScript(score);
+
+        formatter.Serialize(stream, data);
+        stream.Close();
+
+    }
+
+    public static DataScript LoadBestScore()
+    {
+
+        string path = Application.persistentDataPath + "/bestScore.data";
+
+        if (File.Exists(path))
+        {
+
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(path, FileMode.Open);
+
+            DataScript data = formatter.Deserialize(stream) as DataScript;
+            stream.Close();
+
+            return data;
+        }
+        else
+        {
+            Debug.Log("BestScore File not found");
+            return null;
         }
     }
 }
