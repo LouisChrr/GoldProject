@@ -29,7 +29,7 @@ public class BilleMovement : MonoBehaviour
     private Touch touch;
     private int screenWidth;
     private float dragOrigin;
-  
+
     // Start is called before the first frame update
 
     private void Awake()
@@ -189,6 +189,7 @@ public class BilleMovement : MonoBehaviour
             touch = Input.GetTouch(0); // On prend le premier doigt
             if (touch.phase == TouchPhase.Moved) // Si il a bougé, update le speed
             {
+
                 speed = (((touch.position.x - dragOrigin) / screenWidth) * maxSpeed) * ((gm.LevelSpeed/8.0f) + 1);
                 
             }
@@ -208,6 +209,8 @@ public class BilleMovement : MonoBehaviour
         }
         else // Si pas d'input détecté
         {
+            
+
             if (speedLerpTimer < 0.96f) // Si toujours en cours de lerp vers 0
             {
                 speedLerpTimer += Time.deltaTime * (1/speedDecreaseSmooth);
