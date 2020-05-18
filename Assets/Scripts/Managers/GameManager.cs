@@ -64,8 +64,8 @@ public class GameManager : MonoBehaviour
 
         if (levelNb > 1)
         {
-            newLevelColor = fx.ShiftedColor(Time.deltaTime * 2f);
-            fx.ChangePreviousColor(newLevelColor);
+         /*   newLevelColor = fx.ShiftedColor(Time.deltaTime * 2f);
+            fx.ChangePreviousColor(newLevelColor);*/
 
             LevelUpText.SetActive(true);
             LevelUpText.GetComponent<Animator>().Play("TextFade", 0, 0);

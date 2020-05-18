@@ -34,6 +34,7 @@ public class Circle : MonoBehaviour
     private float baseZRot;
     private float lastScore = 0;
     public bool preventObstacleAtStart = false;
+    bool isCible;
 
     public void Start()
     {
@@ -155,9 +156,10 @@ public class Circle : MonoBehaviour
             transform.GetChild(0).gameObject.SetActive(false);
             
             spriterenderer.material = materials[1];
-       
+            AssignNewColor(Time.deltaTime * 0.2f);
 
-          transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
+
+            transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
 
 
           rotationSpeed = Time.deltaTime * Random.Range(-20, 20);
@@ -192,12 +194,21 @@ public class Circle : MonoBehaviour
             transform.GetChild(0).GetComponent<Obstacle>().JesusCollider.enabled = false;
             transform.GetChild(0).GetComponent<Obstacle>().JesusCollider2.enabled = false;
             transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
+
+            spriterenderer.material = materials[4];
+            spriterenderer.material.SetColor("_Color", fx.ShiftedColor(Time.deltaTime * 0.2f) * 4);
+            fx.ChangePreviousColor(fx.ShiftedColor(Time.deltaTime * 0.2f));
+
             transform.GetChild(0).GetComponent<SpriteRenderer>().material = materials[6];
+            transform.GetChild(0).GetComponent<SpriteRenderer>().material.SetColor("_Color", fx.ShiftedColor(0.25f) * 2f);
+            fx.ChangePreviousColor(fx.ShiftedColor(0.25f));
+
             //transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>()
             //spriterenderer.sprite = sprites[1];
-            spriterenderer.material = materials[4];
+
             transform.GetChild(0).gameObject.SetActive(true);
-        }else if (IsObstacle)
+        }
+        else if (IsObstacle)
         {
             transform.GetChild(0).GetComponent<Obstacle>().IsMuret = Random.Range(0, 3) == 0;
             transform.GetChild(0).GetComponent<Obstacle>().MuretCollider.enabled = transform.GetChild(0).gameObject.GetComponent<Obstacle>().IsMuret;
@@ -247,13 +258,15 @@ public class Circle : MonoBehaviour
             }
 
             transform.GetChild(0).gameObject.SetActive(true);
-            
+            AssignNewColor(Time.deltaTime * 0.2f);
+
         }
         else
         {
             transform.GetChild(0).gameObject.SetActive(false);
             //spriterenderer.sprite = sprites[1];
             spriterenderer.material = materials[1];
+            AssignNewColor(Time.deltaTime * 0.2f);
         }
 
         transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
@@ -267,8 +280,6 @@ public class Circle : MonoBehaviour
             rotationSpeed = 0;
         }
             CoinSpawner.Instance.SpawnCoin(CirclesNb);
-
-        AssignNewColor(Time.deltaTime * 0.2f);
     }
 
     public void AssignNewColor(float shift)

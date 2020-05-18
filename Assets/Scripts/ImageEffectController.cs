@@ -78,7 +78,7 @@ public class ImageEffectController : MonoBehaviour
         if (h <= 1)
             h += shift;
         else
-            h--;
+            h=0;
 
         shiftedColor = Color.HSVToRGB(h, s, v);
 
