@@ -21,7 +21,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - MainTexture:
-        m_Texture: {fileID: 2800000, guid: 568344e5a9acc454a976f309f29ec34b, type: 3}
+        m_Texture: {fileID: 2800000, guid: c5847e228e0114b43a5f8152f1cbd6e2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
@@ -37,7 +37,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: c5847e228e0114b43a5f8152f1cbd6e2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -56,6 +56,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: 568344e5a9acc454a976f309f29ec34b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_83BDBC0_Texture_1:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_E6E851BE_Texture_1:
         m_Texture: {fileID: 2800000, guid: 36862f59c0d192b4e8c6895b7432a848, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -65,7 +69,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Speed: 3
+    - Speed: 1
     - Vector1_8FF0B642: 10
     - _AlphaClip: 0
     - _Blend: 0
@@ -84,13 +88,14 @@ Material:
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
+    - _Speed: 1.07
     - _SrcBlend: 1
     - _Surface: 0
     - _Tiling: 15
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - MainColor: {r: 8, g: 8, b: 8, a: 1}
+    - MainColor: {r: 5.656854, g: 5.656854, b: 5.656854, a: 1}
     - Vector2_2C301067: {r: 10, g: 10, b: 10, a: 10}
     - Vector3_7FE50973: {r: 500, g: 500, b: 0, a: 0}
     - Vector3_941249F2: {r: 0, g: 0, b: 0, a: 0}
@@ -98,6 +103,7 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _Position: {r: 0.48106486, g: 0.7174154, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
     - _Tiling: {r: 10, g: 10, b: 10, a: 0}
     - _TilingV2: {r: 30, g: 30, b: 0, a: 0}

@@ -91,7 +91,7 @@ public class GameManager : MonoBehaviour
                  //        generator.Circles[i].GetComponent<Circle>().AssignNewColor(Time.deltaTime);
                  }*/
 
-                go.GetComponent<SpriteRenderer>().material.SetColor("_Color", newLevelColor * 4f);           // on s'emmerde pas, on assigne la même couleur
+          // go.GetComponent<SpriteRenderer>().material.SetColor("_Color", newLevelColor * 4f);           // on s'emmerde pas, on assigne la même couleur
                                                                                                         //pour tous les cercles présents
 
             }
