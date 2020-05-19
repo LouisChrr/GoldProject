@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -10,7 +11,9 @@ public class ScoreManager : MonoBehaviour
     private GameManager gm;
     public Text ScoreText, MoneyText, ComboText;
     public float lastScore;
-  
+    
+    //public TextMeshProUGUI MoneyText;
+
     [Header("DO NOT MODIFY")]
     public float PlayerScore;
     public float PlayerMoney;

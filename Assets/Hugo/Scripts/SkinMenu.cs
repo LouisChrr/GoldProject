@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class SkinMenu : MonoBehaviour
 {
@@ -26,15 +27,15 @@ public class SkinMenu : MonoBehaviour
     void Start()
     {
         
-        LoadMoney();
+        //LoadMoney();
         imageSkin = GetComponent<Image>();
         buyUI.SetActive(false);
+        impossibleToBuy.SetActive(false);
 
         //moneyTxt.GetComponent<Text>().text = "Gold: " + money;
         //moneyTxt.GetComponent<Text>().text = "Gold: " + FindObjectOfType<ScoreManager>().PlayerMoney;
 
-        impossibleToBuy.SetActive(false);
-
+        //SaveSystem.LoadSkin();
         skinsLocked = new bool[skins.Length];
         skinsLocked = SaveSystem.LoadSkin().isLocked;
 
@@ -57,6 +58,7 @@ public class SkinMenu : MonoBehaviour
     {
         //moneyTxt.GetComponent<Text>().text = "Gold: " + money;
         moneyTxt.GetComponent<Text>().text = "" + FindObjectOfType<ScoreManager>().PlayerMoney;
+        //moneyTxt.GetComponent<TextMeshProUGUI>().text = "" + FindObjectOfType<ScoreManager>().PlayerMoney;
     }
 
     public void ChooseSkin()
@@ -77,7 +79,7 @@ public class SkinMenu : MonoBehaviour
         {
             if (skins[i].GetComponent<SkinLock>().isSelected && skins[i].GetComponent<SkinLock>().isLocked)
             {
-                buyText.GetComponent<Text>().text = "Would you like to buy this skin \n for " + skins[i].GetComponent<SkinLock>().price + " \n gold ? ";
+                buyText.GetComponent<Text>().text = "Would you like to buy this \n skin for " + skins[i].GetComponent<SkinLock>().price + " \n gold ? ";
                 buyUI.SetActive(true);
             }
         }
@@ -105,6 +107,7 @@ public class SkinMenu : MonoBehaviour
             }
             else if (skins[i].GetComponent<SkinLock>().isSelected && skins[i].GetComponent<SkinLock>().price >= /*money*/ FindObjectOfType<ScoreManager>().PlayerMoney)
             {
+                buyUI.SetActive(false);
                 impossibleToBuy.SetActive(true);
             }
         }

@@ -51,6 +51,7 @@ public static class SaveSystem
         }
         else
         {
+            Debug.Log("Skin File not found");
             SaveSkin();
             return LoadSkin();
         }
