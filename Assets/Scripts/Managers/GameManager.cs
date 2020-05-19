@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.VFX;
 
 public class GameManager : MonoBehaviour
 {
@@ -70,11 +72,31 @@ public class GameManager : MonoBehaviour
 
         LevelNb = levelNb;
         LevelSpeed = levelNb*0.4f +2;
+        Color color = ImageEffectController.Instance.ShiftedColor(0.25f);
 
-        foreach (GameObject go in generator.Circles)
+        List<GameObject> sortedList = generator.Circles.OrderBy(g => g.transform.position.z).ToList();
+
+
+        int i = 1;
+        foreach (GameObject go in sortedList)
         {
+            
             go.GetComponent<Circle>().ChangeBonusSpeed(LevelSpeed);
+
+
+
+            if (LevelNb > 0)
+            {
+                color = ImageEffectController.Instance.ShiftedColor(Time.deltaTime*0.4f*i);
+                go.GetComponent<Circle>().ResetColor(color);
+            }
+
+
+
+            i++;
         }
+
+        ImageEffectController.Instance.ChangePreviousColor(color);
     }
 
     public void Death()

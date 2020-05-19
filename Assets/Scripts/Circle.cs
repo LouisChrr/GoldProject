@@ -35,6 +35,7 @@ public class Circle : MonoBehaviour
     private float lastScore = 0;
     public bool preventObstacleAtStart = false;
     bool isCible;
+    public Circle previousCircle;
 
     public void Start()
     {
@@ -54,7 +55,7 @@ public class Circle : MonoBehaviour
 
 
                maxXmovement = BilleObj.GetComponent<BilleMovement>().width * 8;
-
+        bonusSpeed = 4;
     }
 
     public void Update()
@@ -79,8 +80,13 @@ public class Circle : MonoBehaviour
                 gameObject.transform.localRotation = Quaternion.Euler(Vector3.zero);
 
                 //spriterenderer.sprite = sprites[1];
+
+                Color previous = previousCircle.spriterenderer.material.GetColor("_Color");
+
+                
+
                 spriterenderer.material = materials[1];
-                spriterenderer.material.SetColor("_Color", fx.PreviousColor * 4);
+                spriterenderer.material.SetColor("_Color", previous);
 
                 transform.GetChild(0).GetComponent<Obstacle>().MurEtapeCollider.enabled = false;
                 transform.GetChild(0).GetComponent<Obstacle>().IsMurEtape = false;
@@ -151,6 +157,7 @@ public class Circle : MonoBehaviour
         spriterenderer.material = materials[1];
     }
 
+
     public void ResetCircle(bool preventObstacle)
     {
 
@@ -193,8 +200,9 @@ public class Circle : MonoBehaviour
         transform.GetChild(0).GetComponent<Obstacle>().JesusCollider2.enabled = false;
 
 
-        if (Mathf.RoundToInt(sm.PlayerScore) % (gm.CirclesNumber/2 + Mathf.RoundToInt(gm.LevelSpeed)) == 0 && Mathf.RoundToInt(sm.PlayerScore) >= 10)
+        if (Mathf.RoundToInt(sm.distance) % (gm.CirclesNumber/2 + Mathf.RoundToInt(gm.LevelSpeed)) == 0 && Mathf.RoundToInt(sm.PlayerScore) >= 10)
         {
+            
             if (sm.PlayerScore - sm.lastScore < 10) return;
             sm.lastScore = sm.PlayerScore;
           
@@ -301,4 +309,11 @@ public class Circle : MonoBehaviour
         fx.ChangePreviousColor(newCol);
         spriterenderer.material.SetColor("_Color", newCol * 4f);
     }
+
+
+    public void ResetColor(Color color)
+    {
+        spriterenderer.material.SetColor("_Color", color * 4.0f) ;
+    }
+
 }

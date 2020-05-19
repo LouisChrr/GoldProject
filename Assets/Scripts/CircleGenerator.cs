@@ -23,7 +23,7 @@ public class CircleGenerator : MonoBehaviour
         for (int i = 0; i < CirclesNb; i++)
         {
             GameObject newCircle = Instantiate(Circle, new Vector3(0, 0, 1 * i), Quaternion.identity, GameManager.Instance.Circles);
-
+            
             if (i < CirclesNb / 6)
             {
                 // pas d'obstacle au debut
@@ -31,7 +31,14 @@ public class CircleGenerator : MonoBehaviour
                 newCircle.GetComponent<Circle>().Start();
                 newCircle.GetComponent<Circle>().ResetObstacle();
             }
-                 
+                 if(i != 0)
+            {
+                newCircle.GetComponent<Circle>().previousCircle = Circles[i - 1].GetComponent<Circle>();
+            }
+                 if(i == CirclesNb - 1)
+            {
+                Circles[0].GetComponent<Circle>().previousCircle = newCircle.GetComponent<Circle>();
+            }
 
             Circles.Add(newCircle);
             layerManager.AllActiveSprites.Add(newCircle.GetComponent<SpriteRenderer>());
