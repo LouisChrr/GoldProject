@@ -27,7 +27,8 @@ public class SkinMenu : MonoBehaviour
     void Start()
     {
         
-        //LoadMoney();
+        LoadMoney();
+        SaveSystem.LoadSkin();
         imageSkin = GetComponent<Image>();
         buyUI.SetActive(false);
         impossibleToBuy.SetActive(false);
@@ -35,7 +36,6 @@ public class SkinMenu : MonoBehaviour
         //moneyTxt.GetComponent<Text>().text = "Gold: " + money;
         //moneyTxt.GetComponent<Text>().text = "Gold: " + FindObjectOfType<ScoreManager>().PlayerMoney;
 
-        //SaveSystem.LoadSkin();
         skinsLocked = new bool[skins.Length];
         skinsLocked = SaveSystem.LoadSkin().isLocked;
 
@@ -103,6 +103,7 @@ public class SkinMenu : MonoBehaviour
 
                 skins[i].GetComponent<Image>().color = Color.white;
                 skinsLocked[i] = false;
+                SaveSystem.SaveSkin(skinsLocked);
 
             }
             else if (skins[i].GetComponent<SkinLock>().isSelected && skins[i].GetComponent<SkinLock>().price >= /*money*/ FindObjectOfType<ScoreManager>().PlayerMoney)
@@ -112,7 +113,6 @@ public class SkinMenu : MonoBehaviour
             }
         }
 
-        SaveSystem.SaveSkin(skinsLocked);
     }
 
     public void NoBuy()

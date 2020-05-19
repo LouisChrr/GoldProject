@@ -54,7 +54,7 @@ public class MenuManager : MonoBehaviour
 
         greyPanel.SetActive(true);
 
-        MenuMoneyText.text = "Money: " + FindObjectOfType<ScoreManager>().PlayerMoney;
+        MenuMoneyText.text = "" + FindObjectOfType<ScoreManager>().PlayerMoney;
 
         LoadBestScore();
     }
@@ -63,7 +63,7 @@ public class MenuManager : MonoBehaviour
     {
         end.SetActive(true);
         ScoreText.text = "Score: " + (int)ScoreManager.Instance.PlayerScore;
-        MoneyText.text = "Money: " + FindObjectOfType<ScoreManager>().PlayerMoney;
+        MoneyText.text = "" + FindObjectOfType<ScoreManager>().PlayerMoney;
 
         if (ScoreManager.Instance.PlayerScore > PlayerBestScore){
             //PlayerPrefs.SetFloat("BestScore", ScoreManager.Instance.PlayerScore);

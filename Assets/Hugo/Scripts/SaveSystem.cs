@@ -91,7 +91,8 @@ public static class SaveSystem
         else
         {
             Debug.Log("Money File not found");
-            return null;
+            SaveMoney(new ScoreManager());
+            return LoadMoney();
         }
     }
 

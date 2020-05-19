@@ -41,7 +41,7 @@ public class ScoreManager : MonoBehaviour
     void Update()
     {
         
-        MoneyText.text = "Money: " + PlayerMoney;
+        MoneyText.text = "" + PlayerMoney;
         ComboText.text = "x" + ComboValue;
 
         if (!gm.IsPlayerDead && gm.HasGameStarted)
