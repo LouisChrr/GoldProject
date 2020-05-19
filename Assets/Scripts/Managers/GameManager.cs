@@ -19,7 +19,6 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private int circlesNumber = 0;
     private ScoreManager sm;
-    private ImageEffectController fx;
     public int CirclesNumber { get => circlesNumber; }
     private AchievementsManager am;
 
@@ -41,7 +40,6 @@ public class GameManager : MonoBehaviour
     {
         NewLevel(0);
         sm = ScoreManager.Instance;
-        fx = ImageEffectController.Instance;
         am = AchievementsManager.Instance;
     }
 
@@ -60,13 +58,9 @@ public class GameManager : MonoBehaviour
 
     public void NewLevel(int levelNb) // A APPELER A CHAQUE NEW LEVEL ISSOUm
     {
-        
-        Color newLevelColor = new Color();
 
         if (levelNb > 1)
         {
-            /*   newLevelColor = fx.ShiftedColor(Time.deltaTime * 2f);
-               fx.ChangePreviousColor(newLevelColor);*/
             am.AddLevelPassed(levelNb - 1);
             LevelUpText.SetActive(true);
             LevelUpText.GetComponent<Animator>().Play("TextFade", 0, 0);
@@ -74,28 +68,12 @@ public class GameManager : MonoBehaviour
 
         ScoreManager.Instance.ComboValue = 1;
 
-        //fx.ShiftedColor(0.5f) * 4f; // On assigne la couleur du nouveau niveau, ne tkt pas ça va bien se passer, bien se passer ne tkt pas
-
         LevelNb = levelNb;
         LevelSpeed = levelNb*0.4f +2;
 
         foreach (GameObject go in generator.Circles)
         {
             go.GetComponent<Circle>().ChangeBonusSpeed(LevelSpeed);
-            if (levelNb > 1)
-            {
-                /* for (int i = generator.Circles.Count; i > 0; i--)
-                 {
-                     if (i == generator.Circles.Count)
-                         generator.Circles[0].GetComponent<Circle>().AssignNewColor(Time.deltaTime * 0.5f);
-                  //   else
-                 //        generator.Circles[i].GetComponent<Circle>().AssignNewColor(Time.deltaTime);
-                 }*/
-
-          // go.GetComponent<SpriteRenderer>().material.SetColor("_Color", newLevelColor * 4f);           // on s'emmerde pas, on assigne la même couleur
-                                                                                                        //pour tous les cercles présents
-
-            }
         }
     }
 

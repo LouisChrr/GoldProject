@@ -80,6 +80,8 @@ public class Circle : MonoBehaviour
 
                 //spriterenderer.sprite = sprites[1];
                 spriterenderer.material = materials[1];
+                spriterenderer.material.SetColor("_Color", fx.PreviousColor * 4);
+
                 transform.GetChild(0).GetComponent<Obstacle>().MurEtapeCollider.enabled = false;
                 transform.GetChild(0).GetComponent<Obstacle>().IsMurEtape = false;
                 transform.GetChild(0).gameObject.SetActive(false);
@@ -151,6 +153,9 @@ public class Circle : MonoBehaviour
 
     public void ResetCircle(bool preventObstacle)
     {
+
+        spriterenderer.material.SetFloat("_Alpha", 1);
+
         // si ct  un obstacle
         if (IsObstacle)
         {
@@ -208,10 +213,7 @@ public class Circle : MonoBehaviour
             spriterenderer.material = materials[6];
             spriterenderer.material.SetColor("_Color", fx.ShiftedColor(Time.deltaTime * 0.2f) * 1f);
             
-            fx.ChangePreviousColor(fx.ShiftedColor(Time.deltaTime * 0.2f));
-
-            
-            fx.ChangePreviousColor(fx.ShiftedColor(0.25f));
+            fx.ChangePreviousColor(fx.ShiftedColor(Time.deltaTime * 0.2f + 0.25f));
 
             //transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>()
             //spriterenderer.sprite = sprites[1];
