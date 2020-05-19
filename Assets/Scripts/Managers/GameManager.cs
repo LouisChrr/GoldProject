@@ -21,9 +21,9 @@ public class GameManager : MonoBehaviour
     private ScoreManager sm;
     private ImageEffectController fx;
     public int CirclesNumber { get => circlesNumber; }
+    private AchievementsManager am;
 
-
-
+   
     public CircleGenerator generator;
     public GameObject touchFeedback; // TEMPO, A DELETE
 
@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
         NewLevel(0);
         sm = ScoreManager.Instance;
         fx = ImageEffectController.Instance;
+        am = AchievementsManager.Instance;
     }
 
 
@@ -59,14 +60,14 @@ public class GameManager : MonoBehaviour
 
     public void NewLevel(int levelNb) // A APPELER A CHAQUE NEW LEVEL ISSOUm
     {
-
+        
         Color newLevelColor = new Color();
 
         if (levelNb > 1)
         {
-         /*   newLevelColor = fx.ShiftedColor(Time.deltaTime * 2f);
-            fx.ChangePreviousColor(newLevelColor);*/
-
+            /*   newLevelColor = fx.ShiftedColor(Time.deltaTime * 2f);
+               fx.ChangePreviousColor(newLevelColor);*/
+            am.AddLevelPassed(levelNb - 1);
             LevelUpText.SetActive(true);
             LevelUpText.GetComponent<Animator>().Play("TextFade", 0, 0);
         }
@@ -100,9 +101,14 @@ public class GameManager : MonoBehaviour
 
     public void Death()
     {
+        am.AddScore(Mathf.RoundToInt(sm.PlayerScore));
+        am.AddDistance(Mathf.RoundToInt(sm.distance));
+        
+        am.AddDeath(1);
+
         IsPlayerDead = true;
         MenuManager.Instance.EndGame();
-
+        
         foreach (GameObject go in generator.Circles)
         {
             go.GetComponent<Circle>().ChangeBonusSpeed(0);

@@ -151,6 +151,12 @@ public class Circle : MonoBehaviour
 
     public void ResetCircle(bool preventObstacle)
     {
+        // si ct  un obstacle
+        if (IsObstacle)
+        {
+            AchievementsManager.Instance.AddObstacleDodged(1);
+        }
+
         if (preventObstacle)
         {
             transform.GetChild(0).gameObject.SetActive(false);
