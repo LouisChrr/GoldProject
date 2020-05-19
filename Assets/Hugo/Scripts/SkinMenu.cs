@@ -46,6 +46,7 @@ public class SkinMenu : MonoBehaviour
             {
                 skins[i].GetComponent<Image>().color = Color.white;
                 skins[i].GetComponent<SkinLock>().locker.SetActive(false);
+                skins[i].GetComponent<SkinLock>().priceTxt.SetActive(false);
             }
             
         }
@@ -55,7 +56,7 @@ public class SkinMenu : MonoBehaviour
     void Update()
     {
         //moneyTxt.GetComponent<Text>().text = "Gold: " + money;
-        //moneyTxt.GetComponent<Text>().text = "Gold: " + FindObjectOfType<ScoreManager>().PlayerMoney;
+        moneyTxt.GetComponent<Text>().text = "" + FindObjectOfType<ScoreManager>().PlayerMoney;
     }
 
     public void ChooseSkin()
@@ -90,6 +91,7 @@ public class SkinMenu : MonoBehaviour
             {
                 skins[i].GetComponent<SkinLock>().isLocked = false;
                 skins[i].GetComponent<SkinLock>().locker.SetActive(false);
+                skins[i].GetComponent<SkinLock>().priceTxt.SetActive(false);
 
                 //money -= skins[i].GetComponent<SkinLock>().price;
                 FindObjectOfType<ScoreManager>().PlayerMoney -= skins[i].GetComponent<SkinLock>().price;

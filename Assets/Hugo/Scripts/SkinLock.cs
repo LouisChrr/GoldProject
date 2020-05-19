@@ -12,6 +12,7 @@ public class SkinLock : MonoBehaviour
 
 
     public GameObject locker;
+    public GameObject priceTxt;
 
     public int price = 300;
 
@@ -23,6 +24,11 @@ public class SkinLock : MonoBehaviour
         if(locker != null)
         {
             locker.SetActive(true);
+        }
+
+        if(priceTxt != null)
+        {
+            priceTxt.SetActive(true);
         }
 
         GetComponent<Image>().color = !isLocked ? Color.white : Color.grey;
