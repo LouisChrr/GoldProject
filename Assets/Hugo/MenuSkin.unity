@@ -6447,6 +6447,7 @@ MonoBehaviour:
   lastScore: 0
   PlayerScore: 0
   PlayerMoney: 1000
+  distance: 0
   ComboValue: 1
 --- !u!1 &1965210790
 GameObject:

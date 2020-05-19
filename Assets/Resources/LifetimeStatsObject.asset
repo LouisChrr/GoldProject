@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d567cd379c150944b2b26574050a61c, type: 3}
+  m_Name: LifetimeStatsObject
+  m_EditorClassIdentifier: 
+  LifetimeScore: 0
+  LifetimeDistance: 0
+  LifetimeCoinsPickedUp: 0
+  LifetimeMoney: 0
+  LifetimeObstaclesDodged: 0
+  LifetimeDeaths: 0
+  LifetimeLevelsPassed: 0

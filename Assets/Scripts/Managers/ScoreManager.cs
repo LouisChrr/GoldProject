@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -11,13 +10,11 @@ public class ScoreManager : MonoBehaviour
     private GameManager gm;
     public Text ScoreText, MoneyText, ComboText;
     public float lastScore;
-    
-    //public TextMeshProUGUI MoneyText;
-
+    private AchievementsManager am;
     [Header("DO NOT MODIFY")]
     public float PlayerScore;
     public float PlayerMoney;
-    
+    public float distance;
     public float ComboValue = 1;
     
     private void Awake()
@@ -35,7 +32,7 @@ public class ScoreManager : MonoBehaviour
     void Start()
     {
         gm = GameManager.Instance;
-        
+        am = AchievementsManager.Instance;
         FindObjectOfType<SkinMenu>().LoadMoney();
 
     }
@@ -50,6 +47,7 @@ public class ScoreManager : MonoBehaviour
         if (!gm.IsPlayerDead && gm.HasGameStarted)
         {
             PlayerScore += Time.deltaTime * 2.0f * ComboValue;
+            distance += Time.deltaTime * 2.0f;
             ScoreText.text = "Score: " + PlayerScore.ToString("F0");
         }
         else
@@ -66,6 +64,8 @@ public class ScoreManager : MonoBehaviour
 
     public void PickupCoin()
     {
+        am.AddCoin(1);
+        am.AddMoney(Mathf.RoundToInt(CoinValue * ComboValue));
         PlayerScore += 20 * ComboValue;
         PlayerMoney += CoinValue * ComboValue;
         PlayerPrefs.SetFloat("Money", PlayerMoney);

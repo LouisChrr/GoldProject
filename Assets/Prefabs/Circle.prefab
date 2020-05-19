@@ -106,7 +106,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7ca6a445d1bc3b646a40f778ae75fc47, type: 3}
   - {fileID: 21300000, guid: 7ca6a445d1bc3b646a40f778ae75fc47, type: 3}
   - {fileID: 21300000, guid: 7ca6a445d1bc3b646a40f778ae75fc47, type: 3}
-  - {fileID: 21300000, guid: 2607a09699b4e0b479ea0e4f887d3f24, type: 3}
   materials:
   - {fileID: 2100000, guid: 38c66476f20951c449e046605efca35c, type: 2}
   - {fileID: 2100000, guid: 896f99013952ebe4f8f389e6c0adfb28, type: 2}
