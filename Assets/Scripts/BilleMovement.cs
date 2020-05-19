@@ -29,7 +29,9 @@ public class BilleMovement : MonoBehaviour
     private Touch touch;
     private int screenWidth;
     private float dragOrigin;
-  
+
+    public Material shadow;
+
     // Start is called before the first frame update
 
     private void Awake()
@@ -42,6 +44,7 @@ public class BilleMovement : MonoBehaviour
 
     void Start()
     {
+
         layerManager = LayerManager.Instance;
         gm = GameManager.Instance;
         screenWidth = Screen.width;
@@ -53,7 +56,10 @@ public class BilleMovement : MonoBehaviour
         targetPos.y = Mathf.Sin(angle) * height;
         transform.localPosition = targetPos;
 
-       // BilleAnimator = GetComponent<Animator>();
+        shadow.SetVector("_Position", new Vector4(transform.localPosition.x * 0.7f + 0.5f, transform.localPosition.y * 0.7f + 0.5f, 0, 1));
+
+
+        // BilleAnimator = GetComponent<Animator>();
         SpawnBullets();
 
     }
@@ -172,6 +178,9 @@ public class BilleMovement : MonoBehaviour
         angle += Time.deltaTime * speed;
         targetPos.x = Mathf.Cos(angle) * width;
         targetPos.y = Mathf.Sin(angle) * height;
+
+        shadow.SetVector("_Position", new Vector4(transform.localPosition.x * 0.7f + 0.5f, transform.localPosition.y * 0.7f + 0.5f, 0, 1));
+
         //targetPos.z = transform.position.z;
         transform.localPosition = targetPos;
 
@@ -189,6 +198,7 @@ public class BilleMovement : MonoBehaviour
             touch = Input.GetTouch(0); // On prend le premier doigt
             if (touch.phase == TouchPhase.Moved) // Si il a bougé, update le speed
             {
+
                 speed = (((touch.position.x - dragOrigin) / screenWidth) * maxSpeed) * ((gm.LevelSpeed/8.0f) + 1);
                 
             }
@@ -208,6 +218,8 @@ public class BilleMovement : MonoBehaviour
         }
         else // Si pas d'input détecté
         {
+            
+
             if (speedLerpTimer < 0.96f) // Si toujours en cours de lerp vers 0
             {
                 speedLerpTimer += Time.deltaTime * (1/speedDecreaseSmooth);

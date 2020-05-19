@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PlayerMat
-  m_Shader: {fileID: -6465566751694194690, guid: fb7388a8369cb3d42a6ffe595aa403f9,
+  m_Name: UltimeMatFULL
+  m_Shader: {fileID: -6465566751694194690, guid: d30eb1f21495efd4c845e030767255e2,
     type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
@@ -33,10 +33,6 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - Texture2D_7219D945:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -50,7 +46,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Main:
-        m_Texture: {fileID: 2800000, guid: 2607a09699b4e0b479ea0e4f887d3f24, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3c0f8417e65818547bfad9393749fc92, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -69,23 +65,12 @@ Material:
         m_Texture: {fileID: 2800000, guid: 22b0b5bdd037b854b98bbfccaae43a34, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_4F3F45B0_Texture_1:
-        m_Texture: {fileID: 2800000, guid: 1c6a5e91abf7d394f86c80a7ab4ec9cf, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_908716E2_Texture_1:
-        m_Texture: {fileID: 2800000, guid: c5b29ace80c78e848a259623bba7a119, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Skin:
-        m_Texture: {fileID: 2800000, guid: 6e051545e33273548b988c430db4521a, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - _Alpha: 1
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -108,8 +93,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_5D71C93C: {r: 2.7294118, g: 4, b: 2.1803923, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0.79999995, g: 3.6773064, b: 4, a: 1}
+    - _Color: {r: 0.5176471, g: 1.9764706, b: 4, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}

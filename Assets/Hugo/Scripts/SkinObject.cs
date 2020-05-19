@@ -12,13 +12,15 @@ public class SkinObject : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spriteSkin = GetComponent<Image>().sprite;
+        if (!isMainSkin)
+            spriteSkin = GetComponent<Image>().sprite;
 
         if (isMainSkin)
         {
             if(SkinMenu.spritePlayer != null)
             {
-                GetComponent<Image>().sprite = SkinMenu.spritePlayer;
+                GetComponent<SpriteRenderer>().material.SetTexture("_Skin", SkinMenu.spritePlayer.texture);
+               // GetComponent<SpriteRenderer>().sprite = SkinMenu.spritePlayer;
             }
         }
     }

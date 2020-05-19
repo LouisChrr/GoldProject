@@ -8,7 +8,7 @@ public class ScoreManager : MonoBehaviour
     public int CoinValue;
     public static ScoreManager Instance;
     private GameManager gm;
-    public Text ScoreText, MoneyText;
+    public Text ScoreText, MoneyText, ComboText;
     public float lastScore;
   
     [Header("DO NOT MODIFY")]
@@ -40,7 +40,9 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         MoneyText.text = "Money: " + PlayerMoney;
+        ComboText.text = "x" + ComboValue;
 
         if (!gm.IsPlayerDead && gm.HasGameStarted)
         {
@@ -55,6 +57,8 @@ public class ScoreManager : MonoBehaviour
         }
 
 
+
+
     }
 
     public void PickupCoin()
@@ -62,6 +66,7 @@ public class ScoreManager : MonoBehaviour
         PlayerScore += 20 * ComboValue;
         PlayerMoney += CoinValue * ComboValue;
         PlayerPrefs.SetFloat("Money", PlayerMoney);
+
         FindObjectOfType<SkinMenu>().SaveMoney();
         ComboValue = 1;
     }

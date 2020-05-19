@@ -64,8 +64,8 @@ public class GameManager : MonoBehaviour
 
         if (levelNb > 1)
         {
-            newLevelColor = fx.ShiftedColor(Time.deltaTime * 2f);
-            fx.ChangePreviousColor(newLevelColor);
+         /*   newLevelColor = fx.ShiftedColor(Time.deltaTime * 2f);
+            fx.ChangePreviousColor(newLevelColor);*/
 
             LevelUpText.SetActive(true);
             LevelUpText.GetComponent<Animator>().Play("TextFade", 0, 0);
@@ -91,7 +91,7 @@ public class GameManager : MonoBehaviour
                  //        generator.Circles[i].GetComponent<Circle>().AssignNewColor(Time.deltaTime);
                  }*/
 
-                go.GetComponent<SpriteRenderer>().material.SetColor("_Color", newLevelColor * 4f);           // on s'emmerde pas, on assigne la même couleur
+          // go.GetComponent<SpriteRenderer>().material.SetColor("_Color", newLevelColor * 4f);           // on s'emmerde pas, on assigne la même couleur
                                                                                                         //pour tous les cercles présents
 
             }

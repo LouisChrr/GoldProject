@@ -112,11 +112,9 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 896f99013952ebe4f8f389e6c0adfb28, type: 2}
   - {fileID: 2100000, guid: 3c55243dd82725147bcf7e550c9d5c36, type: 2}
   - {fileID: 2100000, guid: 80cb1f487f6bc934b92668807856fa8c, type: 2}
-  - {fileID: 2100000, guid: 80cb1f487f6bc934b92668807856fa8c, type: 2}
-  - {fileID: 2100000, guid: 80cb1f487f6bc934b92668807856fa8c, type: 2}
-  - {fileID: 2100000, guid: 80cb1f487f6bc934b92668807856fa8c, type: 2}
   - {fileID: 2100000, guid: d4ba9a1fcb5878947ac207d3b2c77374, type: 2}
   - {fileID: 2100000, guid: 749b23749c89c8f45851dbf89439f1b1, type: 2}
+  - {fileID: 2100000, guid: 6a3b286179135274c9d338a800133e54, type: 2}
   preventObstacleAtStart: 0
 --- !u!1 &3557496550166228007
 GameObject:
