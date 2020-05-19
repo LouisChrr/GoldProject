@@ -28,10 +28,14 @@ public class LayerManager : MonoBehaviour
     {
         foreach (SpriteRenderer sprite in AllActiveSprites)
         {
-            if (sprite)
+            if (sprite && sprite.material.name != "UltimeMat")
             {
                 float currentSpriteDepth = sprite.transform.position.z;
                 ChangeLayer(sprite, currentSpriteDepth);
+            }else if(sprite && sprite.material.name == "UltimeMat")
+            {
+                float currentSpriteDepth = sprite.transform.position.z;
+                ChangeLayer(sprite, currentSpriteDepth - 1);
             }
         }
     }

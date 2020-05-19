@@ -201,12 +201,16 @@ public class Circle : MonoBehaviour
             transform.GetChild(0).GetComponent<Obstacle>().JesusCollider2.enabled = false;
             transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
 
-            spriterenderer.material = materials[4];
-            spriterenderer.material.SetColor("_Color", fx.ShiftedColor(Time.deltaTime * 0.2f) * 4);
+        
+            transform.GetChild(0).GetComponent<SpriteRenderer>().material = materials[4];
+            transform.GetChild(0).GetComponent<SpriteRenderer>().material.SetColor("_Color", fx.ShiftedColor(0.25f) * 16f);
+
+            spriterenderer.material = materials[6];
+            spriterenderer.material.SetColor("_Color", fx.ShiftedColor(Time.deltaTime * 0.2f) * 1f);
+            
             fx.ChangePreviousColor(fx.ShiftedColor(Time.deltaTime * 0.2f));
 
-            transform.GetChild(0).GetComponent<SpriteRenderer>().material = materials[6];
-            transform.GetChild(0).GetComponent<SpriteRenderer>().material.SetColor("_Color", fx.ShiftedColor(0.25f) * 2f);
+            
             fx.ChangePreviousColor(fx.ShiftedColor(0.25f));
 
             //transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>()
