@@ -25,8 +25,8 @@ public class GameManager : MonoBehaviour
     private ScoreManager sm;
     public int CirclesNumber { get => circlesNumber; }
     private AchievementsManager am;
+    
 
-   
     public CircleGenerator generator;
 
 
@@ -75,6 +75,7 @@ public class GameManager : MonoBehaviour
 
         LevelNb = levelNb;
         LevelSpeed = levelNb*0.4f +2;
+        ObjectsMovementManager.Instance.bonusSpeed = LevelSpeed;
         Color color = ImageEffectController.Instance.ShiftedColor(0.25f);
 
         List<GameObject> sortedList = generator.Circles.OrderBy(g => g.transform.position.z).ToList();
@@ -83,8 +84,9 @@ public class GameManager : MonoBehaviour
         int i = 1;
         foreach (GameObject go in sortedList)
         {
-            
-            go.GetComponent<Circle>().ChangeBonusSpeed(LevelSpeed);
+
+            //  go.GetComponent<Circle>().ChangeBonusSpeed(LevelSpeed);
+            // DUMB, ON GERE CA DANS ObjectsMovementManager MTN
 
 
 
@@ -112,11 +114,7 @@ public class GameManager : MonoBehaviour
 
         IsPlayerDead = true;
         MenuManager.Instance.EndGame();
-        
-        foreach (GameObject go in generator.Circles)
-        {
-            go.GetComponent<Circle>().ChangeBonusSpeed(0);
-        }
+        ObjectsMovementManager.Instance.bonusSpeed = 0;
 
         SaveSystem.SaveMoney(ScoreManager.Instance);
 

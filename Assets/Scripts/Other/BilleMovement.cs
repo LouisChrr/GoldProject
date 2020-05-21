@@ -160,7 +160,6 @@ public class BilleMovement : MonoBehaviour
         for(int i = 0;i < BulletsNb; i++)
         {
             GameObject bullet = Instantiate(BulletPrefab, new Vector3(0,0,0), Quaternion.identity, InactiveBullets);
-            bullet.GetComponent<Bullet>().speed = BulletSpeed;
             bullet.GetComponent<Bullet>().ActiveBullets = ActiveBullets;
             bullet.GetComponent<Bullet>().InactiveBullets = InactiveBullets;
 
