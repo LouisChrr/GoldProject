@@ -7,6 +7,8 @@ using UnityEngine.VFX;
 
 public class GameManager : MonoBehaviour
 {
+    public AudioSource PlayerAudioSource;
+    public List<AudioClip> PlayerAudioClips;
 
     public GameObject LevelUpText;
     public bool HasGameStarted;
@@ -26,7 +28,7 @@ public class GameManager : MonoBehaviour
 
    
     public CircleGenerator generator;
-    public GameObject touchFeedback; // TEMPO, A DELETE
+
 
     private void Awake()
     {
@@ -55,6 +57,7 @@ public class GameManager : MonoBehaviour
         //{
         //    go.GetComponent<Circle>().ChangeBonusSpeed(0);
         //}
+        ScoreManager.Instance.PlayerMoney = 0;
         NewLevel(1);
     }
 
@@ -101,6 +104,7 @@ public class GameManager : MonoBehaviour
 
     public void Death()
     {
+        GameManager.Instance.PlayerAudioSource.PlayOneShot(GameManager.Instance.PlayerAudioClips[1]);
         am.AddScore(Mathf.RoundToInt(sm.PlayerScore));
         am.AddDistance(Mathf.RoundToInt(sm.distance));
         
@@ -114,7 +118,7 @@ public class GameManager : MonoBehaviour
             go.GetComponent<Circle>().ChangeBonusSpeed(0);
         }
 
-        touchFeedback.SetActive(false);
+        SaveSystem.SaveMoney(ScoreManager.Instance);
 
     }
 

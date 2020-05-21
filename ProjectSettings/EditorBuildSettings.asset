@@ -12,9 +12,9 @@ EditorBuildSettings:
     path: 
     guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Hugo/FinalScene.unity
+    path: Assets/Scenes/FinalScene.unity
     guid: 08a4246c8fd2db8418d834b8a8d7e45a
   - enabled: 1
-    path: Assets/Hugo/MenuSkin.unity
+    path: Assets/Scenes/MenuSkin.unity
     guid: c5fa6c66aaef2b449a88fe4f7d4a4933
   m_configObjects: {}

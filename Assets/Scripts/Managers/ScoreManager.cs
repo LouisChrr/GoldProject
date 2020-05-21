@@ -8,7 +8,7 @@ public class ScoreManager : MonoBehaviour
     public int CoinValue;
     public static ScoreManager Instance;
     private GameManager gm;
-    public Text ScoreText, MoneyText, ComboText;
+    public Text ScoreText, MoneyText;
     public float lastScore;
     private AchievementsManager am;
     [Header("DO NOT MODIFY")]
@@ -16,7 +16,10 @@ public class ScoreManager : MonoBehaviour
     public float PlayerMoney;
     public float distance;
     public float ComboValue = 1;
-    
+    [SerializeField]
+    private float bestScore;
+
+    private int lastIntScore =  -1;
     private void Awake()
     {
         if (Instance != null)
@@ -34,21 +37,47 @@ public class ScoreManager : MonoBehaviour
         gm = GameManager.Instance;
         am = AchievementsManager.Instance;
         FindObjectOfType<SkinMenu>().LoadMoney();
-
+        
+        DataScript data = SaveSystem.LoadBestScore();
+        bestScore = data.bestScore;
     }
 
     // Update is called once per frame
     void Update()
     {
         
+
         MoneyText.text = "" + PlayerMoney;
-        ComboText.text = "x" + ComboValue;
+     
 
         if (!gm.IsPlayerDead && gm.HasGameStarted)
         {
             PlayerScore += Time.deltaTime * 2.0f * ComboValue;
             distance += Time.deltaTime * 2.0f;
-            ScoreText.text = "Score: " + PlayerScore.ToString("F0");
+            if(PlayerScore > bestScore)
+            {
+                if(Mathf.RoundToInt(PlayerScore) > lastIntScore)
+                {
+                    if(lastIntScore == -1)
+                    {
+                        gm.PlayerAudioSource.PlayOneShot(gm.PlayerAudioClips[5]);
+                    }
+                    gm.PlayerAudioSource.PlayOneShot(gm.PlayerAudioClips[6]);
+                }
+                    
+                lastIntScore = Mathf.RoundToInt(PlayerScore);
+
+            }
+
+            if(ComboValue <= 1)
+            {
+                ScoreText.text = "Score: " + PlayerScore.ToString("F0");
+            }
+            else
+            { 
+                ScoreText.text = "Score: " + PlayerScore.ToString("F0") + " x" + ComboValue;
+            }
+            
         }
         else
         {
