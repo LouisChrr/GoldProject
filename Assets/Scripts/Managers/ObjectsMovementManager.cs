@@ -42,11 +42,8 @@ public class ObjectsMovementManager : MonoBehaviour
         {
             basePos += new Vector3(0, 0, Time.deltaTime * bulletSpeed * bonusSpeed);
         }
-            
 
-       return( new Vector3(bulletBaseX+(Xmovement * ((basePos.z / CirclesNb))), basePos.y, basePos.z));
-
-        
+        return( new Vector3(bulletBaseX+(Xmovement * ((basePos.z / CirclesNb))), basePos.y, basePos.z));
 
     }
 }

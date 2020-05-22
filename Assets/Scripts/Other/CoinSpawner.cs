@@ -34,6 +34,7 @@ public class CoinSpawner : MonoBehaviour
         if(Random.Range(0,100) < CoinSpawnChance*100) 
         {
             Vector3 SpawnPos = new Vector3(0, Yoffset, zTransform);
+
             GameObject InstantiatedCoin = Instantiate(_CoinPrefab, SpawnPos, Quaternion.Euler(0, 0, 180), Coins);
         
             LayerManager.Instance.AllActiveSprites.Add(InstantiatedCoin.GetComponent<SpriteRenderer>());
