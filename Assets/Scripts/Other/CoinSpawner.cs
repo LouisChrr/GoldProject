@@ -28,7 +28,6 @@ public class CoinSpawner : MonoBehaviour
 
     }
 
-
     public void SpawnCoin(float zTransform)
     {
         if(Random.Range(0,100) < CoinSpawnChance*100) 
