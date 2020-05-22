@@ -78,10 +78,10 @@ public class ImageEffectController : MonoBehaviour
 
         Color.RGBToHSV(PreviousColor, out h, out s, out v);
 
-        if (h <= 1)
-            h += shift;
-        else
-            h=0;
+        h += shift;
+
+        if (h >= 1)
+            h-=1;
 
         shiftedColor = Color.HSVToRGB(h, s, v);
 

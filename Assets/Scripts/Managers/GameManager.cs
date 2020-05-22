@@ -76,9 +76,10 @@ public class GameManager : MonoBehaviour
         LevelNb = levelNb;
         LevelSpeed = levelNb*0.4f +2;
         ObjectsMovementManager.Instance.bonusSpeed = LevelSpeed;
-        Color color = ImageEffectController.Instance.ShiftedColor(0.25f);
 
         List<GameObject> sortedList = generator.Circles.OrderBy(g => g.transform.position.z).ToList();
+
+        Color color = ImageEffectController.Instance.ShiftedColor(0.25f);
 
 
         int i = 1;
@@ -87,7 +88,7 @@ public class GameManager : MonoBehaviour
 
             //  go.GetComponent<Circle>().ChangeBonusSpeed(LevelSpeed);
             // DUMB, ON GERE CA DANS ObjectsMovementManager MTN
-
+            // ok boomer
 
 
             if (LevelNb > 0)
