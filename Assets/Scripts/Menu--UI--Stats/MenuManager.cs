@@ -13,8 +13,11 @@ public class MenuManager : MonoBehaviour
 
     public GameObject menu;
     public GameObject options;
-    public GameObject game;
+    public GameObject pause;
     public GameObject end;
+
+    public GameObject backToMenu;
+    public GameObject backToPlay;
 
     public GameObject greyPanel;
 
@@ -49,7 +52,7 @@ public class MenuManager : MonoBehaviour
 
         menu.SetActive(true);
         options.SetActive(false);
-        game.SetActive(false);
+        pause.SetActive(false);
         end.SetActive(false);
 
         greyPanel.SetActive(true);
@@ -57,6 +60,21 @@ public class MenuManager : MonoBehaviour
         MenuMoneyText.text = "" + FindObjectOfType<ScoreManager>().PlayerMoney;
 
         LoadBestScore();
+        
+        backToMenu.SetActive(true);
+        backToPlay.SetActive(false);
+
+        
+    }
+
+    private void Update()
+    {
+
+        if (FindObjectOfType<GameManager>().HasGameStarted)
+        {
+            backToMenu.SetActive(false);
+            backToPlay.SetActive(true);
+        }
     }
 
     public void EndGame()
@@ -83,8 +101,24 @@ public class MenuManager : MonoBehaviour
     public void Options()
     {
         options.SetActive(true);
-        menu.SetActive(false);
 
+        if (FindObjectOfType<GameManager>().HasGameStarted)
+        {
+            pause.SetActive(false);
+            greyPanel.SetActive(true);
+        }
+        else
+        {
+            menu.SetActive(false);
+        }
+
+    }
+
+    public void BackToPause()
+    {
+        options.SetActive(false);
+        greyPanel.SetActive(false);
+        pause.SetActive(true);
     }
 
     public void Menu()
@@ -106,7 +140,7 @@ public class MenuManager : MonoBehaviour
   
        menu.SetActive(false);
         greyPanel.SetActive(false);
-        game.SetActive(true);
+        pause.SetActive(true);
     }
 
     private void Pause(bool pause)

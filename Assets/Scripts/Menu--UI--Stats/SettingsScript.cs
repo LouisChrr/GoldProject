@@ -14,6 +14,7 @@ public class SettingsScript : MonoBehaviour
     private int min = -80;
     private int max = 0;
     
+
     public void SetVolume(float volume)
     {
         audioMixer.SetFloat("volume", volume);
