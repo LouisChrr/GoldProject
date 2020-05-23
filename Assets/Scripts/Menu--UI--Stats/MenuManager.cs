@@ -62,7 +62,7 @@ public class MenuManager : MonoBehaviour
     public void EndGame()
     {
         end.SetActive(true);
-        ScoreText.text = "Score: " + (int)ScoreManager.Instance.PlayerScore;
+        ScoreText.text = "" + (int)ScoreManager.Instance.PlayerScore;
         MoneyText.text = "+ " + ScoreManager.Instance.MoneyInGame;
 
         if (ScoreManager.Instance.PlayerScore > PlayerBestScore){
@@ -70,7 +70,7 @@ public class MenuManager : MonoBehaviour
             PlayerBestScore = ScoreManager.Instance.PlayerScore;
             SaveBestScore();
         }
-        BestScoreText.text = "Best Score: " + (int)PlayerBestScore;
+        BestScoreText.text = "" + (int)PlayerBestScore;
 
     }
 

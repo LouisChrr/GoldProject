@@ -8,7 +8,7 @@ public class ScoreManager : MonoBehaviour
     public int CoinValue;
     public static ScoreManager Instance;
     private GameManager gm;
-    public Text ScoreText, MoneyText;
+    public Text ScoreText, MoneyText, ComboText;
     public float lastScore;
     private AchievementsManager am;
     [Header("DO NOT MODIFY")]
@@ -73,13 +73,24 @@ public class ScoreManager : MonoBehaviour
 
             }
 
-            if(ComboValue <= 1)
+            //if(ComboValue <= 1)
+            //{
+            //    ScoreText.text = "" + PlayerScore.ToString("F0");
+            //}
+            //else
+            //{ 
+            //    ScoreText.text = "" + PlayerScore.ToString("F0")/* + "\n x " + ComboValue*/;
+            //    ComboText.text = "x " + ComboValue;
+            //}
+
+            ScoreText.text = "" + PlayerScore.ToString("F0");
+            if (ComboValue > 1)
             {
-                ScoreText.text = "Score: " + PlayerScore.ToString("F0");
+                ComboText.text = "x " + ComboValue;
             }
             else
-            { 
-                ScoreText.text = "Score: " + PlayerScore.ToString("F0") + " x" + ComboValue;
+            {
+                ComboText.text = "";
             }
             
         }
