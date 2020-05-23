@@ -37,6 +37,10 @@ public class DataScript
     {
 
         money = player.PlayerMoney;
+        if(money >= 9999)
+        {
+            money = 9999;
+        }
     }
 
     public DataScript(MenuManager player)

@@ -63,7 +63,7 @@ public class MenuManager : MonoBehaviour
     {
         end.SetActive(true);
         ScoreText.text = "Score: " + (int)ScoreManager.Instance.PlayerScore;
-        MoneyText.text = "" + ScoreManager.Instance.PlayerMoney;
+        MoneyText.text = "+ " + ScoreManager.Instance.MoneyInGame;
 
         if (ScoreManager.Instance.PlayerScore > PlayerBestScore){
             //PlayerPrefs.SetFloat("BestScore", ScoreManager.Instance.PlayerScore);

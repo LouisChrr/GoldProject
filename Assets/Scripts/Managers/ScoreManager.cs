@@ -14,6 +14,7 @@ public class ScoreManager : MonoBehaviour
     [Header("DO NOT MODIFY")]
     public float PlayerScore;
     public float PlayerMoney;
+    public float MoneyInGame;
     public float distance;
     public float ComboValue = 1;
     [SerializeField]
@@ -36,10 +37,13 @@ public class ScoreManager : MonoBehaviour
     {
         gm = GameManager.Instance;
         am = AchievementsManager.Instance;
+
         FindObjectOfType<SkinMenu>().LoadMoney();
         
         DataScript data = SaveSystem.LoadBestScore();
         bestScore = data.bestScore;
+
+        MoneyInGame = 0;
     }
 
     // Update is called once per frame
@@ -87,8 +91,6 @@ public class ScoreManager : MonoBehaviour
         }
 
 
-
-
     }
 
     public void PickupCoin()
@@ -96,10 +98,9 @@ public class ScoreManager : MonoBehaviour
         am.AddCoin(1);
         am.AddMoney(Mathf.RoundToInt(CoinValue * ComboValue));
         PlayerScore += 20 * ComboValue;
-        PlayerMoney += CoinValue * ComboValue;
-        PlayerPrefs.SetFloat("Money", PlayerMoney);
-
-        FindObjectOfType<SkinMenu>().SaveMoney();
+        MoneyInGame += CoinValue * ComboValue;
+        PlayerMoney += MoneyInGame;
+        
         ComboValue = 1;
     }
 

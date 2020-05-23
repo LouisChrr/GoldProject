@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
         //{
         //    go.GetComponent<Circle>().ChangeBonusSpeed(0);
         //}
-        ScoreManager.Instance.PlayerMoney = 0;
+        //ScoreManager.Instance.PlayerMoney = 0;
         NewLevel(1);
     }
 
