@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2231894987645692710}
   - component: {fileID: 2231894987645692711}
-  - component: {fileID: 2231894987645692704}
+  - component: {fileID: 6377486215803126109}
   - component: {fileID: 2231894987645692705}
   - component: {fileID: 2232029766905804875}
   m_Layer: 0
@@ -84,8 +84,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!135 &2231894987645692704
-SphereCollider:
+--- !u!136 &6377486215803126109
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -94,8 +94,9 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.15977147
+  m_Radius: 0.25
+  m_Height: 1
+  m_Direction: 2
   m_Center: {x: 0, y: -0.43, z: 0}
 --- !u!54 &2231894987645692705
 Rigidbody:
