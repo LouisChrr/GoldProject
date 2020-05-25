@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae869829188905f4681536a2341bfd64, type: 3}
   m_Name: Lucky
   m_EditorClassIdentifier: 
-  Front: {fileID: 21300000, guid: 31d149ea875adba4886a01c98eac6c2a, type: 3}
+  Front: {fileID: 21300000, guid: c59d565926d566645a360b23915b0e05, type: 3}
   Back:
-  - {fileID: 21300000, guid: 1ea0c1ae285ce19448eb80f80a61ec66, type: 3}
-  - {fileID: 21300000, guid: e08a50ff99742d144b0da25c6e3c2288, type: 3}
+  - {fileID: 21300000, guid: f3d642767b60692489550f8f95c25347, type: 3}
+  - {fileID: 21300000, guid: 083e6e4ac80dca843a881b8e1211779f, type: 3}

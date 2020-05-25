@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae869829188905f4681536a2341bfd64, type: 3}
   m_Name: Ninja
   m_EditorClassIdentifier: 
-  Front: {fileID: 21300000, guid: d466cb762d7f8064793ec07184f46339, type: 3}
+  Front: {fileID: 21300000, guid: ce92a4b23c290c2429b6067d3cee8136, type: 3}
   Back:
-  - {fileID: 21300000, guid: dfdfb4ec6b6ed55408c76f73d4ab0028, type: 3}
-  - {fileID: 21300000, guid: f2875fa3cbc839b4b970a238ae16c71b, type: 3}
+  - {fileID: 21300000, guid: ec92f32cacd0db74e9a3e1c7f9c6585f, type: 3}
+  - {fileID: 21300000, guid: dd0ef80f7e0c68647b8eaa3ab00a0c42, type: 3}

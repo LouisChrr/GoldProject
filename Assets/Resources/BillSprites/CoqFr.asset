@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae869829188905f4681536a2341bfd64, type: 3}
   m_Name: CoqFr
   m_EditorClassIdentifier: 
-  Front: {fileID: 21300000, guid: 950c2195ae3ceb84294b3e8c56145069, type: 3}
+  Front: {fileID: 21300000, guid: 547ddf8e2c934da44a1d1d919fb20f01, type: 3}
   Back:
-  - {fileID: 21300000, guid: f2ebfeb4ddf6bd74bba085de0e82586f, type: 3}
+  - {fileID: 21300000, guid: 8d8393fb3f560a44388a5ab20a55b8f1, type: 3}
+  - {fileID: 21300000, guid: 9c976f3c3be080e4ba4e4af78b2c3ce0, type: 3}
