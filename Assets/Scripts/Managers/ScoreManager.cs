@@ -64,9 +64,9 @@ public class ScoreManager : MonoBehaviour
                 {
                     if(lastIntScore == -1)
                     {
-                        gm.PlayerAudioSource.PlayOneShot(gm.PlayerAudioClips[5]);
+                        gm.PlayerAudioSource.PlayOneShot(gm.PlayerAudioClips[6]);
                     }
-                    gm.PlayerAudioSource.PlayOneShot(gm.PlayerAudioClips[6]);
+                   // gm.PlayerAudioSource.PlayOneShot(gm.PlayerAudioClips[5]);
                 }
                     
                 lastIntScore = Mathf.RoundToInt(PlayerScore);
