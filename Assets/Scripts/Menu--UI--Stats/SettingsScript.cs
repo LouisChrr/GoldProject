@@ -14,6 +14,47 @@ public class SettingsScript : MonoBehaviour
     private int min = -80;
     private int max = 0;
     
+    void Start()
+    {
+        float initVolume;
+        if (audioMixer.GetFloat("volume", out initVolume))
+        {
+            if(initVolume == min)
+            {
+                VolumeDesactivated();
+            }
+            else if(initVolume == max)
+            {
+                VolumeActivated();
+            }
+        }
+
+        float initEffects;
+        if(audioMixer.GetFloat("effect", out initEffects))
+        {
+            if (initEffects == min)
+            {
+                EffectDesactivated();
+            }
+            else if (initEffects == max)
+            {
+                EffectActivated();
+            }
+        }
+
+        float initMusic;
+        if (audioMixer.GetFloat("effect", out initMusic))
+        {
+            if (initMusic == min)
+            {
+                MusicDesactivated();
+            }
+            else if (initMusic == max)
+            {
+                MusicActivated();
+            }
+        }
+    }
 
     public void SetVolume(float volume)
     {

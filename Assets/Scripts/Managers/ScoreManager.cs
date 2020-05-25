@@ -8,7 +8,7 @@ public class ScoreManager : MonoBehaviour
     public int CoinValue;
     public static ScoreManager Instance;
     private GameManager gm;
-    public Text ScoreText, MoneyText, ComboText;
+    public Text ScoreText, MoneyText, ComboText, MoneyInGameText;
     public float lastScore;
     private AchievementsManager am;
     [Header("DO NOT MODIFY")]
@@ -44,6 +44,7 @@ public class ScoreManager : MonoBehaviour
         bestScore = data.bestScore;
 
         MoneyInGame = 0;
+        MoneyInGameText.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -52,10 +53,17 @@ public class ScoreManager : MonoBehaviour
         
 
         MoneyText.text = "" + PlayerMoney;
-     
+
+        MoneyInGameText.text = "" + MoneyInGame;
+
+        if(MoneyInGame >= 9999)
+        {
+            MoneyInGame = 9999;
+        }
 
         if (!gm.IsPlayerDead && gm.HasGameStarted)
         {
+            MoneyInGameText.gameObject.SetActive(true);
             PlayerScore += Time.deltaTime * 2.0f * ComboValue;
             distance += Time.deltaTime * 2.0f;
             if(PlayerScore > bestScore)
