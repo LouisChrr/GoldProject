@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Reach100Score
   m_EditorClassIdentifier: 
   ScoreToReach: 100
-  DistanceToReach: -1
-  CoinsPickedUpToReach: -1
-  MoneyToReach: -1
-  ObstaclesDodgedToReach: -1
-  DeathsToReach: -1
-  LevelsPassedToReach: -1
+  DistanceToReach: 9999999
+  CoinsPickedUpToReach: 9999999
+  MoneyToReach: 9999999
+  ObstaclesDodgedToReach: 9999999
+  DeathsToReach: 9999999
+  LevelsPassedToReach: 9999999
   IsCompleted: 0
   ChallengeDescription: Reach 100 score
   CoinsWon: 50

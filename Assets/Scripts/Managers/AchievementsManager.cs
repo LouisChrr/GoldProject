@@ -21,12 +21,23 @@ public class AchievementsManager : MonoBehaviour
     private void Start()
     {
         // Debug.Log(System.DateTime.Now.Day);
-        if(System.DateTime.Now.Second != PlayerPrefs.GetInt("lastDate", 0))
+        if(System.DateTime.Now.Minute != PlayerPrefs.GetInt("lastDate", 0))
         {
-            PlayerPrefs.SetInt("lastDate", System.DateTime.Now.Second);
+            PlayerPrefs.SetInt("lastDate", System.DateTime.Now.Minute);
             ActiveChallenges.Clear();
             ActiveChallenges =  GetNewDailyChallenges();
-            Debug.Log(System.DateTime.Now.Second);
+            Debug.Log("On refresh les challenges!");
+        }
+        else
+        {
+            foreach (DailyChallengeObj challenge in DailyChallenges)
+            {
+                if (challenge.IsActive)
+                {
+                    ActiveChallenges.Add(challenge);
+
+                }
+            }
         }
         
     }
@@ -59,6 +70,7 @@ public class AchievementsManager : MonoBehaviour
             }
             newList.Add(DailyChallenges[random]);
             newList[i].ResetValues();
+            newList[i].IsActive = true;
         }
         return newList;
     }
@@ -66,7 +78,7 @@ public class AchievementsManager : MonoBehaviour
     public void AddScore(int score)
     {
         LifetimeStatsObj.LifetimeScore += score;
-        foreach(DailyChallengeObj challenge in DailyChallenges)
+        foreach(DailyChallengeObj challenge in ActiveChallenges)
         {
             challenge.Score += score;
         }
@@ -74,7 +86,7 @@ public class AchievementsManager : MonoBehaviour
 
     public void AddDistance(int distance)
     {
-        foreach (DailyChallengeObj challenge in DailyChallenges)
+        foreach (DailyChallengeObj challenge in ActiveChallenges)
         {
             challenge.Distance += distance;
         }
@@ -84,7 +96,7 @@ public class AchievementsManager : MonoBehaviour
     public void AddCoin(int coin)
     {
         LifetimeStatsObj.LifetimeCoinsPickedUp += coin;
-        foreach (DailyChallengeObj challenge in DailyChallenges)
+        foreach (DailyChallengeObj challenge in ActiveChallenges)
         {
             challenge.CoinsPickedUp += coin;
         }
@@ -93,7 +105,7 @@ public class AchievementsManager : MonoBehaviour
     public void AddMoney(int money)
     {
         LifetimeStatsObj.LifetimeMoney += money;
-        foreach (DailyChallengeObj challenge in DailyChallenges)
+        foreach (DailyChallengeObj challenge in ActiveChallenges)
         {
             challenge.Money += money;
         }
@@ -102,7 +114,7 @@ public class AchievementsManager : MonoBehaviour
     public void AddObstacleDodged(int number)
     {
         LifetimeStatsObj.LifetimeObstaclesDodged += number;
-        foreach (DailyChallengeObj challenge in DailyChallenges)
+        foreach (DailyChallengeObj challenge in ActiveChallenges)
         {
             challenge.ObstaclesDodged += number;
         }
@@ -111,7 +123,7 @@ public class AchievementsManager : MonoBehaviour
     public void AddDeath(int number) 
     {
         LifetimeStatsObj.LifetimeDeaths += number;
-        foreach (DailyChallengeObj challenge in DailyChallenges)
+        foreach (DailyChallengeObj challenge in ActiveChallenges)
         {
             challenge.Deaths += number;
         }
@@ -121,7 +133,7 @@ public class AchievementsManager : MonoBehaviour
     {
         if (number <= 0) return;
         LifetimeStatsObj.LifetimeLevelsPassed += number;
-        foreach (DailyChallengeObj challenge in DailyChallenges)
+        foreach (DailyChallengeObj challenge in ActiveChallenges)
         {
             challenge.LevelsPassed += number;
         }

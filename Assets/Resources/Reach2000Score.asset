@@ -13,12 +13,20 @@ MonoBehaviour:
   m_Name: Reach2000Score
   m_EditorClassIdentifier: 
   ScoreToReach: 2000
-  DistanceToReach: -1
-  CoinsPickedUpToReach: -1
-  MoneyToReach: -1
-  ObstaclesDodgedToReach: -1
-  DeathsToReach: -1
-  LevelsPassedToReach: -1
+  DistanceToReach: 9999999
+  CoinsPickedUpToReach: 9999999
+  MoneyToReach: 9999999
+  ObstaclesDodgedToReach: 9999999
+  DeathsToReach: 9999999
+  LevelsPassedToReach: 9999999
+  coinsPickedUp: 0
+  money: 0
+  obstaclesDodged: 0
+  deaths: 0
+  levelsPassed: 0
+  distance: 0
+  score: 0
   IsCompleted: 0
+  IsActive: 0
   ChallengeDescription: Reach 2000 score
   CoinsWon: 50

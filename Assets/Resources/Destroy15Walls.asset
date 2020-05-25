@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5de38bb97f173e1469a6ea6cb682d4f0, type: 3}
   m_Name: Destroy15Walls
   m_EditorClassIdentifier: 
-  ScoreToReach: -1
-  DistanceToReach: -1
-  CoinsPickedUpToReach: -1
-  MoneyToReach: -1
-  ObstaclesDodgedToReach: -1
-  DeathsToReach: -1
+  ScoreToReach: 9999999
+  DistanceToReach: 9999999
+  CoinsPickedUpToReach: 9999999
+  MoneyToReach: 9999999
+  ObstaclesDodgedToReach: 9999999
+  DeathsToReach: 9999999
   LevelsPassedToReach: 15
   IsCompleted: 0
   ChallengeDescription: Destroy 15 walls

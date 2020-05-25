@@ -13,12 +13,19 @@ public class DailyChallengeObj : ScriptableObject
     public int DeathsToReach;
     public int LevelsPassedToReach;
 
+    [SerializeField]
     private int coinsPickedUp;
+    [SerializeField]
     private int money;
+    [SerializeField]
     private int obstaclesDodged;
+    [SerializeField]
     private int deaths;
+    [SerializeField]
     private int levelsPassed;
+    [SerializeField]
     private int distance;
+    [SerializeField]
     private int score;
     public int Score {
         get {
@@ -26,7 +33,7 @@ public class DailyChallengeObj : ScriptableObject
 
         }
         set {
-            if (score >= ScoreToReach && !IsCompleted) ChallengeWon();
+            if (value >= ScoreToReach && !IsCompleted) ChallengeWon();
             score = value;
         }
     }
@@ -40,7 +47,7 @@ public class DailyChallengeObj : ScriptableObject
         }
         set
         {
-            if (distance >= DistanceToReach && !IsCompleted) ChallengeWon();
+            if (value >= DistanceToReach && !IsCompleted) ChallengeWon();
             distance = value;
         }
     }
@@ -55,7 +62,7 @@ public class DailyChallengeObj : ScriptableObject
         }
         set
         {
-            if (coinsPickedUp >= CoinsPickedUpToReach && !IsCompleted) ChallengeWon();
+            if (value >= CoinsPickedUpToReach && !IsCompleted) ChallengeWon();
             coinsPickedUp = value;
         }
     }
@@ -69,7 +76,7 @@ public class DailyChallengeObj : ScriptableObject
         }
         set
         {
-            if (money >= MoneyToReach && !IsCompleted) ChallengeWon();
+            if (value >= MoneyToReach && !IsCompleted) ChallengeWon();
             money = value;
         }
     }
@@ -83,7 +90,7 @@ public class DailyChallengeObj : ScriptableObject
         }
         set
         {
-            if (obstaclesDodged >= ObstaclesDodgedToReach && !IsCompleted) ChallengeWon();
+            if (value >= ObstaclesDodgedToReach && !IsCompleted) ChallengeWon();
             obstaclesDodged = value;
         }
     }
@@ -96,7 +103,7 @@ public class DailyChallengeObj : ScriptableObject
         }
         set
         {
-            if (deaths >= DeathsToReach && !IsCompleted) ChallengeWon();
+            if (value >= DeathsToReach && !IsCompleted) ChallengeWon();
             deaths = value;
         }
     }
@@ -110,17 +117,19 @@ public class DailyChallengeObj : ScriptableObject
         }
         set
         {
-            if (levelsPassed >= LevelsPassedToReach && !IsCompleted) ChallengeWon();
+            if (value >= LevelsPassedToReach && !IsCompleted) ChallengeWon();
             levelsPassed = value;
         }
     }
 
 
-    public bool IsCompleted;
+    
 
     public void ResetValues()
     {
-        Debug.Log("ISOSUM");
+
+        IsCompleted = false;
+
         Score = 0;
         Distance = 0;
         CoinsPickedUp = 0;
@@ -128,16 +137,19 @@ public class DailyChallengeObj : ScriptableObject
         ObstaclesDodged = 0;
         Deaths = 0;
         LevelsPassed = 0;
-        IsCompleted = false;
+        
+        IsActive = false;
     }
     public void ChallengeWon()
     {
         IsCompleted = true;
         ScoreManager.Instance.PlayerMoney += CoinsWon;
         Debug.Log("CHALLENGE WON!!!");
+        Debug.Log(name);
     }
 
-
+    public bool IsCompleted;
+    public bool IsActive;
     [TextArea]
     public string ChallengeDescription;
     public int CoinsWon;

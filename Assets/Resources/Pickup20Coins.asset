@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5de38bb97f173e1469a6ea6cb682d4f0, type: 3}
   m_Name: Pickup20Coins
   m_EditorClassIdentifier: 
-  ScoreToReach: -1
-  DistanceToReach: -1
-  CoinsPickedUpToReach: -1
-  MoneyToReach: 20
-  ObstaclesDodgedToReach: -1
-  DeathsToReach: -1
-  LevelsPassedToReach: -1
+  ScoreToReach: 9999999
+  DistanceToReach: 9999999
+  CoinsPickedUpToReach: 20
+  MoneyToReach: 9999999
+  ObstaclesDodgedToReach: 9999999
+  DeathsToReach: 9999999
+  LevelsPassedToReach: 9999999
   IsCompleted: 0
   ChallengeDescription: Pickup 20 coins
   CoinsWon: 50
