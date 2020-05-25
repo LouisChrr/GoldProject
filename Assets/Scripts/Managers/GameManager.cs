@@ -107,6 +107,7 @@ public class GameManager : MonoBehaviour
 
     public void Death()
     {
+        ScoreManager.Instance.PlayerMoney += ScoreManager.Instance.MoneyInGame;
         GameManager.Instance.PlayerAudioSource.PlayOneShot(GameManager.Instance.PlayerAudioClips[1]);
         am.AddScore(Mathf.RoundToInt(sm.PlayerScore));
         am.AddDistance(Mathf.RoundToInt(sm.distance));

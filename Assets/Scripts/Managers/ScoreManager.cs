@@ -97,6 +97,7 @@ public class ScoreManager : MonoBehaviour
         else
         {
             ScoreText.text = "";
+            
             //MoneyText.text = "Money: " + PlayerMoney;
 
         }
@@ -108,9 +109,11 @@ public class ScoreManager : MonoBehaviour
     {
         am.AddCoin(1);
         am.AddMoney(Mathf.RoundToInt(CoinValue * ComboValue));
+
         PlayerScore += 20 * ComboValue;
+
         MoneyInGame += CoinValue * ComboValue;
-        PlayerMoney += MoneyInGame;
+       
         
         ComboValue = 1;
     }

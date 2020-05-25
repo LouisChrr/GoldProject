@@ -289,7 +289,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 34480665}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86c12c03100f3714888c07a7719b38b5, type: 3}
   m_Name: 
@@ -422,7 +422,7 @@ MonoBehaviour:
   BulletSpeed: 4
   ShootSpeed: 0.25
   maxSpeed: 10
-  speedDecreaseSmooth: 3
+  speedDecreaseSmooth: 1
   width: 0.5
   height: 0.5
   angle: 0
@@ -522,7 +522,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -764,7 +764,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25ec7fd78f371f6418ac77a0b2b23b39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CoinSpawnChance: 0.5
+  CoinSpawnChance: 0.2
   Coins: {fileID: 118627867}
   _CoinPrefab: {fileID: 2231894987645692706, guid: 4db747a990922114095c67344414e3d8,
     type: 3}
