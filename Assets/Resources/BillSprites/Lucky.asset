@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae869829188905f4681536a2341bfd64, type: 3}
+  m_Name: Lucky
+  m_EditorClassIdentifier: 
+  Front: {fileID: 21300000, guid: 31d149ea875adba4886a01c98eac6c2a, type: 3}
+  Back:
+  - {fileID: 21300000, guid: 1ea0c1ae285ce19448eb80f80a61ec66, type: 3}
+  - {fileID: 21300000, guid: e08a50ff99742d144b0da25c6e3c2288, type: 3}
