@@ -7220,6 +7220,8 @@ MonoBehaviour:
   backToMenu: {fileID: 0}
   backToPlay: {fileID: 0}
   greyPanel: {fileID: 0}
+  countdown: {fileID: 0}
+  countDownTime: 3
   MusicAudioSource: {fileID: 0}
   ScoreText: {fileID: 0}
   MoneyText: {fileID: 0}

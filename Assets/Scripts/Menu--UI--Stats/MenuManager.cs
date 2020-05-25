@@ -21,6 +21,9 @@ public class MenuManager : MonoBehaviour
 
     public GameObject greyPanel;
 
+    public Countdown countdown;
+    public int countDownTime = 3;
+
     public AudioSource MusicAudioSource;
 
     public Text ScoreText, MoneyText, BestScoreText, MenuMoneyText;
@@ -63,8 +66,9 @@ public class MenuManager : MonoBehaviour
         
         backToMenu.SetActive(true);
         backToPlay.SetActive(false);
-
         
+
+
     }
 
     private void Update()
@@ -94,7 +98,7 @@ public class MenuManager : MonoBehaviour
 
     public void MyLoadScene(string nameScene)
     {
-        //Debug.Log(nameScene);
+
         UnityEngine.SceneManagement.SceneManager.LoadScene(nameScene);
     }
 
@@ -150,6 +154,7 @@ public class MenuManager : MonoBehaviour
         if (pause)
         {
             Time.timeScale = 0;
+
             imgPause.SetActive(false);
             imgPlay.SetActive(true);
 
@@ -160,10 +165,9 @@ public class MenuManager : MonoBehaviour
         else
         {
             Time.timeScale = 1;
+
             imgPause.SetActive(true);
             imgPlay.SetActive(false);
-
-            MusicAudioSource.UnPause();
 
             Debug.Log("On Play");
         }
@@ -181,6 +185,39 @@ public class MenuManager : MonoBehaviour
         DataScript data = SaveSystem.LoadBestScore();
 
         PlayerBestScore = data.bestScore;
+
+    }
+    
+    public void Countdown()
+    {
+
+        StartCoroutine(CountDown());
+
+    }
+
+    IEnumerator CountDown()
+    {
+
+        imgPause.GetComponent<Button>().interactable = false;
+        FindObjectOfType<GameManager>().HasGameStarted = false;
+
+        countdown.gameObject.SetActive(true);
+        countdown.countdownTime = countDownTime;
+
+        while (countdown.countdownTime > 0)
+        {
+            countdown.GetComponent<Text>().text = countdown.countdownTime.ToString();
+
+            yield return new WaitForSeconds(1f);
+
+            countdown.countdownTime--;
+        }
+
+        countdown.gameObject.SetActive(false);
+
+        FindObjectOfType<GameManager>().HasGameStarted = true;
+        MusicAudioSource.UnPause();
+        imgPause.GetComponent<Button>().interactable = true;
 
     }
 }
