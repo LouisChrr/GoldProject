@@ -1177,6 +1177,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMainSkin: 0
+  spriteIndex: 0
+  allSkins: []
 --- !u!114 &171475629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1831,6 +1833,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMainSkin: 0
+  spriteIndex: 0
+  allSkins: []
 --- !u!114 &299488605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3047,6 +3051,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMainSkin: 0
+  spriteIndex: 0
+  allSkins: []
 --- !u!114 &440854198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3804,6 +3810,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMainSkin: 0
+  spriteIndex: 0
+  allSkins: []
 --- !u!114 &555996558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4102,6 +4110,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMainSkin: 0
+  spriteIndex: 0
+  allSkins: []
 --- !u!114 &585409422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4141,7 +4151,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a50d1a77fedf2e345b40fa1354b90f84, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 547ddf8e2c934da44a1d1d919fb20f01, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -5145,6 +5155,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMainSkin: 0
+  spriteIndex: 0
+  allSkins: []
 --- !u!114 &729264745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6510,6 +6522,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMainSkin: 0
+  spriteIndex: 0
+  allSkins: []
 --- !u!114 &1007520568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6549,7 +6563,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d466cb762d7f8064793ec07184f46339, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ce92a4b23c290c2429b6067d3cee8136, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -6872,6 +6886,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMainSkin: 0
+  spriteIndex: 0
+  allSkins: []
 --- !u!114 &1128144711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8539,6 +8555,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMainSkin: 0
+  spriteIndex: 0
+  allSkins: []
 --- !u!114 &1414996685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8996,6 +9014,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMainSkin: 0
+  spriteIndex: 0
+  allSkins: []
 --- !u!114 &1509739122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9292,6 +9312,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMainSkin: 0
+  spriteIndex: 0
+  allSkins: []
 --- !u!114 &1570892993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9438,6 +9460,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMainSkin: 0
+  spriteIndex: 0
+  allSkins: []
 --- !u!114 &1593165118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9809,6 +9833,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMainSkin: 0
+  spriteIndex: 0
+  allSkins: []
 --- !u!114 &1685764893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9955,6 +9981,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMainSkin: 0
+  spriteIndex: 0
+  allSkins: []
 --- !u!114 &1695787473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12006,6 +12034,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMainSkin: 0
+  spriteIndex: 0
+  allSkins: []
 --- !u!114 &1961080000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12389,6 +12419,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMainSkin: 0
+  spriteIndex: 0
+  allSkins: []
 --- !u!114 &1998200564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12535,6 +12567,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMainSkin: 0
+  spriteIndex: 0
+  allSkins: []
 --- !u!114 &2009852196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12574,7 +12608,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 31d149ea875adba4886a01c98eac6c2a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c59d565926d566645a360b23915b0e05, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -12679,6 +12713,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMainSkin: 0
+  spriteIndex: 0
+  allSkins: []
 --- !u!114 &2017068679
 MonoBehaviour:
   m_ObjectHideFlags: 0

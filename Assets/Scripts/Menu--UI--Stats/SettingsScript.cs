@@ -43,7 +43,7 @@ public class SettingsScript : MonoBehaviour
         }
 
         float initMusic;
-        if (audioMixer.GetFloat("effect", out initMusic))
+        if (audioMixer.GetFloat("music", out initMusic))
         {
             if (initMusic == min)
             {
