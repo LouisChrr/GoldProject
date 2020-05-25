@@ -12,19 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5de38bb97f173e1469a6ea6cb682d4f0, type: 3}
   m_Name: Destroy5Walls
   m_EditorClassIdentifier: 
-  ScoreToReach: 0
-  DistanceToReach: 0
-  CoinsPickedUpToReach: 0
-  MoneyToReach: 0
-  ObstaclesDodgedToReach: 0
-  DeathsToReach: 0
+  ScoreToReach: 9999999
+  DistanceToReach: 9999999
+  CoinsPickedUpToReach: 9999999
+  MoneyToReach: 9999999
+  ObstaclesDodgedToReach: 9999999
+  DeathsToReach: 9999999
   LevelsPassedToReach: 5
-  Distance: 0
-  CoinsPickedUp: 0
-  Money: 0
-  ObstaclesDodged: 0
-  Deaths: 0
-  LevelsPassed: 0
+  IsCompleted: 0
   ChallengeDescription: Destroy 5 walls
   CoinsWon: 50
-  IsCompleted: 0

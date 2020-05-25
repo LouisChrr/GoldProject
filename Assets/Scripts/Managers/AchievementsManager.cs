@@ -20,14 +20,26 @@ public class AchievementsManager : MonoBehaviour
 
     private void Start()
     {
-        
         // Debug.Log(System.DateTime.Now.Day);
         if(System.DateTime.Now.Minute != PlayerPrefs.GetInt("lastDate", 0))
         {
             PlayerPrefs.SetInt("lastDate", System.DateTime.Now.Minute);
-            GetNewDailyChallenges();
+            ActiveChallenges.Clear();
+            ActiveChallenges =  GetNewDailyChallenges();
+            Debug.Log("On refresh les challenges!");
         }
-        Debug.Log(System.DateTime.Now.Minute);
+        else
+        {
+            foreach (DailyChallengeObj challenge in DailyChallenges)
+            {
+                if (challenge.IsActive)
+                {
+                    ActiveChallenges.Add(challenge);
+
+                }
+            }
+        }
+        
     }
 
     // Update is called once per frame
@@ -42,29 +54,31 @@ public class AchievementsManager : MonoBehaviour
     {
         foreach (DailyChallengeObj challenge in DailyChallenges)
         {
-            challenge.ResetValues();
+             challenge.ResetValues();
         }
+
         List<DailyChallengeObj> newList = new List<DailyChallengeObj>();
         int random = 0;
+
         for(int i = 0; i < 3; i++)
         {
             random = Random.Range(0, DailyChallenges.Count);
- 
+
             while (newList.Contains(DailyChallenges[random]))
             {
                 random = Random.Range(0, DailyChallenges.Count);
             }
             newList.Add(DailyChallenges[random]);
-            DailyChallenges[random].ResetValues();
+            newList[i].ResetValues();
+            newList[i].IsActive = true;
         }
-        ActiveChallenges = newList;
         return newList;
     }
 
     public void AddScore(int score)
     {
         LifetimeStatsObj.LifetimeScore += score;
-        foreach(DailyChallengeObj challenge in DailyChallenges)
+        foreach(DailyChallengeObj challenge in ActiveChallenges)
         {
             challenge.Score += score;
         }
@@ -72,7 +86,7 @@ public class AchievementsManager : MonoBehaviour
 
     public void AddDistance(int distance)
     {
-        foreach (DailyChallengeObj challenge in DailyChallenges)
+        foreach (DailyChallengeObj challenge in ActiveChallenges)
         {
             challenge.Distance += distance;
         }
@@ -82,7 +96,7 @@ public class AchievementsManager : MonoBehaviour
     public void AddCoin(int coin)
     {
         LifetimeStatsObj.LifetimeCoinsPickedUp += coin;
-        foreach (DailyChallengeObj challenge in DailyChallenges)
+        foreach (DailyChallengeObj challenge in ActiveChallenges)
         {
             challenge.CoinsPickedUp += coin;
         }
@@ -91,7 +105,7 @@ public class AchievementsManager : MonoBehaviour
     public void AddMoney(int money)
     {
         LifetimeStatsObj.LifetimeMoney += money;
-        foreach (DailyChallengeObj challenge in DailyChallenges)
+        foreach (DailyChallengeObj challenge in ActiveChallenges)
         {
             challenge.Money += money;
         }
@@ -100,7 +114,7 @@ public class AchievementsManager : MonoBehaviour
     public void AddObstacleDodged(int number)
     {
         LifetimeStatsObj.LifetimeObstaclesDodged += number;
-        foreach (DailyChallengeObj challenge in DailyChallenges)
+        foreach (DailyChallengeObj challenge in ActiveChallenges)
         {
             challenge.ObstaclesDodged += number;
         }
@@ -109,7 +123,7 @@ public class AchievementsManager : MonoBehaviour
     public void AddDeath(int number) 
     {
         LifetimeStatsObj.LifetimeDeaths += number;
-        foreach (DailyChallengeObj challenge in DailyChallenges)
+        foreach (DailyChallengeObj challenge in ActiveChallenges)
         {
             challenge.Deaths += number;
         }
@@ -119,7 +133,7 @@ public class AchievementsManager : MonoBehaviour
     {
         if (number <= 0) return;
         LifetimeStatsObj.LifetimeLevelsPassed += number;
-        foreach (DailyChallengeObj challenge in DailyChallenges)
+        foreach (DailyChallengeObj challenge in ActiveChallenges)
         {
             challenge.LevelsPassed += number;
         }

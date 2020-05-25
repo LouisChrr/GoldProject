@@ -12,19 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5de38bb97f173e1469a6ea6cb682d4f0, type: 3}
   m_Name: Reach100Meters
   m_EditorClassIdentifier: 
-  ScoreToReach: 0
-  DistanceToReach: 100
-  CoinsPickedUpToReach: 0
-  MoneyToReach: 0
-  ObstaclesDodgedToReach: 0
-  DeathsToReach: 0
-  LevelsPassedToReach: 0
-  Distance: 0
-  CoinsPickedUp: 0
-  Money: 0
-  ObstaclesDodged: 0
-  Deaths: 0
-  LevelsPassed: 0
+  ScoreToReach: 9999999
+  DistanceToReach: 40
+  CoinsPickedUpToReach: 9999999
+  MoneyToReach: 9999999
+  ObstaclesDodgedToReach: 9999999
+  DeathsToReach: 9999999
+  LevelsPassedToReach: 9999999
+  coinsPickedUp: 0
+  money: 0
+  obstaclesDodged: 0
+  deaths: 0
+  levelsPassed: 0
+  distance: 0
+  score: 0
+  IsCompleted: 0
+  IsActive: 0
   ChallengeDescription: Reach 100 meters
   CoinsWon: 50
-  IsCompleted: 0
