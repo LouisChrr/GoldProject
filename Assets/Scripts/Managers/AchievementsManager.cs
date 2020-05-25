@@ -20,14 +20,15 @@ public class AchievementsManager : MonoBehaviour
 
     private void Start()
     {
-        
         // Debug.Log(System.DateTime.Now.Day);
-        if(System.DateTime.Now.Minute != PlayerPrefs.GetInt("lastDate", 0))
+        if(System.DateTime.Now.Second != PlayerPrefs.GetInt("lastDate", 0))
         {
-            PlayerPrefs.SetInt("lastDate", System.DateTime.Now.Minute);
-            GetNewDailyChallenges();
+            PlayerPrefs.SetInt("lastDate", System.DateTime.Now.Second);
+            ActiveChallenges.Clear();
+            ActiveChallenges =  GetNewDailyChallenges();
+            Debug.Log(System.DateTime.Now.Second);
         }
-        Debug.Log(System.DateTime.Now.Minute);
+        
     }
 
     // Update is called once per frame
@@ -42,22 +43,23 @@ public class AchievementsManager : MonoBehaviour
     {
         foreach (DailyChallengeObj challenge in DailyChallenges)
         {
-            challenge.ResetValues();
+             challenge.ResetValues();
         }
+
         List<DailyChallengeObj> newList = new List<DailyChallengeObj>();
         int random = 0;
+
         for(int i = 0; i < 3; i++)
         {
             random = Random.Range(0, DailyChallenges.Count);
- 
+
             while (newList.Contains(DailyChallenges[random]))
             {
                 random = Random.Range(0, DailyChallenges.Count);
             }
             newList.Add(DailyChallenges[random]);
-            DailyChallenges[random].ResetValues();
+            newList[i].ResetValues();
         }
-        ActiveChallenges = newList;
         return newList;
     }
 

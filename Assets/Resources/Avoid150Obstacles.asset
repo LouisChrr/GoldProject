@@ -12,19 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5de38bb97f173e1469a6ea6cb682d4f0, type: 3}
   m_Name: Avoid150Obstacles
   m_EditorClassIdentifier: 
-  ScoreToReach: 0
-  DistanceToReach: 0
-  CoinsPickedUpToReach: 0
-  MoneyToReach: 0
-  ObstaclesDodgedToReach: 0
-  DeathsToReach: 0
-  LevelsPassedToReach: 0
-  Distance: 0
-  CoinsPickedUp: 0
-  Money: 0
-  ObstaclesDodged: 0
-  Deaths: 0
-  LevelsPassed: 0
-  ChallengeDescription: 
-  CoinsWon: 0
+  ScoreToReach: -1
+  DistanceToReach: -1
+  CoinsPickedUpToReach: -1
+  MoneyToReach: -1
+  ObstaclesDodgedToReach: 150
+  DeathsToReach: -1
+  LevelsPassedToReach: -1
   IsCompleted: 0
+  ChallengeDescription: Avoid  150 Obstacles
+  CoinsWon: 75
