@@ -102,6 +102,8 @@ public class Circle : MonoBehaviour
         {
             ResetCircle(false);
             transform.position = new Vector3(0, 0, CirclesNb);
+            transform.position = omm.GetNextPos(this.transform.position);
+            transform.position = new Vector3(this.transform.position.x, this.transform.position.y, CirclesNb);
         }
 
         
@@ -145,7 +147,7 @@ public class Circle : MonoBehaviour
             
             spriterenderer.material = materials[1];
             AssignNewColor(0.02f);
-
+            
 
             transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
 
@@ -156,6 +158,7 @@ public class Circle : MonoBehaviour
           return;
         }
         IsObstacle = Random.Range(0, 80) <= 5 + gm.LevelNb*3;
+        //print("levelNb; " + gm.LevelNb);
 
         childCircle.GetComponent<Obstacle>().IsBumper = false;
         childCircle.GetComponent<Obstacle>().IsMurEtape = false;
@@ -172,22 +175,15 @@ public class Circle : MonoBehaviour
 
         if (Mathf.RoundToInt(sm.distance) % (gm.CirclesNumber + Mathf.RoundToInt(gm.LevelSpeed)) == 0 && Mathf.RoundToInt(sm.PlayerScore) >= 10)
         {
-            if(previousCircle.IsObstacle == true)
-            {
+            
                 previousCircle.ResetObstacle();
-            }
-            if(previousCircle.previousCircle.IsObstacle == true)
-            {
                 previousCircle.previousCircle.ResetObstacle();
-            }
-            if (previousCircle.previousCircle.previousCircle.IsObstacle == true)
-            {
                 previousCircle.previousCircle.previousCircle.ResetObstacle();
-            }
-            if (previousCircle.previousCircle.previousCircle.previousCircle.IsObstacle == true)
-            {
                 previousCircle.previousCircle.previousCircle.previousCircle.ResetObstacle();
-            }
+                previousCircle.previousCircle.previousCircle.previousCircle.previousCircle.ResetObstacle();
+                previousCircle.previousCircle.previousCircle.previousCircle.previousCircle.previousCircle.ResetObstacle();
+                previousCircle.previousCircle.previousCircle.previousCircle.previousCircle.previousCircle.previousCircle.ResetObstacle();
+            
 
             if (sm.PlayerScore - sm.lastScore < 10) return;
             sm.lastScore = sm.PlayerScore;

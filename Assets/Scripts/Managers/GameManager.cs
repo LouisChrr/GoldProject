@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
 
         if (levelNb > 1)
         {
-            am.AddLevelPassed(levelNb - 1);
+            AchievementsManager.Instance.AddLevelPassed(levelNb - 1);
             LevelUpText.SetActive(true);
             LevelUpText.GetComponent<Animator>().Play("TextFade", 0, 0);
         }
@@ -108,11 +108,12 @@ public class GameManager : MonoBehaviour
     public void Death()
     {
         ScoreManager.Instance.PlayerMoney += ScoreManager.Instance.MoneyInGame;
-        GameManager.Instance.PlayerAudioSource.PlayOneShot(GameManager.Instance.PlayerAudioClips[1]);
-        am.AddScore(Mathf.RoundToInt(sm.PlayerScore));
-        am.AddDistance(Mathf.RoundToInt(sm.distance));
-        
-        am.AddDeath(1);
+        PlayerAudioSource.PlayOneShot(PlayerAudioClips[1]);
+        if (am == null) am = AchievementsManager.Instance;
+        AchievementsManager.Instance.AddScore(Mathf.RoundToInt(ScoreManager.Instance.PlayerScore));
+        AchievementsManager.Instance.AddDistance(Mathf.RoundToInt(ScoreManager.Instance.distance));
+
+        AchievementsManager.Instance.AddDeath(1);
 
         IsPlayerDead = true;
         MenuManager.Instance.EndGame();
