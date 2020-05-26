@@ -28,7 +28,7 @@ public class Countdown : MonoBehaviour
         {
             countdown.text = countdownTime.ToString();
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSecondsRealtime(1f);
 
             countdownTime--;
         }

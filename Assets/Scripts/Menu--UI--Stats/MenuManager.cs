@@ -199,8 +199,8 @@ public class MenuManager : MonoBehaviour
     {
 
         imgPause.GetComponent<Button>().interactable = false;
-        FindObjectOfType<GameManager>().HasGameStarted = false;
-
+        //FindObjectOfType<GameManager>().HasGameStarted = false;
+        Time.timeScale = 0;
         countdown.gameObject.SetActive(true);
         countdown.countdownTime = countDownTime;
 
@@ -208,14 +208,14 @@ public class MenuManager : MonoBehaviour
         {
             countdown.GetComponent<Text>().text = countdown.countdownTime.ToString();
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSecondsRealtime(1f);
 
             countdown.countdownTime--;
         }
 
         countdown.gameObject.SetActive(false);
-
-        FindObjectOfType<GameManager>().HasGameStarted = true;
+        Time.timeScale = 1;
+        //FindObjectOfType<GameManager>().HasGameStarted = true;
         MusicAudioSource.UnPause();
         imgPause.GetComponent<Button>().interactable = true;
 

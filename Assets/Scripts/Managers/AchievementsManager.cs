@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AchievementsManager : MonoBehaviour
 {
@@ -10,22 +11,18 @@ public class AchievementsManager : MonoBehaviour
     private List<DailyChallengeObj> DailyChallenges = new List<DailyChallengeObj>();
     public List<DailyChallengeObj> ActiveChallenges;
     public int lastDate;
-
+   
     // Start is called before the first frame update
     void Awake()
     {
         if (Instance != null) Debug.LogError("wtf 2 achievemtns manager");
         else Instance = this;
-    }
 
-    private void Start()
-    {
-        // Debug.Log(System.DateTime.Now.Day);
-        if(System.DateTime.Now.Minute != PlayerPrefs.GetInt("lastDate", 0))
+        if (System.DateTime.Now.Minute != PlayerPrefs.GetInt("lastDate", 0))
         {
             PlayerPrefs.SetInt("lastDate", System.DateTime.Now.Minute);
             ActiveChallenges.Clear();
-            ActiveChallenges =  GetNewDailyChallenges();
+            ActiveChallenges = GetNewDailyChallenges();
             Debug.Log("On refresh les challenges!");
         }
         else
@@ -38,7 +35,14 @@ public class AchievementsManager : MonoBehaviour
 
                 }
             }
+   
         }
+    }
+
+    private void Start()
+    {
+        // Debug.Log(System.DateTime.Now.Day);
+        
         
     }
 

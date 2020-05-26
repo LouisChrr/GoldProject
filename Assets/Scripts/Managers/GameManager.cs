@@ -69,12 +69,13 @@ public class GameManager : MonoBehaviour
             AchievementsManager.Instance.AddLevelPassed(levelNb - 1);
             LevelUpText.SetActive(true);
             LevelUpText.GetComponent<Animator>().Play("TextFade", 0, 0);
+            Handheld.Vibrate();
         }
 
         ScoreManager.Instance.ComboValue = 1;
 
         LevelNb = levelNb;
-        LevelSpeed = levelNb*0.4f +2;
+        LevelSpeed = levelNb*0.8f +2;
         ObjectsMovementManager.Instance.bonusSpeed = LevelSpeed;
 
         List<GameObject> sortedList = generator.Circles.OrderBy(g => g.transform.position.z).ToList();
@@ -107,6 +108,7 @@ public class GameManager : MonoBehaviour
 
     public void Death()
     {
+        Handheld.Vibrate();
         ScoreManager.Instance.PlayerMoney += ScoreManager.Instance.MoneyInGame;
         PlayerAudioSource.PlayOneShot(PlayerAudioClips[1]);
         if (am == null) am = AchievementsManager.Instance;
