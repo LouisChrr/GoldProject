@@ -19,6 +19,16 @@ MonoBehaviour:
   ObstaclesDodgedToReach: 9999999
   DeathsToReach: 10
   LevelsPassedToReach: 9999999
+  coinsPickedUp: 0
+  money: 0
+  obstaclesDodged: 0
+  deaths: 0
+  levelsPassed: 0
+  distance: 0
+  score: 0
   IsCompleted: 0
-  ChallengeDescription: Die 10 times
+  IsActive: 0
+  ChallengeDescription: 'Die 10
+
+    times'
   CoinsWon: 60

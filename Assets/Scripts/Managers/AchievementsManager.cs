@@ -11,7 +11,11 @@ public class AchievementsManager : MonoBehaviour
     private List<DailyChallengeObj> DailyChallenges = new List<DailyChallengeObj>();
     public List<DailyChallengeObj> ActiveChallenges;
     public int lastDate;
-   
+
+    public Text[] descText = new Text[3];
+    public Text[] challengeMoney = new Text[3];
+    public GameObject[] completedText = new GameObject[3];
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -42,14 +46,28 @@ public class AchievementsManager : MonoBehaviour
     private void Start()
     {
         // Debug.Log(System.DateTime.Now.Day);
-        
+        //for(int i = 0; i < completedText.Length; i++)
+        //{
+        //    completedText[i].SetActive(false);
+        //}
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        for (int i = 0; i < AchievementsManager.Instance.ActiveChallenges.Count; i++)
+        {
+            //descText = ta liste de texte à update (taille 3)
+            descText[i].text = AchievementsManager.Instance.ActiveChallenges[i].ChallengeDescription;
+            challengeMoney[i].text = "" + AchievementsManager.Instance.ActiveChallenges[i].CoinsWon;
+
+            if (AchievementsManager.Instance.ActiveChallenges[i].IsCompleted)
+            {
+                challengeMoney[i].gameObject.SetActive(false);
+                completedText[i].SetActive(true);
+            }
+        }
     }
 
 
