@@ -26,6 +26,8 @@ public class MenuManager : MonoBehaviour
 
     public AudioSource MusicAudioSource;
 
+    public AchievementsManager achievementsManager;
+
     public Text ScoreText, MoneyText, BestScoreText, MenuMoneyText;
     public float PlayerBestScore = 0;
 
@@ -73,12 +75,7 @@ public class MenuManager : MonoBehaviour
 
     private void Update()
     {
-
-        if (FindObjectOfType<GameManager>().HasGameStarted)
-        {
-            backToMenu.SetActive(false);
-            backToPlay.SetActive(true);
-        }
+        
     }
 
     public void EndGame()
@@ -158,7 +155,12 @@ public class MenuManager : MonoBehaviour
             imgPause.SetActive(false);
             imgPlay.SetActive(true);
 
+            backToMenu.SetActive(false);
+            backToPlay.SetActive(true);
+
             MusicAudioSource.Pause();
+
+            achievementsManager.UpdateChallenges();
 
             Debug.Log("On Pause");
         }

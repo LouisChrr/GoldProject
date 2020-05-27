@@ -50,15 +50,10 @@ public class AchievementsManager : MonoBehaviour
         //{
         //    completedText[i].SetActive(false);
         //}
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
         for (int i = 0; i < AchievementsManager.Instance.ActiveChallenges.Count; i++)
         {
-            //descText = ta liste de texte à update (taille 3)
+
             descText[i].text = AchievementsManager.Instance.ActiveChallenges[i].ChallengeDescription;
             challengeMoney[i].text = "" + AchievementsManager.Instance.ActiveChallenges[i].CoinsWon;
 
@@ -68,6 +63,24 @@ public class AchievementsManager : MonoBehaviour
                 completedText[i].SetActive(true);
             }
         }
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        //for (int i = 0; i < AchievementsManager.Instance.ActiveChallenges.Count; i++)
+        //{
+
+        //    descText[i].text = AchievementsManager.Instance.ActiveChallenges[i].ChallengeDescription;
+        //    challengeMoney[i].text = "" + AchievementsManager.Instance.ActiveChallenges[i].CoinsWon;
+
+        //    if (AchievementsManager.Instance.ActiveChallenges[i].IsCompleted)
+        //    {
+        //        challengeMoney[i].gameObject.SetActive(false);
+        //        completedText[i].SetActive(true);
+        //    }
+        //}
     }
 
 
@@ -161,6 +174,23 @@ public class AchievementsManager : MonoBehaviour
         }
     }
 
+    public void UpdateChallenges()
+    {
 
+        for (int i = 0; i < AchievementsManager.Instance.ActiveChallenges.Count; i++)
+        {
+
+            //descText[i].text = AchievementsManager.Instance.ActiveChallenges[i].ChallengeDescription;
+            //challengeMoney[i].text = "" + AchievementsManager.Instance.ActiveChallenges[i].CoinsWon;
+
+            if (AchievementsManager.Instance.ActiveChallenges[i].IsCompleted)
+            {
+                challengeMoney[i].gameObject.SetActive(false);
+                completedText[i].SetActive(true);
+            }
+
+        }
+
+    }
 
 }

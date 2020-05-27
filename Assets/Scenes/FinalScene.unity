@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -529,6 +529,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7e28e1956c4a23e4a87481d1487c23d7, type: 2}
   - {fileID: 11400000, guid: 0b007a500b9b4604799e4ab9bd3d59aa, type: 2}
   - {fileID: 11400000, guid: be9746c7ebf32994faf167ad2cf86703, type: 2}
+  - {fileID: 11400000, guid: 010ec810ddec89648b20ae8c5fecf2fe, type: 2}
 --- !u!82 &67924486
 AudioSource:
   m_ObjectHideFlags: 0
@@ -536,7 +537,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 67924477}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -640695541446647847, guid: eb6953ca0345d6f41add8abbb848e6c3,
     type: 2}
@@ -7600,6 +7601,7 @@ MonoBehaviour:
   countdown: {fileID: 245346739}
   countDownTime: 3
   MusicAudioSource: {fileID: 1634946585}
+  achievementsManager: {fileID: 965491060}
   ScoreText: {fileID: 1512056035}
   MoneyText: {fileID: 1059584251}
   BestScoreText: {fileID: 903370393}
