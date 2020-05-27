@@ -66,18 +66,20 @@ public class ScoreManager : MonoBehaviour
             MoneyInGameText.gameObject.SetActive(true);
             PlayerScore += Time.deltaTime * 2.0f * ComboValue;
             distance += Time.deltaTime * 2.0f;
-            if(PlayerScore > bestScore)
+            if(PlayerScore > bestScore && lastIntScore == -1)
             {
-                if(Mathf.RoundToInt(PlayerScore) > lastIntScore)
-                {
-                    if(lastIntScore == -1)
-                    {
-                        gm.PlayerAudioSource.PlayOneShot(gm.PlayerAudioClips[6]);
-                    }
+                gm.PlayerAudioSource.PlayOneShot(gm.PlayerAudioClips[6]);
+                lastIntScore = 0;
+                //if(Mathf.RoundToInt(PlayerScore) > lastIntScore)
+                // {
+                //if (lastIntScore == -1)
+                //    {
+                        
+                //    }
                    // gm.PlayerAudioSource.PlayOneShot(gm.PlayerAudioClips[5]);
-                }
+               // }
                     
-                lastIntScore = Mathf.RoundToInt(PlayerScore);
+               // lastIntScore = Mathf.RoundToInt(PlayerScore);
 
             }
 

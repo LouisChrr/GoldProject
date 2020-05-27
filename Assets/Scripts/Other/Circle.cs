@@ -59,34 +59,37 @@ public class Circle : MonoBehaviour
     {
         if (gm.IsPlayerDead || !gm.HasGameStarted) return;
 
-        if(childObstacle.IsMurEtape == true && childCircle.transform.position.z < (gm.CirclesNumber/3) + gm.LevelSpeed * 2)
+        if (childObstacle.IsMurEtape)
         {
-            if (Player.GetComponent<BilleMovement>().angle - baseAngle > 6 || Player.GetComponent<BilleMovement>().angle - baseAngle < -6)
+            if (childCircle.transform.position.z < (gm.CirclesNumber / 3) + gm.LevelSpeed * 2)
             {
-                gameObject.transform.localRotation = Quaternion.Euler(Vector3.zero);
+                if (Player.GetComponent<BilleMovement>().angle - baseAngle > 6 || Player.GetComponent<BilleMovement>().angle - baseAngle < -6)
+                {
+                    gameObject.transform.localRotation = Quaternion.Euler(Vector3.zero);
 
-                Color previous = previousCircle.spriterenderer.material.GetColor("_Color");
+                    Color previous = previousCircle.spriterenderer.material.GetColor("_Color");
 
-                spriterenderer.material = materials[1];
-                spriterenderer.material.SetColor("_Color", previous);
+                    spriterenderer.material = materials[1];
+                    spriterenderer.material.SetColor("_Color", previous);
 
-                childCircle.GetComponent<Obstacle>().MurEtapeCollider.enabled = false;
-                childCircle.GetComponent<Obstacle>().IsMurEtape = false;
-                childCircle.SetActive(false);
-                gm.NewLevel(gm.LevelNb + 1);
-               /// print("mur etape detruit");
+                    childCircle.GetComponent<Obstacle>().MurEtapeCollider.enabled = false;
+                    childCircle.GetComponent<Obstacle>().IsMurEtape = false;
+                    childCircle.SetActive(false);
+                    gm.NewLevel(gm.LevelNb + 1);
+                    /// print("mur etape detruit");
+                }
+            }else if (childCircle.transform.position.z > gm.CirclesNumber / 3)
+            {
+                baseAngle = Player.GetComponent<BilleMovement>().angle;
             }
-        }else if(childObstacle.IsMurEtape == true && childCircle.transform.position.z > gm.CirclesNumber / 3)
-        {
-            baseAngle = Player.GetComponent<BilleMovement>().angle;
-
         }
-
-        transform.position = omm.GetNextPos(this.transform.position);
-        if (childObstacle.IsMurEtape == false) // SI MUR ETAPE ON ROTATEA PAS ISSOU
+        else
         {
             transform.rotation *= Quaternion.Euler(0, 0, rotationSpeed * Time.timeScale);
         }
+
+        transform.position = omm.GetNextPos(this.transform.position);
+       
 
 
         if (transform.position.z <= BilleZ)
@@ -94,19 +97,15 @@ public class Circle : MonoBehaviour
             spriterenderer.material.SetFloat("_Alpha", Mathf.Lerp(spriterenderer.material.GetFloat("_Alpha"), 0, Time.deltaTime * 3f * gm.LevelSpeed));
             childCircle.GetComponent<SpriteRenderer>().material.SetFloat("_Alpha", Mathf.Lerp(childCircle.GetComponent<SpriteRenderer>().material.GetFloat("_Alpha"), 0, Time.deltaTime * 3f * gm.LevelSpeed));
 
-           
             spriterenderer.sortingOrder = 0;
+            if (transform.position.z <= 0)
+            {
+                ResetCircle(false);
+                transform.position = new Vector3(0, 0, CirclesNb);
+                transform.position = omm.GetNextPos(this.transform.position);
+                transform.position = new Vector3(this.transform.position.x, this.transform.position.y, CirclesNb);
+            }
         }
-
-        if (transform.position.z <= 0)
-        {
-            ResetCircle(false);
-            transform.position = new Vector3(0, 0, CirclesNb);
-            transform.position = omm.GetNextPos(this.transform.position);
-            transform.position = new Vector3(this.transform.position.x, this.transform.position.y, CirclesNb);
-        }
-
-        
 
     }
 

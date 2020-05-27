@@ -95,8 +95,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d011a92362041a4cb6ffe3ce5f18c83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
-  bonusSpeed: 1
   IsObstacle: 0
   sprites:
   - {fileID: 21300000, guid: f56133474813ca14c8d2f18718f4544e, type: 3}
@@ -182,7 +180,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 126
-  m_CollisionDetection: 3
+  m_CollisionDetection: 0
 --- !u!114 &4372165303093459361
 MonoBehaviour:
   m_ObjectHideFlags: 0
