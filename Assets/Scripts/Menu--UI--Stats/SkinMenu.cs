@@ -21,6 +21,8 @@ public class SkinMenu : MonoBehaviour
     
     public GameObject[] skins;
 
+    public int bigBossID;
+
     private bool[] skinsLocked;
 
     // Start is called before the first frame update
@@ -32,6 +34,8 @@ public class SkinMenu : MonoBehaviour
         imageSkin = GetComponent<Image>();
         buyUI.SetActive(false);
         impossibleToBuy.SetActive(false);
+
+        bigBossID = skins.Length - 1;
 
         //moneyTxt.GetComponent<Text>().text = "Gold: " + money;
         //moneyTxt.GetComponent<Text>().text = "Gold: " + FindObjectOfType<ScoreManager>().PlayerMoney;
@@ -59,6 +63,11 @@ public class SkinMenu : MonoBehaviour
         //moneyTxt.GetComponent<Text>().text = "Gold: " + money;
         moneyTxt.GetComponent<Text>().text = "" + FindObjectOfType<ScoreManager>().PlayerMoney;
         //moneyTxt.GetComponent<TextMeshProUGUI>().text = "" + FindObjectOfType<ScoreManager>().PlayerMoney;
+
+        if (!skins[bigBossID].GetComponent<SkinLock>().isLocked)
+        {
+            UIScript.Instance.UnlockedBigBoss();
+        }
     }
 
     public void ChooseSkin()
