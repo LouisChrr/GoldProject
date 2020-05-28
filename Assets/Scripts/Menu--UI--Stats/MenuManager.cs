@@ -222,4 +222,9 @@ public class MenuManager : MonoBehaviour
         imgPause.GetComponent<Button>().interactable = true;
 
     }
+
+    public void UnlockAchievement()
+    {
+        UIScript.Instance.UnlockedBigBoss();
+    }
 }

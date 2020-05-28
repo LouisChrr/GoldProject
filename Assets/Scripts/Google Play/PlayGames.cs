@@ -6,12 +6,26 @@ using UnityEngine;
 
 public class PlayGames : MonoBehaviour
 {
+
+    public static PlayGamesPlatform platform;
+
+    public GameObject connected;
+
     // Start is called before the first frame update
     void Start()
     {
-        PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder().Build();
-        PlayGamesPlatform.InitializeInstance(config);
-        PlayGamesPlatform.Activate();
+        connected.SetActive(false);
+        if(platform == null)
+        {
+            PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder().Build();
+            PlayGamesPlatform.InitializeInstance(config);
+            PlayGamesPlatform.DebugLogEnabled = true;
+
+            platform = PlayGamesPlatform.Activate();
+            
+        }
+
+        
 
         SignIn();
     }
@@ -24,7 +38,24 @@ public class PlayGames : MonoBehaviour
 
     void SignIn()
     {
-        Social.localUser.Authenticate(success => { });
+        Social.Active.localUser.Authenticate(success => {
+
+            if (success)
+            {
+                Debug.Log("Logged in successfully");
+                connected.SetActive(true);
+            }
+            else
+            {
+                Debug.Log("Failed to login");
+            }
+
+        });
+    }
+
+    public void LogOut()
+    {
+        PlayGamesPlatform.Instance.SignOut();
     }
 
     #region Achievements
@@ -34,9 +65,22 @@ public class PlayGames : MonoBehaviour
         Social.ReportProgress(id, 100, success => { });
     }
 
-    public static void IncrementAchievement(string id, int stepsToIncrement)
+    public static void ScoreAchievement1(string id/*, int stepsToIncrement*/)
     {
-        PlayGamesPlatform.Instance.IncrementAchievement(id, stepsToIncrement, success => { });
+        //PlayGamesPlatform.Instance.IncrementAchievement(id, stepsToIncrement, success => { });
+        Social.ReportProgress(id, 100, success => { });
+    }
+
+    public static void ScoreAchievement2(string id/*, int stepsToIncrement*/)
+    {
+        //PlayGamesPlatform.Instance.IncrementAchievement(id, stepsToIncrement, success => { });
+        Social.ReportProgress(id, 100, success => { });
+    }
+
+    public static void ScoreAchievement3(string id/*, int stepsToIncrement*/)
+    {
+        //PlayGamesPlatform.Instance.IncrementAchievement(id, stepsToIncrement, success => { });
+        Social.ReportProgress(id, 100, success => { });
     }
 
     public static void ShowAchievementsUI()

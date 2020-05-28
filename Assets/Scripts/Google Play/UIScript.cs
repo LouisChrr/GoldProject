@@ -26,10 +26,20 @@ public class UIScript : MonoBehaviour
         ManagerAchievements.Instance.RestartGame();
     }
 
-    //public void Increment()
-    //{
-    //    PlayGames.IncrementAchievement(GPGSIds.achievement_incremental_achievement, 5);
-    //}
+    public void ScoreAchievement1()
+    {
+        PlayGames.ScoreAchievement1(GPGSIds.achievement_amateur_ball/*, 1*/);
+    }
+
+    public void ScoreAchievement2()
+    {
+        PlayGames.ScoreAchievement2(GPGSIds.achievement_amateur_ball/*, 1*/);
+    }
+
+    public void ScoreAchievement3()
+    {
+        PlayGames.ScoreAchievement3(GPGSIds.achievement_amateur_ball/*, 1*/);
+    }
 
     public void UnlockedBigBoss()
     {
