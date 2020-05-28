@@ -314,7 +314,7 @@ MonoBehaviour:
   ObstacleHP: 1
   IsPlayerDead: 0
   InitialCircleSpeed: 1
-  circlesNumber: 20
+  circlesNumber: 15
   generator: {fileID: 8908073}
 --- !u!4 &34480668
 Transform:
