@@ -131,7 +131,7 @@ public class Circle : MonoBehaviour
 
     public void ResetCircle(bool preventObstacle)
     {
-
+        ResetObstacle();
         spriterenderer.material.SetFloat("_Alpha", 1);
 
         // si ct  un obstacle
@@ -172,7 +172,7 @@ public class Circle : MonoBehaviour
         childCircle.GetComponent<Obstacle>().JesusCollider2.enabled = false;
 
 
-        if (Mathf.RoundToInt(sm.distance) % (gm.CirclesNumber + Mathf.RoundToInt(gm.LevelSpeed)) == 0 && Mathf.RoundToInt(sm.PlayerScore) >= 10)
+        if (Mathf.RoundToInt(sm.distance) % ((gm.CirclesNumber+5) + Mathf.RoundToInt(gm.LevelSpeed)) == 0 && Mathf.RoundToInt(sm.PlayerScore) >= 10)
         {
             
                 previousCircle.ResetObstacle();
@@ -180,12 +180,12 @@ public class Circle : MonoBehaviour
                 previousCircle.previousCircle.previousCircle.ResetObstacle();
                 previousCircle.previousCircle.previousCircle.previousCircle.ResetObstacle();
                 previousCircle.previousCircle.previousCircle.previousCircle.previousCircle.ResetObstacle();
-                previousCircle.previousCircle.previousCircle.previousCircle.previousCircle.previousCircle.ResetObstacle();
-                previousCircle.previousCircle.previousCircle.previousCircle.previousCircle.previousCircle.previousCircle.ResetObstacle();
+               // previousCircle.previousCircle.previousCircle.previousCircle.previousCircle.previousCircle.ResetObstacle();
+               // previousCircle.previousCircle.previousCircle.previousCircle.previousCircle.previousCircle.previousCircle.ResetObstacle();
             
 
-            if (sm.PlayerScore - sm.lastScore < 10) return;
-            sm.lastScore = sm.PlayerScore;
+            //if (sm.PlayerScore - sm.lastScore < 4) return;
+            //sm.lastScore = sm.PlayerScore;
           
             childCircle.GetComponent<Obstacle>().IsMurEtape = true;
             childCircle.GetComponent<Obstacle>().MuretCollider.enabled = false;

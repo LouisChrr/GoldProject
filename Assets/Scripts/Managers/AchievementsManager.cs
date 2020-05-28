@@ -22,9 +22,9 @@ public class AchievementsManager : MonoBehaviour
         if (Instance != null) Debug.LogError("wtf 2 achievemtns manager");
         else Instance = this;
 
-        if (System.DateTime.Now.Minute != PlayerPrefs.GetInt("lastDate", 0))
+        if (System.DateTime.Now.Day != PlayerPrefs.GetInt("lastDate", 0))
         {
-            PlayerPrefs.SetInt("lastDate", System.DateTime.Now.Minute);
+            PlayerPrefs.SetInt("lastDate", System.DateTime.Now.Day);
             ActiveChallenges.Clear();
             ActiveChallenges = GetNewDailyChallenges();
             Debug.Log("On refresh les challenges!");
