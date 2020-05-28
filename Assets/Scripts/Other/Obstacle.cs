@@ -50,6 +50,8 @@ public class Obstacle : MonoBehaviour
             sr.material = ParentCircle.materials[1];
             IsBumper = false;
             //HP = GameManager.Instance.ObstacleHP;
+            MuretCollider.enabled = false;
+            MurEtapeCollider.enabled = false;
         }
 
         // Sprite[2] le bumper
