@@ -109,8 +109,11 @@ public class Circle : MonoBehaviour
 
     }
 
-    public void ResetObstacle()
+    public void ResetObstacle(bool IsDerkhaed)
     {
+
+        Color dontResetThisColor = spriterenderer.material.GetColor("_Color");
+
         // remet un cerlce à sa valeur de base sans obstacle
         childCircle.GetComponent<Obstacle>().IsBumper = false;
         childCircle.GetComponent<Obstacle>().IsMurEtape = false;
@@ -126,23 +129,27 @@ public class Circle : MonoBehaviour
         childCircle.SetActive(false);
 
         spriterenderer.material = materials[1];
+
+        if (IsDerkhaed)
+            spriterenderer.material.SetColor("_Color", dontResetThisColor);
     }
 
 
     public void ResetCircle(bool preventObstacle)
     {
-        ResetObstacle();
+        ResetObstacle(false);
         spriterenderer.material.SetFloat("_Alpha", 1);
 
         // si ct  un obstacle
         if (IsObstacle)
         {
             AchievementsManager.Instance.AddObstacleDodged(1);
-            AssignNewColor(Time.deltaTime);
         }
 
         if (preventObstacle)
         {
+            print("preventObstacle");
+
             childCircle.SetActive(false);
             
             spriterenderer.material = materials[1];
@@ -174,12 +181,12 @@ public class Circle : MonoBehaviour
 
         if (Mathf.RoundToInt(sm.distance) % ((gm.CirclesNumber+5) + Mathf.RoundToInt(gm.LevelSpeed)) == 0 && Mathf.RoundToInt(sm.PlayerScore) >= 10)
         {
-            
-                previousCircle.ResetObstacle();
-                previousCircle.previousCircle.ResetObstacle();
-                previousCircle.previousCircle.previousCircle.ResetObstacle();
-                previousCircle.previousCircle.previousCircle.previousCircle.ResetObstacle();
-                previousCircle.previousCircle.previousCircle.previousCircle.previousCircle.ResetObstacle();
+
+               previousCircle.ResetObstacle(true);
+                previousCircle.previousCircle.ResetObstacle(true);
+                previousCircle.previousCircle.previousCircle.ResetObstacle(true);
+                previousCircle.previousCircle.previousCircle.previousCircle.ResetObstacle(true);
+                previousCircle.previousCircle.previousCircle.previousCircle.previousCircle.ResetObstacle(true);
                // previousCircle.previousCircle.previousCircle.previousCircle.previousCircle.previousCircle.ResetObstacle();
                // previousCircle.previousCircle.previousCircle.previousCircle.previousCircle.previousCircle.previousCircle.ResetObstacle();
             
@@ -195,16 +202,14 @@ public class Circle : MonoBehaviour
             childCircle.GetComponent<Obstacle>().JesusCollider2.enabled = false;
             childCircle.GetComponent<SpriteRenderer>().enabled = true;
 
-        
             childCircle.GetComponent<SpriteRenderer>().material = materials[4];
-            //childCircle.GetComponent<SpriteRenderer>().material.SetColor("_Color", fx.ShiftedColor(Time.deltaTime) * 6f);
+            childCircle.GetComponent<SpriteRenderer>().material.SetColor("_Color", fx.ShiftedColor(Time.deltaTime) * 6f);
 
             spriterenderer.material = materials[6];
-            //spriterenderer.material.SetColor("_Color", fx.ShiftedColor(Time.deltaTime) * 1f);
+            spriterenderer.material.SetColor("_Color", fx.GetOppositeColor() * 1f);
 
             //fx.ChangePreviousColor(fx.ShiftedColor(0.005f + 0.25f));
-
-            AssignNewColor(Time.deltaTime);
+            //AssignNewColor(Time.deltaTime);
 
 
             childCircle.SetActive(true);
@@ -280,7 +285,7 @@ public class Circle : MonoBehaviour
             CoinSpawner.Instance.SpawnCoin(CirclesNb);
 
         LayerManager.Instance.SetCurrentDepth();
-
+        //AssignNewColor(Time.deltaTime);
     }
 
     public void AssignNewColor(float shift)

@@ -45,9 +45,36 @@ public class GameManager : MonoBehaviour
         NewLevel(0);
         sm = ScoreManager.Instance;
         am = AchievementsManager.Instance;
+
+        AssignColorToAll();
     }
 
+    private void AssignColorToAll()
+    {
+        List<GameObject> sortedList = generator.Circles.OrderBy(g => g.transform.position.z).ToList();
 
+        Color color = ImageEffectController.Instance.ShiftedColor(0.25f);
+
+        int i = 0;
+
+        foreach (GameObject go in sortedList)
+        {
+
+            //  go.GetComponent<Circle>().ChangeBonusSpeed(LevelSpeed);
+            // DUMB, ON GERE CA DANS ObjectsMovementManager MTN
+            // ok boomer
+
+
+            if (LevelNb > 0)
+            {
+                color = ImageEffectController.Instance.ShiftedColor(Time.deltaTime);
+                go.GetComponent<Circle>().ResetColor(color);
+            }
+            i++;
+        }
+
+        ImageEffectController.Instance.ChangePreviousColor(color);
+    }
 
     public void StartGame()
     {
@@ -78,32 +105,7 @@ public class GameManager : MonoBehaviour
         LevelSpeed = levelNb*0.8f +2;
         ObjectsMovementManager.Instance.bonusSpeed = LevelSpeed;
 
-        List<GameObject> sortedList = generator.Circles.OrderBy(g => g.transform.position.z).ToList();
-
-        Color color = ImageEffectController.Instance.ShiftedColor(0.25f);
-
-
-        int i = 1;
-        foreach (GameObject go in sortedList)
-        {
-
-            //  go.GetComponent<Circle>().ChangeBonusSpeed(LevelSpeed);
-            // DUMB, ON GERE CA DANS ObjectsMovementManager MTN
-            // ok boomer
-
-
-            if (LevelNb > 0)
-            {
-                color = ImageEffectController.Instance.ShiftedColor(Time.deltaTime*0.4f*i);
-                go.GetComponent<Circle>().ResetColor(color);
-            }
-
-
-
-            i++;
-        }
-
-        ImageEffectController.Instance.ChangePreviousColor(color);
+        //AssignColorToAll();
     }
 
     public void Death()

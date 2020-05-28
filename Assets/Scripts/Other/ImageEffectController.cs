@@ -75,21 +75,48 @@ public class ImageEffectController : MonoBehaviour
 
     public Color ShiftedColor(float shift)
     {
-        float h, s, v;
-
         Color shiftedColor = new Color();
 
-        Color.RGBToHSV(PreviousColor, out h, out s, out v);
+        hue += shift;
 
-        h += shift;
+        if (hue >= 1)
+            hue -= 1;
 
-        hue = h;
-
-        if (h >= 1)
-            h-=1;
-
-        shiftedColor = Color.HSVToRGB(hue, s, v);
+        shiftedColor = Color.HSVToRGB(hue, 1, 1);
 
         return shiftedColor;
+    }
+
+    public Color GetOppositeColor()
+    {
+        Color opposite = new Color();
+
+        hue += 0.5f;
+
+        if (hue >= 1)
+            hue -= 1;
+
+        opposite = Color.HSVToRGB(hue, 1, 1);
+
+        return opposite;
+    }
+
+    public Color GetShiftedColorent(int dehkanceIndex)
+    {
+        Color shifted = new Color();
+
+        float tmpHue = hue;
+
+        for (int i = 0; i < dehkanceIndex; i++)
+        {
+            tmpHue += Time.deltaTime;
+
+            if (tmpHue >= 1)
+                tmpHue -= 1;
+        }
+
+        shifted = Color.HSVToRGB(tmpHue, 1, 1);
+
+        return shifted;
     }
 }
