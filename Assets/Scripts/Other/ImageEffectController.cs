@@ -16,6 +16,9 @@ public class ImageEffectController : MonoBehaviour
     private float ColorBalance, SkyboxRotation;
     private GameManager gm;
 
+    [Range(0, 1)]
+    public float hue;
+
     private void Awake()
     {
         if (Instance != null)
@@ -80,10 +83,12 @@ public class ImageEffectController : MonoBehaviour
 
         h += shift;
 
+        hue = h;
+
         if (h >= 1)
             h-=1;
 
-        shiftedColor = Color.HSVToRGB(h, s, v);
+        shiftedColor = Color.HSVToRGB(hue, s, v);
 
         return shiftedColor;
     }

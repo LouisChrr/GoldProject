@@ -67,11 +67,11 @@ public class Circle : MonoBehaviour
                 {
                     gameObject.transform.localRotation = Quaternion.Euler(Vector3.zero);
 
-                    Color previous = previousCircle.spriterenderer.material.GetColor("_Color");
+                    /*Color previous = previousCircle.spriterenderer.material.GetColor("_Color");
 
                     spriterenderer.material = materials[1];
                     spriterenderer.material.SetColor("_Color", previous);
-
+                    */
                     childCircle.GetComponent<Obstacle>().MurEtapeCollider.enabled = false;
                     childCircle.GetComponent<Obstacle>().IsMurEtape = false;
                     childCircle.SetActive(false);
@@ -138,6 +138,7 @@ public class Circle : MonoBehaviour
         if (IsObstacle)
         {
             AchievementsManager.Instance.AddObstacleDodged(1);
+            AssignNewColor(Time.deltaTime);
         }
 
         if (preventObstacle)
@@ -145,9 +146,8 @@ public class Circle : MonoBehaviour
             childCircle.SetActive(false);
             
             spriterenderer.material = materials[1];
-            AssignNewColor(0.02f);
+            AssignNewColor(Time.deltaTime);
             
-
             transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
 
 
@@ -197,12 +197,14 @@ public class Circle : MonoBehaviour
 
         
             childCircle.GetComponent<SpriteRenderer>().material = materials[4];
-            childCircle.GetComponent<SpriteRenderer>().material.SetColor("_Color", fx.ShiftedColor(0.25f) * 6f);
+            //childCircle.GetComponent<SpriteRenderer>().material.SetColor("_Color", fx.ShiftedColor(Time.deltaTime) * 6f);
 
             spriterenderer.material = materials[6];
-            spriterenderer.material.SetColor("_Color", fx.ShiftedColor(0.02f) * 1f);
-            
-            fx.ChangePreviousColor(fx.ShiftedColor(0.02f + 0.25f));
+            //spriterenderer.material.SetColor("_Color", fx.ShiftedColor(Time.deltaTime) * 1f);
+
+            //fx.ChangePreviousColor(fx.ShiftedColor(0.005f + 0.25f));
+
+            AssignNewColor(Time.deltaTime);
 
 
             childCircle.SetActive(true);
@@ -254,7 +256,7 @@ public class Circle : MonoBehaviour
             }
 
             childCircle.SetActive(true);
-            AssignNewColor(0.02f);
+            AssignNewColor(Time.deltaTime);
 
         }
         else
@@ -262,7 +264,7 @@ public class Circle : MonoBehaviour
             childCircle.SetActive(false);
 
             spriterenderer.material = materials[1];
-            AssignNewColor(0.02f);
+            AssignNewColor(Time.deltaTime);
         }
 
         transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
@@ -294,7 +296,5 @@ public class Circle : MonoBehaviour
     {
         spriterenderer.material.SetColor("_Color", color * 4.0f) ;
     }
-
-    
 
 }

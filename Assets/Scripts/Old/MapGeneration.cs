@@ -15,31 +15,31 @@ public class MapGeneration : MonoBehaviour
 
     void Start()
     {
-        //InstantiatePipe(Player.transform);
-        //lastTransform = Player.transform;
+        InstantiatePipe(Player.transform);
+        lastTransform = Player.transform;
     }
 
     void Update()
     {
-        //interpolation += Time.deltaTime * PlayerSpeed;
-        //interpolation = Mathf.Clamp(interpolation, 0, 1);
+        interpolation += Time.deltaTime * PlayerSpeed;
+        interpolation = Mathf.Clamp(interpolation, 0, 1);
 
-        //if (!IsOver(PlayerRoute[0]))
-        //{
-        //    Player.transform.position = Vector3.Lerp(lastTransform.position, PlayerRoute[0].position, interpolation);
-        //    Quaternion rot;
-        //    rot = Quaternion.Lerp(lastTransform.rotation, PlayerRoute[0].rotation, interpolation);
-        //    rot *= Quaternion.Inverse(Quaternion.Euler(0, 0, PlayerRoute[0].rotation.z));
+        if (!IsOver(PlayerRoute[0]))
+        {
+            Player.transform.position = Vector3.Lerp(lastTransform.position, PlayerRoute[0].position, interpolation);
+            Quaternion rot;
+            rot = Quaternion.Lerp(lastTransform.rotation, PlayerRoute[0].rotation, interpolation);
+            rot *= Quaternion.Inverse(Quaternion.Euler(0, 0, PlayerRoute[0].rotation.z));
 
-        //    Player.transform.rotation = Quaternion.Lerp(lastTransform.rotation, rot, interpolation);
+            Player.transform.rotation = Quaternion.Lerp(lastTransform.rotation, rot, interpolation);
 
-        //    //Player.transform.forward = Quaternion.ToEulerAngles(rot);
-        //}
+            Player.transform.forward = Quaternion.ToEulerAngles(rot);
+        }
 
-        //if (PlayerRoute.Count <= 4)
-        //{
-        //    InstantiatePipe(LastCheckpoint());
-        //}
+        if (PlayerRoute.Count <= 4)
+        {
+            InstantiatePipe(LastCheckpoint());
+        }
     }
 
     GameObject InstantiatePipe(Transform lastTransform)
