@@ -25,12 +25,13 @@ public class DataScript
 
     public DataScript()
     {
-        isLocked = new bool[6];
+        isLocked = new bool[17];
 
         for (int i = 0; i < isLocked.Length; i++)
         {
             isLocked[i] = true;
         }
+
     }
 
     public DataScript(ScoreManager player)

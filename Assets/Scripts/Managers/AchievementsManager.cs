@@ -180,8 +180,8 @@ public class AchievementsManager : MonoBehaviour
         for (int i = 0; i < AchievementsManager.Instance.ActiveChallenges.Count; i++)
         {
 
-            //descText[i].text = AchievementsManager.Instance.ActiveChallenges[i].ChallengeDescription;
-            //challengeMoney[i].text = "" + AchievementsManager.Instance.ActiveChallenges[i].CoinsWon;
+            descText[i].text = AchievementsManager.Instance.ActiveChallenges[i].ChallengeDescription;
+            challengeMoney[i].text = "" + AchievementsManager.Instance.ActiveChallenges[i].CoinsWon;
 
             if (AchievementsManager.Instance.ActiveChallenges[i].IsCompleted)
             {

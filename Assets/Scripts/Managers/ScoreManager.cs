@@ -20,6 +20,8 @@ public class ScoreManager : MonoBehaviour
     [SerializeField]
     private float bestScore;
 
+    //private bool doOnce1 = false;
+
     private int lastIntScore =  -1;
     private void Awake()
     {
@@ -82,6 +84,52 @@ public class ScoreManager : MonoBehaviour
                // lastIntScore = Mathf.RoundToInt(PlayerScore);
 
             }
+
+
+            //if( (int)PlayerScore % 5 == 0 && PlayerScore != 0 && !doOnce1)
+            //{
+            //    UIScript.Instance.ScoreAchievement1();
+            //    doOnce1 = true;
+            //    Debug.Log("Score 1");
+            //}
+
+            //if ( (int)PlayerScore % 20 == 0 && PlayerScore != 0)
+            //{
+            //    UIScript.Instance.ScoreAchievement2();
+            //    Debug.Log("Score 2");
+            //}
+
+            //if ( (int)PlayerScore % 100 == 0 && PlayerScore != 0)
+            //{
+            //    UIScript.Instance.ScoreAchievement3();
+            //    Debug.Log("Score 3");
+            //}
+
+            bool doOnce1 = false;
+            bool doOnce2 = false;
+            bool doOnce3 = false;
+
+            if(PlayerScore >= 20 && !doOnce1)
+            {
+                UIScript.Instance.ScoreAchievement1();
+                doOnce1 = true;
+                Debug.Log("Score 1");
+            }
+
+            if (PlayerScore >= 2000 && !doOnce2)
+            {
+                UIScript.Instance.ScoreAchievement2();
+                doOnce2 = true;
+
+            }
+
+            if (PlayerScore >= 10000 && !doOnce3)
+            {
+                UIScript.Instance.ScoreAchievement3();
+                doOnce3 = true;
+
+            }
+
 
             //if(ComboValue <= 1)
             //{
