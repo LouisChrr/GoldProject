@@ -35,6 +35,9 @@ public class SkinMenu : MonoBehaviour
         buyUI.SetActive(false);
         impossibleToBuy.SetActive(false);
 
+
+        //Debug.Log(skins[0].GetComponent<SkinLock>().isLocked);
+
         bigBossID = skins.Length - 1;
 
         //moneyTxt.GetComponent<Text>().text = "Gold: " + money;
@@ -46,6 +49,9 @@ public class SkinMenu : MonoBehaviour
         for (int i = 0; i < skins.Length; i++)
         {
             skins[i].GetComponent<SkinLock>().isLocked = skinsLocked[i];
+
+            skins[0].GetComponent<SkinLock>().isLocked = false;
+            skins[1].GetComponent<SkinLock>().isLocked = false;
 
             if (!skins[i].GetComponent<SkinLock>().isLocked)
             {

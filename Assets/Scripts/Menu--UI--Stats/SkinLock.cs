@@ -20,11 +20,16 @@ public class SkinLock : MonoBehaviour
     public int price = 300;
 
     // Start is called before the first frame update
+    private void Start()
+    {
+        
+    }
+
     void Awake()
     {
         isLocked = true;
 
-        if(locker != null)
+        if (locker != null)
         {
             locker.SetActive(true);
         }
@@ -49,6 +54,7 @@ public class SkinLock : MonoBehaviour
         if (collision.gameObject.CompareTag("Selector")) {
 
             isSelected = true;
+            
             if (isLocked)
             {
                 buttonBuy.GetComponent<Image>().color = Color.white;
