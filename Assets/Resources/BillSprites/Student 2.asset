@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae869829188905f4681536a2341bfd64, type: 3}
+  m_Name: Student 2
+  m_EditorClassIdentifier: 
+  Front: {fileID: 21300000, guid: f087e5c47468d684887c280b26707a55, type: 3}
+  Back:
+  - {fileID: 21300000, guid: 844803b585099e9478fa46b15c1519f1, type: 3}
+  - {fileID: 21300000, guid: e2af4015fdafbd04e9796a0d40104dca, type: 3}
