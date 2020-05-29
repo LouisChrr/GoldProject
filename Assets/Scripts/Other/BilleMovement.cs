@@ -240,7 +240,7 @@ public class BilleMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.tag == "Obstacle")
+        if (collision.transform.tag == "Obstacle" && gm.HasGameStarted)
         {
             if (collision.transform.GetComponent<Obstacle>().IsBumper)
             {

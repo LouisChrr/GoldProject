@@ -37,6 +37,7 @@ public class ScoreManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        lastScore = 0;
         gm = GameManager.Instance;
         am = AchievementsManager.Instance;
 
@@ -67,6 +68,7 @@ public class ScoreManager : MonoBehaviour
         {
             MoneyInGameText.gameObject.SetActive(true);
             PlayerScore += Time.deltaTime * 2.0f * ComboValue;
+            lastScore = PlayerScore;
             distance += Time.deltaTime * 2.0f;
             if(PlayerScore > bestScore && lastIntScore == -1)
             {

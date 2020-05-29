@@ -179,7 +179,7 @@ public class Circle : MonoBehaviour
         childCircle.GetComponent<Obstacle>().JesusCollider2.enabled = false;
 
 
-        if (Mathf.RoundToInt(sm.distance) % ((gm.CirclesNumber+5) + Mathf.RoundToInt(gm.LevelSpeed)) == 0 && Mathf.RoundToInt(sm.PlayerScore) >= 10)
+        if (Mathf.RoundToInt(sm.distance) % ((gm.CirclesNumber + 5) + Mathf.RoundToInt(gm.LevelSpeed)) == 0 && gm.HasGameStarted && sm.lastScore > 10)
         {
 
                previousCircle.ResetObstacle(true);

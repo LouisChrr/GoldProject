@@ -43,6 +43,7 @@ public class CircleGenerator : MonoBehaviour
             Circles.Add(newCircle);
             layerManager.AllActiveSprites.Add(newCircle.GetComponent<SpriteRenderer>());
             layerManager.AllActiveSprites.Add(newCircle.transform.GetChild(0).GetComponent<SpriteRenderer>());
+            //newCircle.GetComponentInChildren<Obstacle>().MurEtapeCollider.enabled = false;
         }
     }
 
