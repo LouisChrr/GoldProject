@@ -15,6 +15,7 @@ public class MenuManager : MonoBehaviour
     public GameObject options;
     public GameObject pause;
     public GameObject end;
+    public GameObject tuto;
 
     public GameObject backToMenu;
     public GameObject backToPlay;
@@ -59,6 +60,7 @@ public class MenuManager : MonoBehaviour
         options.SetActive(false);
         pause.SetActive(false);
         end.SetActive(false);
+        tuto.SetActive(false);
 
         greyPanel.SetActive(true);
 
@@ -127,6 +129,7 @@ public class MenuManager : MonoBehaviour
         menu.SetActive(true);
         options.SetActive(false);
         end.SetActive(false);
+        tuto.SetActive(false);
     }
 
     public void DoPause()
@@ -195,6 +198,12 @@ public class MenuManager : MonoBehaviour
 
         StartCoroutine(CountDown());
 
+    }
+
+    public void Tuto()
+    {
+        tuto.SetActive(true);
+        menu.SetActive(false);
     }
 
     IEnumerator CountDown()
