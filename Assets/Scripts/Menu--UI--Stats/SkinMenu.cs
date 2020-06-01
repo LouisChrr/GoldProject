@@ -161,6 +161,7 @@ public class SkinMenu : MonoBehaviour
 
         //money = data.money;
         ScoreManager.Instance.PlayerMoney = data.money;
+        ScoreManager.Instance.totalMoney = data.totalMoney;
 
     }
 

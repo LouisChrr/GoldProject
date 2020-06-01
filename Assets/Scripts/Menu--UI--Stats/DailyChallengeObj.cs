@@ -144,6 +144,7 @@ public class DailyChallengeObj : ScriptableObject
     {
         IsCompleted = true;
         ScoreManager.Instance.PlayerMoney += CoinsWon;
+        ScoreManager.Instance.totalMoney += CoinsWon;
         Debug.Log("CHALLENGE WON!!!");
         Debug.Log(name);
     }

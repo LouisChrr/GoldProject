@@ -112,6 +112,8 @@ public class GameManager : MonoBehaviour
     {
         Handheld.Vibrate();
         ScoreManager.Instance.PlayerMoney += ScoreManager.Instance.MoneyInGame;
+        ScoreManager.Instance.totalMoney += ScoreManager.Instance.MoneyInGame;
+
         PlayerAudioSource.PlayOneShot(PlayerAudioClips[1]);
         if (am == null) am = AchievementsManager.Instance;
         AchievementsManager.Instance.AddScore(Mathf.RoundToInt(ScoreManager.Instance.PlayerScore));

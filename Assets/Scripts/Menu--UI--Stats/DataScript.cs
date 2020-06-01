@@ -7,10 +7,10 @@ public class DataScript
 {
 
     public bool[] isLocked /*= new bool[6]*/;
-
     public bool[] isEquipped;
 
     public float money;
+    public float totalMoney;
 
     public float bestScore;
 
@@ -53,9 +53,16 @@ public class DataScript
     {
 
         money = player.PlayerMoney;
+        totalMoney = player.totalMoney;
+
         if(money >= 9999)
         {
             money = 9999;
+        }
+
+        if (totalMoney >= 9999)
+        {
+            totalMoney = 9999;
         }
     }
 
