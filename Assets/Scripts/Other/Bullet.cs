@@ -52,12 +52,15 @@ public class Bullet : MonoBehaviour
 
             if (Obstacle.GetComponent<Obstacle>().IsJesusCross || Obstacle.GetComponent<Obstacle>().IsMurEtape || Obstacle.GetComponent<Obstacle>().IsBumper || Obstacle.GetComponent<Obstacle>().HP == 0 || Obstacle.GetComponent<Obstacle>().HeliceCollider.enabled == true) return;
             gm.PlayerAudioSource.PlayOneShot(gm.PlayerAudioClips[3]);
-            Obstacle.GetComponent<Obstacle>().HP -= 1;
-            Obstacle.GetComponentInParent<Obstacle>().SetSprite();
+            
 
+            ParticleSystemRenderer pr = Obstacle.transform.parent.GetChild(1).GetComponent<ParticleSystemRenderer>();
 
+            pr.material.SetColor("_Color",Obstacle.transform.parent.GetChild(0).GetComponent<SpriteRenderer>().material.GetColor("_Color"));
             Obstacle.transform.parent.GetChild(1).GetComponent<ParticleSystem>().Play();
 
+            Obstacle.GetComponent<Obstacle>().HP -= 1;
+            Obstacle.GetComponentInParent<Obstacle>().SetSprite();
 
         }
     }
