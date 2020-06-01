@@ -57,7 +57,7 @@ public class Bullet : MonoBehaviour
 
             ParticleSystemRenderer pr = Obstacle.transform.parent.GetChild(1).GetComponent<ParticleSystemRenderer>();
 
-            pr.material.SetColor("_Color",Obstacle.GetComponent<SpriteRenderer>().material.GetColor("_Color"));
+            pr.material.SetColor("_Color",Obstacle.transform.GetChild(0).GetComponent<SpriteRenderer>().material.GetColor("_Color"));
             Obstacle.transform.parent.GetChild(1).GetComponent<ParticleSystem>().Play();
 
 
