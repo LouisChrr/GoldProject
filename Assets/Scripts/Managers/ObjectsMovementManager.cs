@@ -30,6 +30,14 @@ public class ObjectsMovementManager : MonoBehaviour
         maxXmovement = BilleObj.GetComponent<BilleMovement>().width * 8;
     }
 
+
+    /// <summary>
+    /// Next pos for Circle, Bullet & Coin ISSOUMe
+    /// </summary>
+    /// <param name="basePos">transform.position de l'objet original</param>
+    /// <param name="isBullet"></param>
+    /// <param name="bulletBaseX"></param>
+    /// <returns>obj next pos</returns>
     public Vector3 GetNextPos(Vector3 basePos, bool isBullet = false, float bulletBaseX = 0)
     {
         // GERE LES MOUVEMENTS DE COINS, CIRCLE, BULLETS

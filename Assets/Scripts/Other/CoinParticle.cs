@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CoinParticle : MonoBehaviour
 {
+
     void Start()
     {
         Destroy(gameObject, 2);
@@ -11,6 +12,7 @@ public class CoinParticle : MonoBehaviour
 
     void Update()
     {
+        //transform.position = ObjectsMovementManager.Instance.GetNextPos(this.transform.position);
         transform.position -= new Vector3(0,0,Time.deltaTime * 3f);
     }
 }
