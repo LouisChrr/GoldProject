@@ -5,11 +5,11 @@ using UnityEngine;
 public class Coin : MonoBehaviour
 {
 
-
-
     [HideInInspector]
     public int MaxZ;
     private ObjectsMovementManager omm;
+
+    public GameObject Particle;
 
     void Start()
     {
@@ -32,6 +32,7 @@ public class Coin : MonoBehaviour
         if (transform.position.z < 0)
         {
             LayerManager.Instance.AllActiveSprites.Remove(GetComponent<SpriteRenderer>());
+
             Destroy(this.gameObject);
         }
     }

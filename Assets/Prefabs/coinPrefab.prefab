@@ -127,3 +127,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxZ: 0
+  Particle: {fileID: 4389273393256792522, guid: 6c1f8121f7a5f984e89b25c8587632aa,
+    type: 3}
