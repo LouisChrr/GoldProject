@@ -52,7 +52,8 @@ public class Circle : MonoBehaviour
 
         BilleZ = gm.PlayerObj.transform.position.z;
 
-
+        childCircle = this.gameObject.transform.GetChild(0).gameObject;
+        childObstacle = childCircle.GetComponent<Obstacle>();
     }
 
     public void Update()
@@ -72,6 +73,7 @@ public class Circle : MonoBehaviour
                     spriterenderer.material = materials[1];
                     spriterenderer.material.SetColor("_Color", previous);
                     */
+                    spriterenderer.material = materials[1];
                     childCircle.GetComponent<Obstacle>().MurEtapeCollider.enabled = false;
                     childCircle.GetComponent<Obstacle>().IsMurEtape = false;
                     childCircle.SetActive(false);
@@ -213,6 +215,7 @@ public class Circle : MonoBehaviour
 
 
             childCircle.SetActive(true);
+            baseAngle = Player.GetComponent<BilleMovement>().angle;
         }
         else if (IsObstacle)
         {
@@ -261,7 +264,9 @@ public class Circle : MonoBehaviour
             }
 
             childCircle.SetActive(true);
+
             AssignNewColor(Time.deltaTime);
+            childCircle.GetComponent<SpriteRenderer>().material.SetColor("_Color", fx.GetOppositeColorent() * 1f);
 
         }
         else

@@ -9,7 +9,6 @@ public class BilleMovement : MonoBehaviour
 {
     [Header("Adjust values here")]
 
-
     public Transform InactiveBullets, ActiveBullets;
     public GameObject BulletPrefab;
     public float BulletSpeed, ShootSpeed;
@@ -259,9 +258,11 @@ public class BilleMovement : MonoBehaviour
         {
             gm.PlayerAudioSource.PlayOneShot(gm.PlayerAudioClips[4]);
             layerManager.AllActiveSprites.Remove(collision.transform.GetComponent<SpriteRenderer>());
+
+            Instantiate(collision.transform.GetComponent<Coin>().Particle, new Vector3(Mathf.Sin(collision.transform.eulerAngles.z * Mathf.Deg2Rad) * 0.3f, -Mathf.Cos(collision.transform.eulerAngles.z * Mathf.Deg2Rad) * 0.3f, collision.transform.position.z), Quaternion.identity);
+
             Destroy(collision.gameObject);
             ScoreManager.Instance.PickupCoin();
         }
     }
-
 }

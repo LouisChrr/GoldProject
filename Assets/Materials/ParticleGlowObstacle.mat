@@ -7,10 +7,10 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HexagonTiles
-  m_Shader: {fileID: -6465566751694194690, guid: b6fa9b4bb1f9c294b91c2e827ad41af9,
+  m_Name: ParticleGlowObstacle
+  m_Shader: {fileID: -6465566751694194690, guid: 2296358807fe918418d0136b0c1c5c01,
     type: 3}
-  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
+  m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -20,8 +20,8 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - MainTexture:
-        m_Texture: {fileID: 2800000, guid: c5847e228e0114b43a5f8152f1cbd6e2, type: 3}
+    - Texture2D_1A789FBB:
+        m_Texture: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
@@ -37,7 +37,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: c5847e228e0114b43a5f8152f1cbd6e2, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -48,29 +48,11 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_3EEDCA38_Texture_1:
-        m_Texture: {fileID: 2800000, guid: 568344e5a9acc454a976f309f29ec34b, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_7566CB25_Texture_1:
-        m_Texture: {fileID: 2800000, guid: 568344e5a9acc454a976f309f29ec34b, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_83BDBC0_Texture_1:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_E6E851BE_Texture_1:
-        m_Texture: {fileID: 2800000, guid: 36862f59c0d192b4e8c6895b7432a848, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Speed: 1
-    - Vector1_8FF0B642: 10
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -88,29 +70,16 @@ Material:
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _Speed: 1.07
     - _SrcBlend: 1
     - _Surface: 0
-    - _Tiling: 15
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - MainColor: {r: 5.656854, g: 5.656854, b: 5.656854, a: 1}
-    - Vector2_2C301067: {r: 10, g: 10, b: 10, a: 10}
-    - Vector3_7FE50973: {r: 500, g: 500, b: 0, a: 0}
-    - Vector3_941249F2: {r: 0, g: 0, b: 0, a: 0}
-    - Vector4_78573EE7: {r: 0, g: 0, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Position: {r: 0.3102589, g: 0.3336484, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
-    - _Tiling: {r: 10, g: 10, b: 10, a: 0}
-    - _TilingV2: {r: 30, g: 30, b: 0, a: 0}
-    - _mainColor: {r: 3.4415908, g: 3.4415908, b: 3.4415908, a: 1}
-    - _offset: {r: 0.87, g: 0, b: 1, a: 1}
-    - _tiling: {r: 2, g: 2, b: 2, a: 0}
---- !u!114 &1780333349668018886
+--- !u!114 &679126837100712362
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

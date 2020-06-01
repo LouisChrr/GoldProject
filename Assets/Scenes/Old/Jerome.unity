@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -180,6 +180,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86c12c03100f3714888c07a7719b38b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerAudioSource: {fileID: 0}
+  PlayerAudioClips: []
+  LevelUpText: {fileID: 0}
+  HasGameStarted: 0
   LevelNb: 1
   LevelSpeed: 0
   Circles: {fileID: 2103421457}
@@ -188,9 +192,7 @@ MonoBehaviour:
   IsPlayerDead: 0
   InitialCircleSpeed: 1
   circlesNumber: 30
-  DeathUI: {fileID: 373180780}
   generator: {fileID: 516408162}
-  touchFeedback: {fileID: 1134737223}
 --- !u!4 &47837407
 Transform:
   m_ObjectHideFlags: 0
@@ -266,11 +268,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa5712168ac95eb4d937c04b9a6b800b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CircleMaterial: {fileID: 2100000, guid: 896f99013952ebe4f8f389e6c0adfb28, type: 2}
-  ObstacleMaterial: {fileID: 2100000, guid: 1260d922a35a3dc4497296da3f933966, type: 2}
+  Materials: []
   Skybox: {fileID: 2100000, guid: a65ad88f3784e8847b4bf98a49914fc3, type: 2}
   ColorShiftFactor: 0.2
   SkyboxShiftFactor: 1
+  PreviousColor: {r: 0, g: 0, b: 0, a: 0}
+  hue: 0
 --- !u!1 &373180780
 GameObject:
   m_ObjectHideFlags: 0
@@ -855,10 +858,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CoinValue: 20
   ScoreText: {fileID: 1696252793}
-  WinScoreText: {fileID: 920082575}
+  MoneyText: {fileID: 0}
+  ComboText: {fileID: 0}
+  MoneyInGameText: {fileID: 0}
+  lastScore: 0
   PlayerScore: 0
   PlayerMoney: 0
+  MoneyInGame: 0
+  distance: 0
   ComboValue: 0
+  bestScore: 0
 --- !u!4 &1006714171
 Transform:
   m_ObjectHideFlags: 0
@@ -1056,22 +1065,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 499ee99b5ed24b04ebef08e77d1b1d85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Particle: {fileID: 4389273393256792522, guid: 6c1f8121f7a5f984e89b25c8587632aa,
+    type: 3}
   InactiveBullets: {fileID: 9439673}
   ActiveBullets: {fileID: 1424827490}
   BulletPrefab: {fileID: 2231894987645692706, guid: 883135fdfe75cf140a24caf5f09555a7,
     type: 3}
-  DeathUI: {fileID: 373180780}
   BulletSpeed: 4
   ShootSpeed: 0.25
-  speedtxt: {fileID: 637067378}
   maxSpeed: 10
   speedDecreaseSmooth: 6
   width: 0.5
   height: 0.5
   angle: 0
-  touchFeedback: {fileID: 1134737223}
   speed: 0
   layerManager: {fileID: 1326107682}
+  shadow: {fileID: 0}
 --- !u!212 &1072520213
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1237,6 +1246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AllActiveSprites: []
+  tickrate: 0
 --- !u!4 &1326107683
 Transform:
   m_ObjectHideFlags: 0
@@ -1696,7 +1706,6 @@ MonoBehaviour:
   _CoinPrefab: {fileID: 2231894987645692706, guid: 4db747a990922114095c67344414e3d8,
     type: 3}
   Yoffset: 0.23
-  layerManager: {fileID: 1326107682}
 --- !u!4 &1976865095
 Transform:
   m_ObjectHideFlags: 0
@@ -1895,3 +1904,72 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &4389273392891652104
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4389273393256792522, guid: 6c1f8121f7a5f984e89b25c8587632aa,
+        type: 3}
+      propertyPath: m_Name
+      value: PlayerParticle
+      objectReference: {fileID: 0}
+    - target: {fileID: 4389273393256792525, guid: 6c1f8121f7a5f984e89b25c8587632aa,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4389273393256792525, guid: 6c1f8121f7a5f984e89b25c8587632aa,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4389273393256792525, guid: 6c1f8121f7a5f984e89b25c8587632aa,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4389273393256792525, guid: 6c1f8121f7a5f984e89b25c8587632aa,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4389273393256792525, guid: 6c1f8121f7a5f984e89b25c8587632aa,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4389273393256792525, guid: 6c1f8121f7a5f984e89b25c8587632aa,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4389273393256792525, guid: 6c1f8121f7a5f984e89b25c8587632aa,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4389273393256792525, guid: 6c1f8121f7a5f984e89b25c8587632aa,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4389273393256792525, guid: 6c1f8121f7a5f984e89b25c8587632aa,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4389273393256792525, guid: 6c1f8121f7a5f984e89b25c8587632aa,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4389273393256792525, guid: 6c1f8121f7a5f984e89b25c8587632aa,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6c1f8121f7a5f984e89b25c8587632aa, type: 3}
