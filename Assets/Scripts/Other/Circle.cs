@@ -73,6 +73,7 @@ public class Circle : MonoBehaviour
                     spriterenderer.material = materials[1];
                     spriterenderer.material.SetColor("_Color", previous);
                     */
+                    spriterenderer.material = materials[1];
                     childCircle.GetComponent<Obstacle>().MurEtapeCollider.enabled = false;
                     childCircle.GetComponent<Obstacle>().IsMurEtape = false;
                     childCircle.SetActive(false);
