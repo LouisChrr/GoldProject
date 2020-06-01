@@ -52,7 +52,8 @@ public class Circle : MonoBehaviour
 
         BilleZ = gm.PlayerObj.transform.position.z;
 
-
+        childCircle = this.gameObject.transform.GetChild(0).gameObject;
+        childObstacle = childCircle.GetComponent<Obstacle>();
     }
 
     public void Update()
@@ -213,6 +214,7 @@ public class Circle : MonoBehaviour
 
 
             childCircle.SetActive(true);
+            baseAngle = Player.GetComponent<BilleMovement>().angle;
         }
         else if (IsObstacle)
         {
