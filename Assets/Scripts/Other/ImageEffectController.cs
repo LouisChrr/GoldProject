@@ -101,6 +101,22 @@ public class ImageEffectController : MonoBehaviour
         return opposite;
     }
 
+    public Color GetOppositeColorent()
+    {
+        Color opposite = new Color();
+
+        float h = hue;
+
+        h += 0.5f;
+
+        if (h >= 1)
+            h -= 1;
+
+        opposite = Color.HSVToRGB(h, 1, 1);
+
+        return opposite;
+    }
+
     public Color GetShiftedColorent(int dehkanceIndex)
     {
         Color shifted = new Color();

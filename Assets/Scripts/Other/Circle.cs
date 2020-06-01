@@ -264,7 +264,9 @@ public class Circle : MonoBehaviour
             }
 
             childCircle.SetActive(true);
+
             AssignNewColor(Time.deltaTime);
+            childCircle.GetComponent<SpriteRenderer>().material.SetColor("_Color", fx.GetOppositeColorent() * 1f);
 
         }
         else
