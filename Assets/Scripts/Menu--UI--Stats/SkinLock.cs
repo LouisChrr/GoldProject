@@ -7,7 +7,7 @@ public class SkinLock : MonoBehaviour
 {
 
     public bool isLocked = true;
-    //public bool isBought = false;
+    public bool isEquipped = false;
     public bool isSelected = false;
 
 
@@ -17,13 +17,11 @@ public class SkinLock : MonoBehaviour
     public GameObject buttonBuy;
     public GameObject buttonBuyShadow;
 
-    public int price = 300;
+    public GameObject buttonEquip;
+    public GameObject buttonEquipShadow;
 
-    // Start is called before the first frame update
-    private void Start()
-    {
-        
-    }
+    public int price = 300;
+    
 
     void Awake()
     {
@@ -43,13 +41,7 @@ public class SkinLock : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.CompareTag("Selector")) {
 
@@ -65,6 +57,17 @@ public class SkinLock : MonoBehaviour
                 buttonBuy.GetComponent<Image>().color = Color.grey;
                 buttonBuyShadow.GetComponent<Image>().color = Color.grey;
             }
+
+            if (isEquipped)
+            {
+                buttonEquip.GetComponent<Image>().color = Color.grey;
+                buttonEquipShadow.GetComponent<Image>().color = Color.grey;
+            }
+            else
+            {
+                buttonEquip.GetComponent<Image>().color = Color.white;
+                buttonEquipShadow.GetComponent<Image>().color = Color.white;
+            }
         }
     }
 
@@ -76,9 +79,9 @@ public class SkinLock : MonoBehaviour
         }
     }
 
-    public void SaveSkin(bool[] skins)
+    public void SaveSkin(bool[] skins, bool[] skinsEquipped)
     {
-        SaveSystem.SaveSkin(skins);
+        SaveSystem.SaveSkin(skins, skinsEquipped);
     }
 
     public void LoadSkin(int id)
@@ -87,6 +90,7 @@ public class SkinLock : MonoBehaviour
         DataScript data = SaveSystem.LoadSkin();
 
         isLocked = data.isLocked[id];
+        isEquipped = data.isEquipped[id];
 
         GetComponent<Image>().color = !isLocked ? Color.white : Color.grey;
     }

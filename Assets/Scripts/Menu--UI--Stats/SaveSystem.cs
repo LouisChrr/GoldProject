@@ -18,7 +18,7 @@ public static class SaveSystem
         stream.Close();
     }
 
-    public static void SaveSkin(bool[] skins)
+    public static void SaveSkin(bool[] skins, bool[] skinsEquipped)
     {
 
         BinaryFormatter formatter = new BinaryFormatter();
@@ -26,7 +26,7 @@ public static class SaveSystem
         string path = Application.persistentDataPath + "/skin.data";
         FileStream stream = new FileStream(path, FileMode.Create);
 
-        DataScript data = new DataScript(skins);
+        DataScript data = new DataScript(skins, skinsEquipped);
 
         formatter.Serialize(stream, data);
         stream.Close();
