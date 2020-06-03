@@ -28,6 +28,9 @@ public class SkinMenu : MonoBehaviour
 
     public int boughtSkins;
 
+    public AudioSource refus;
+    public AudioSource accept;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,14 +56,20 @@ public class SkinMenu : MonoBehaviour
         skinEquipped = new bool[skins.Length];
         skinEquipped = SaveSystem.LoadSkin().isEquipped;
 
+        Debug.Log(skinEquipped.Length);
+
         for (int i = 0; i < skins.Length; i++)
         {
             skins[i].GetComponent<SkinLock>().isLocked = skinsLocked[i];
             skins[i].GetComponent<SkinLock>().isEquipped = skinEquipped[i];
 
             skins[0].GetComponent<SkinLock>().isLocked = false;
-            skins[0].GetComponent<SkinLock>().isEquipped = true;
             skins[1].GetComponent<SkinLock>().isLocked = false;
+
+            //skins[0].GetComponent<SkinLock>().isEquipped = true;
+
+            skins[0].GetComponent<SkinLock>().isFree = true;
+            skins[1].GetComponent<SkinLock>().isFree = true;
 
             if (!skins[i].GetComponent<SkinLock>().isLocked)
             {
@@ -87,17 +96,21 @@ public class SkinMenu : MonoBehaviour
 
     public void ChooseSkin()
     {
-        for (int i = 0; i < skins.Length; i++)
+        for (int i = 0; i < skins.Length ; i++)
         {
-            skins[i].GetComponent<SkinLock>().isEquipped = false;
-            skinEquipped[i] = false;
 
             if (skins[i].GetComponent<SkinLock>().isSelected && !skins[i].GetComponent<SkinLock>().isLocked)
             {
+                for(int j = 0; j < skins.Length; j++)
+                {
+                    skins[j].GetComponent<SkinLock>().isEquipped = false;
+                    skinEquipped[j] = false;
+                }
                 imageSkin.sprite = skins[i].GetComponent<SkinObject>().spriteSkin;
                 spritePlayer = imageSkin.sprite;
                 skins[i].GetComponent<SkinLock>().isEquipped = true;
                 skinEquipped[i] = true;
+
             }
 
             SaveSystem.SaveSkin(skinsLocked, skinEquipped);
@@ -160,6 +173,41 @@ public class SkinMenu : MonoBehaviour
             {
                 buyUI.SetActive(false);
                 impossibleToBuy.SetActive(true);
+            }
+        }
+
+    }
+
+    public void BuySoundPlay()
+    {
+        for(int i = 0; i < skins.Length; i++)
+        {
+            if(skins[i].GetComponent<SkinLock>().isSelected && skins[i].GetComponent<SkinLock>().isLocked)
+            {
+                accept.Play();
+            }
+            else if (skins[i].GetComponent<SkinLock>().isSelected && !skins[i].GetComponent<SkinLock>().isLocked)
+            {
+                refus.Play();
+            }
+        }
+    }
+
+    public void EquipSoundPlay()
+    {
+        for (int i = 0; i < skins.Length; i++)
+        {
+            if (skins[i].GetComponent<SkinLock>().isSelected && skins[i].GetComponent<SkinLock>().isEquipped)
+            {
+                refus.Play();
+            }
+            else if (skins[i].GetComponent<SkinLock>().isSelected && !skins[i].GetComponent<SkinLock>().isEquipped && skins[i].GetComponent<SkinLock>().isFree)
+            {
+                accept.Play();
+            }
+            else if (skins[i].GetComponent<SkinLock>().isSelected && !skins[i].GetComponent<SkinLock>().isEquipped && !skins[i].GetComponent<SkinLock>().isFree)
+            {
+                refus.Play();
             }
         }
 

@@ -39,8 +39,8 @@ public class DataScript
 
     public DataScript()
     {
-        isLocked = new bool[17];
-        isEquipped = new bool[17];
+        isLocked = new bool[19];
+        isEquipped = new bool[19];
 
         for (int i = 0; i < isLocked.Length; i++)
         {
@@ -51,6 +51,8 @@ public class DataScript
         {
             isEquipped[i] = false;
         }
+
+        isEquipped[1] = true;
 
     }
 
