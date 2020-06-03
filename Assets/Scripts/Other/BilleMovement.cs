@@ -249,6 +249,8 @@ public class BilleMovement : MonoBehaviour
             
             if (collision.transform.GetComponent<Obstacle>().IsBumper)
             {
+                collision.transform.parent.GetChild(1).GetComponent<ParticleSystem>().Play();
+
                 gm.PlayerAudioSource.PlayOneShot(gm.PlayerAudioClips[0]);
                 collision.transform.GetComponent<Obstacle>().HP -= 1;
                 collision.transform.GetComponent<Obstacle>().SetSprite();
