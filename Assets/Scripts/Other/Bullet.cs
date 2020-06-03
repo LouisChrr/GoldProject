@@ -52,7 +52,11 @@ public class Bullet : MonoBehaviour
 
             if (Obstacle.GetComponent<Obstacle>().IsJesusCross || Obstacle.GetComponent<Obstacle>().IsMurEtape || Obstacle.GetComponent<Obstacle>().IsBumper || Obstacle.GetComponent<Obstacle>().HP == 0 || Obstacle.GetComponent<Obstacle>().HeliceCollider.enabled == true) return;
             gm.PlayerAudioSource.PlayOneShot(gm.PlayerAudioClips[3]);
-            
+
+            if (Obstacle.GetComponent<Obstacle>().IsMuret)
+            {
+                BilleMovement.Instance.nbDestroyedWallsInGame++;
+            }
 
             ParticleSystemRenderer pr = Obstacle.transform.parent.GetChild(1).GetComponent<ParticleSystemRenderer>();
 

@@ -4,6 +4,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveSystem
 {
+
     public static void SaveSkin()
     {
         BinaryFormatter formatter = new BinaryFormatter();
@@ -130,7 +131,125 @@ public static class SaveSystem
         else
         {
             Debug.Log("BestScore File not found");
-            return null;
+            SaveBestScore(new MenuManager());
+            return LoadBestScore();
+        }
+    }
+
+    public static void SaveNbDeathsAndNbWalls(GameManager deathAndWall)
+    {
+
+        BinaryFormatter formatter = new BinaryFormatter();
+
+        string path = Application.persistentDataPath + "/deathAndWall.data";
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        DataScript data = new DataScript(deathAndWall);
+
+        formatter.Serialize(stream, data);
+        stream.Close();
+
+    }
+
+    public static DataScript LoadNbDeathsAndNbWalls()
+    {
+
+        string path = Application.persistentDataPath + "/deathAndWall.data";
+
+        if (File.Exists(path))
+        {
+
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(path, FileMode.Open);
+
+            DataScript data = formatter.Deserialize(stream) as DataScript;
+            stream.Close();
+
+            return data;
+        }
+        else
+        {
+            Debug.Log("DeathsAndWalls File not found");
+            SaveNbDeathsAndNbWalls(new GameManager());
+            return LoadNbDeathsAndNbWalls();
+        }
+    }
+
+    //public static void SaveNbWalls(BilleMovement nbWalls)
+    //{
+
+    //    BinaryFormatter formatter = new BinaryFormatter();
+
+    //    string path = Application.persistentDataPath + "/nbWalls.data";
+    //    FileStream stream = new FileStream(path, FileMode.Create);
+
+    //    DataScript data = new DataScript(nbWalls);
+
+    //    formatter.Serialize(stream, data);
+    //    stream.Close();
+        
+    //}
+
+    //public static DataScript LoadNbWalls()
+    //{
+
+    //    string path = Application.persistentDataPath + "/nbWalls.data";
+
+    //    if (File.Exists(path))
+    //    {
+
+    //        BinaryFormatter formatter = new BinaryFormatter();
+    //        FileStream stream = new FileStream(path, FileMode.Open);
+
+    //        DataScript data = formatter.Deserialize(stream) as DataScript;
+    //        stream.Close();
+
+    //        return data;
+    //    }
+    //    else
+    //    {
+    //        Debug.Log("Nb Walls File not found");
+    //        SaveNbWalls(new BilleMovement());
+    //        return LoadNbWalls();
+    //    }
+    //}
+
+    public static void SaveBoughtSkins(SkinMenu boughtSkins)
+    {
+
+        BinaryFormatter formatter = new BinaryFormatter();
+
+        string path = Application.persistentDataPath + "/boughtSkins.data";
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        DataScript data = new DataScript(boughtSkins);
+
+        formatter.Serialize(stream, data);
+        stream.Close();
+
+    }
+
+    public static DataScript LoadBoughtSkins()
+    {
+
+        string path = Application.persistentDataPath + "/boughtSkins.data";
+
+        if (File.Exists(path))
+        {
+
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(path, FileMode.Open);
+
+            DataScript data = formatter.Deserialize(stream) as DataScript;
+            stream.Close();
+
+            return data;
+        }
+        else
+        {
+            Debug.Log("Bought Skins File not found");
+            SaveBoughtSkins(new SkinMenu());
+            return LoadBoughtSkins();
         }
     }
 }

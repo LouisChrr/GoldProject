@@ -14,6 +14,11 @@ public class DataScript
 
     public float bestScore;
 
+    public int deaths;
+
+    public int walls;
+
+    public int bougthSkins;
 
     public DataScript(bool[] skins, bool[] skinsEquipped)
     {
@@ -70,6 +75,21 @@ public class DataScript
     {
 
         bestScore = player.PlayerBestScore;
+    }
+
+    public DataScript(GameManager deathAndWalls)
+    {
+        deaths = deathAndWalls.nbDeaths;
+        walls = deathAndWalls.nbDestroyedWallsTotal;
+    }
+
+    //public DataScript(BilleMovement nbWalls)
+    //{
+    //}
+
+    public DataScript(SkinMenu skins)
+    {
+        bougthSkins = skins.boughtSkins;
     }
 }
 
