@@ -26,12 +26,15 @@ public class SkinMenu : MonoBehaviour
     private bool[] skinsLocked;
     private bool[] skinEquipped;
 
+    public int boughtSkins;
+
     // Start is called before the first frame update
     void Start()
     {
         
         LoadMoney();
         SaveSystem.LoadSkin();
+        LoadSkinsBought();
         imageSkin = GetComponent<Image>();
         buyUI.SetActive(false);
         impossibleToBuy.SetActive(false);
@@ -134,6 +137,24 @@ public class SkinMenu : MonoBehaviour
                 skinsLocked[i] = false;
                 SaveSystem.SaveSkin(skinsLocked, skinEquipped);
 
+                boughtSkins++;
+                SaveSkinsBought();
+
+                if (boughtSkins <= 4)
+                {
+                    UIScript.Instance.SkinAchievementIncrement1();
+                }
+
+                if (boughtSkins <= 8)
+                {
+                    UIScript.Instance.SkinAchievementIncrement2();
+                }
+
+                if (boughtSkins <= 16)
+                {
+                    UIScript.Instance.SkinAchievementIncrement3();
+                }
+
             }
             else if (skins[i].GetComponent<SkinLock>().isSelected && skins[i].GetComponent<SkinLock>().price >= /*money*/ FindObjectOfType<ScoreManager>().PlayerMoney)
             {
@@ -162,7 +183,18 @@ public class SkinMenu : MonoBehaviour
         //money = data.money;
         ScoreManager.Instance.PlayerMoney = data.money;
         ScoreManager.Instance.totalMoney = data.totalMoney;
+    }
 
+    public void SaveSkinsBought()
+    {
+        SaveSystem.SaveBoughtSkins(this);
+    }
+
+    public void LoadSkinsBought()
+    {
+        DataScript data = SaveSystem.LoadBoughtSkins();
+
+        boughtSkins = data.bougthSkins;
     }
 
 }

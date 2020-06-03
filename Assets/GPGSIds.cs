@@ -24,23 +24,23 @@
 
 public static class GPGSIds
 {
-        public const string achievement_amateur_ball = "CgkIhfKEuqMCEAIQAg"; // <GPGSID>
-        public const string achievement_breaker = "CgkIhfKEuqMCEAIQCw"; // <GPGSID>
-        public const string achievement_no_life = "CgkIhfKEuqMCEAIQBw"; // <GPGSID>
-        public const string achievement_stop_playing = "CgkIhfKEuqMCEAIQBg"; // <GPGSID>
-        public const string achievement_360_destruction = "CgkIhfKEuqMCEAIQDA"; // <GPGSID>
-        public const string achievement_cool_skinned = "CgkIhfKEuqMCEAIQDw"; // <GPGSID>
-        public const string achievement_are_you_ralph = "CgkIhfKEuqMCEAIQDQ"; // <GPGSID>
-        public const string achievement_fashion_victim = "CgkIhfKEuqMCEAIQEA"; // <GPGSID>
-        public const string achievement_swag = "CgkIhfKEuqMCEAIQDg"; // <GPGSID>
-        public const string achievement_big_boss = "CgkIhfKEuqMCEAIQAQ"; // <GPGSID>
-        public const string achievement_investor = "CgkIhfKEuqMCEAIQCQ"; // <GPGSID>
-        public const string leaderboard_leaderboard = "CgkIhfKEuqMCEAIQEQ"; // <GPGSID>
-        public const string achievement_unemployed = "CgkIhfKEuqMCEAIQCA"; // <GPGSID>
-        public const string achievement_nice_try = "CgkIhfKEuqMCEAIQBQ"; // <GPGSID>
-        public const string achievement_master_ball = "CgkIhfKEuqMCEAIQBA"; // <GPGSID>
-        public const string achievement_pro_ball = "CgkIhfKEuqMCEAIQAw"; // <GPGSID>
-        public const string achievement_rich_guy = "CgkIhfKEuqMCEAIQCg"; // <GPGSID>
+        public const string achievement_amateur_ball = "CgkIj8WBnNYQEAIQAg"; // <GPGSID>
+        public const string achievement_breaker = "CgkIj8WBnNYQEAIQCw"; // <GPGSID>
+        public const string achievement_no_life = "CgkIj8WBnNYQEAIQBw"; // <GPGSID>
+        public const string achievement_stop_playing = "CgkIj8WBnNYQEAIQBg"; // <GPGSID>
+        public const string achievement_360_destruction = "CgkIj8WBnNYQEAIQDA"; // <GPGSID>
+        public const string achievement_cool_skinned = "CgkIj8WBnNYQEAIQDw"; // <GPGSID>
+        public const string achievement_are_you_ralph = "CgkIj8WBnNYQEAIQDQ"; // <GPGSID>
+        public const string achievement_fashion_victim = "CgkIj8WBnNYQEAIQEA"; // <GPGSID>
+        public const string achievement_swag = "CgkIj8WBnNYQEAIQDg"; // <GPGSID>
+        public const string achievement_big_boss = "CgkIj8WBnNYQEAIQEQ"; // <GPGSID>
+        public const string achievement_investor = "CgkIj8WBnNYQEAIQCQ"; // <GPGSID>
+        public const string leaderboard_leaderboard = "CgkIj8WBnNYQEAIQAQ"; // <GPGSID>
+        public const string achievement_unemployed = "CgkIj8WBnNYQEAIQCA"; // <GPGSID>
+        public const string achievement_nice_try = "CgkIj8WBnNYQEAIQBQ"; // <GPGSID>
+        public const string achievement_master_ball = "CgkIj8WBnNYQEAIQBA"; // <GPGSID>
+        public const string achievement_pro_ball = "CgkIj8WBnNYQEAIQAw"; // <GPGSID>
+        public const string achievement_rich_guy = "CgkIj8WBnNYQEAIQCg"; // <GPGSID>
 
 }
 

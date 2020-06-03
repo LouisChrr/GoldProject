@@ -60,28 +60,93 @@ public class PlayGames : MonoBehaviour
 
     #region Achievements
 
+    #region Unlock
+
     public static void BigBossAchievement(string id)
     {
         Social.ReportProgress(id, 100, success => { });
     }
 
-    public static void ScoreAchievement1(string id/*, int stepsToIncrement*/)
+    public static void ScoreAchievement1(string id)
     {
-        //PlayGamesPlatform.Instance.IncrementAchievement(id, stepsToIncrement, success => { });
         Social.ReportProgress(id, 100, success => { });
     }
 
-    public static void ScoreAchievement2(string id/*, int stepsToIncrement*/)
+    public static void ScoreAchievement2(string id)
     {
-        //PlayGamesPlatform.Instance.IncrementAchievement(id, stepsToIncrement, success => { });
         Social.ReportProgress(id, 100, success => { });
     }
 
-    public static void ScoreAchievement3(string id/*, int stepsToIncrement*/)
+    public static void ScoreAchievement3(string id)
     {
-        //PlayGamesPlatform.Instance.IncrementAchievement(id, stepsToIncrement, success => { });
         Social.ReportProgress(id, 100, success => { });
     }
+
+    public static void MoneyAchievement1(string id)
+    {
+        Social.ReportProgress(id, 100, success => { });
+    }
+
+    public static void MoneyAchievement2(string id)
+    {
+        Social.ReportProgress(id, 100, success => { });
+    }
+
+    public static void MoneyAchievement3(string id)
+    {
+        Social.ReportProgress(id, 100, success => { });
+    }
+
+    #endregion /Unlock
+
+    #region Increment
+
+    public static void DieAchievement1(string id, int stepsToIncrement)
+    {
+        PlayGamesPlatform.Instance.IncrementAchievement(id, stepsToIncrement, success => { });
+    }
+
+    public static void DieAchievement2(string id, int stepsToIncrement)
+    {
+        PlayGamesPlatform.Instance.IncrementAchievement(id, stepsToIncrement, success => { });
+    }
+
+    public static void DieAchievement3(string id, int stepsToIncrement)
+    {
+        PlayGamesPlatform.Instance.IncrementAchievement(id, stepsToIncrement, success => { });
+    }
+
+    public static void DestroyAchievement1(string id, int stepsToIncrement)
+    {
+        PlayGamesPlatform.Instance.IncrementAchievement(id, stepsToIncrement, success => { });
+    }
+
+    public static void DestroyAchievement2(string id, int stepsToIncrement)
+    {
+        PlayGamesPlatform.Instance.IncrementAchievement(id, stepsToIncrement, success => { });
+    }
+
+    public static void DestroyAchievement3(string id, int stepsToIncrement)
+    {
+        PlayGamesPlatform.Instance.IncrementAchievement(id, stepsToIncrement, success => { });
+    }
+
+    public static void SkinAchievement1(string id, int stepsToIncrement)
+    {
+        PlayGamesPlatform.Instance.IncrementAchievement(id, stepsToIncrement, success => { });
+    }
+
+    public static void SkinAchievement2(string id, int stepsToIncrement)
+    {
+        PlayGamesPlatform.Instance.IncrementAchievement(id, stepsToIncrement, success => { });
+    }
+
+    public static void SkinAchievement3(string id, int stepsToIncrement)
+    {
+        PlayGamesPlatform.Instance.IncrementAchievement(id, stepsToIncrement, success => { });
+    }
+
+    #endregion /Increment
 
     public static void ShowAchievementsUI()
     {

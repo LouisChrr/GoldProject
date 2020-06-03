@@ -1716,7 +1716,7 @@ RectTransform:
   m_GameObject: {fileID: 243649216}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.421622, y: 1.421622, z: 1.421622}
+  m_LocalScale: {x: 1.4216218, y: 1.4216218, z: 1.4216218}
   m_Children:
   - {fileID: 899327187}
   m_Father: {fileID: 1976191001}
@@ -1724,8 +1724,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -427.20386, y: -477.91278}
-  m_SizeDelta: {x: 314.5542, y: 22.203735}
+  m_AnchoredPosition: {x: -559.0875, y: -477.91272}
+  m_SizeDelta: {x: 50.799072, y: 22.203735}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &243649218
 MonoBehaviour:
@@ -5662,7 +5662,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8206ea0d8358e1d448a0f19a13492ee2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isLocked: 1
+  isLocked: 0
   isEquipped: 0
   isSelected: 0
   locker: {fileID: 1976053327}
@@ -5856,6 +5856,7 @@ MonoBehaviour:
   - {fileID: 1570892988}
   - {fileID: 1509739117}
   bigBossID: 0
+  boughtSkins: 0
 --- !u!1 &781398663
 GameObject:
   m_ObjectHideFlags: 0
@@ -6185,14 +6186,14 @@ RectTransform:
   m_GameObject: {fileID: 861178139}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.3786004, y: 3.3786004, z: 3.3786004}
+  m_LocalScale: {x: 3.3786, y: 3.3786, z: 3.3786}
   m_Children: []
   m_Father: {fileID: 1976191001}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -272, y: 21.040588}
+  m_AnchoredPosition: {x: -403.8837, y: 21.040588}
   m_SizeDelta: {x: 128.42361, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &861178141
@@ -12515,6 +12516,7 @@ MonoBehaviour:
   distance: 0
   ComboValue: 1
   bestScore: 0
+  totalMoney: 0
 --- !u!1 &1943494609
 GameObject:
   m_ObjectHideFlags: 0
@@ -13323,8 +13325,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 52.30005, y: 322.5}
-  m_SizeDelta: {x: -212.00537, y: 325.7789}
+  m_AnchoredPosition: {x: 117.84, y: 322.5}
+  m_SizeDelta: {x: 51.749756, y: 325.7789}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1976191002
 MonoBehaviour:
