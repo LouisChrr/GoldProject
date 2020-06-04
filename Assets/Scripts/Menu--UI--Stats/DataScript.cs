@@ -52,7 +52,7 @@ public class DataScript
             isEquipped[i] = false;
         }
 
-        isEquipped[1] = true;
+        isEquipped[0] = true;
 
     }
 
