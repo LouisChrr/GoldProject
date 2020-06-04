@@ -9796,7 +9796,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AllActiveSprites: []
-  tickrate: 500
+  baseTickrate: 300
+  tickrate: 250
 --- !u!4 &1725340290
 Transform:
   m_ObjectHideFlags: 0
