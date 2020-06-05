@@ -96,8 +96,8 @@ public class Circle : MonoBehaviour
 
         if (transform.position.z <= BilleZ)
         {
-            spriterenderer.material.SetFloat("_Alpha", Mathf.Lerp(spriterenderer.material.GetFloat("_Alpha"), 0, Time.deltaTime * 3f * gm.LevelSpeed));
-            childCircle.GetComponent<SpriteRenderer>().material.SetFloat("_Alpha", Mathf.Lerp(childCircle.GetComponent<SpriteRenderer>().material.GetFloat("_Alpha"), 0, Time.deltaTime * 3f * gm.LevelSpeed));
+            spriterenderer.material.SetFloat("_Dissolve", Mathf.Lerp(spriterenderer.material.GetFloat("_Dissolve"), -1, Time.deltaTime * 3f * gm.LevelSpeed));
+            childCircle.GetComponent<SpriteRenderer>().material.SetFloat("_Dissolve", Mathf.Lerp(childCircle.GetComponent<SpriteRenderer>().material.GetFloat("_Dissolve"), -1, Time.deltaTime * 3f * gm.LevelSpeed));
 
             spriterenderer.sortingOrder = 0;
             if (transform.position.z <= 0)
@@ -140,7 +140,8 @@ public class Circle : MonoBehaviour
     public void ResetCircle(bool preventObstacle)
     {
         ResetObstacle(false);
-        spriterenderer.material.SetFloat("_Alpha", 1);
+        spriterenderer.material.SetFloat("_Dissolve", 1);
+            spriterenderer.material.SetFloat("_Alpha", 1);
 
         // si ct  un obstacle
         if (IsObstacle)
