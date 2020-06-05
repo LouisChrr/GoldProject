@@ -53,7 +53,7 @@ public class MenuManager : MonoBehaviour
 
         _panelPause.SetActive(false);
 
-        imgPause.SetActive(true);
+        imgPause.SetActive(false);
         imgPlay.SetActive(false);
 
         menu.SetActive(true);
@@ -142,9 +142,10 @@ public class MenuManager : MonoBehaviour
         GameManager.Instance.HasGameStarted = true;
         GameManager.Instance.StartGame();
   
-       menu.SetActive(false);
+        menu.SetActive(false);
         greyPanel.SetActive(false);
         pause.SetActive(true);
+        imgPause.SetActive(true);
     }
 
     private void Pause(bool pause)
