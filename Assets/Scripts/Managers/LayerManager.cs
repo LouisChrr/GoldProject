@@ -6,6 +6,7 @@ public class LayerManager : MonoBehaviour
 {
     public static LayerManager Instance;
     public List<SpriteRenderer> AllActiveSprites = new List<SpriteRenderer>();
+    public int baseTickrate;
     public int tickrate;
     private int timer;
 
@@ -21,9 +22,16 @@ public class LayerManager : MonoBehaviour
         AllActiveSprites.Clear();
     }
 
+    private void Start()
+    {
+        //tickrate = tickrate / Mathf.RoundToInt(GameManager.Instance.LevelSpeed);
+        tickrate = baseTickrate;
+    }
+
     void Update()
     {
-        //UpdSetCurrentDepth();
+        if (!GameManager.Instance.HasGameStarted) return;
+        UpdSetCurrentDepth();
     }
 
     public void SetCurrentDepth()
@@ -75,7 +83,7 @@ public class LayerManager : MonoBehaviour
         {
             print("sprites update!");
             timer = 0;
-
+            tickrate = baseTickrate / Mathf.RoundToInt(GameManager.Instance.LevelSpeed);
             // Store les sprites nulls (wtf les amis)
             List<SpriteRenderer> nullSpritesForWhateverReasonsLol = new List<SpriteRenderer>();
             foreach (SpriteRenderer sprite in AllActiveSprites)

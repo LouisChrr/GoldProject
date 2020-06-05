@@ -19,10 +19,17 @@ public class ScoreManager : MonoBehaviour
     public float ComboValue = 1;
     [SerializeField]
     private float bestScore;
+    
+    private bool doOnce1 = false;
+    private bool doOnce2 = false;
+    private bool doOnce3 = false;
 
-    //private bool doOnce1 = false;
+    private bool[] doOnce = new bool[6];
 
     private int lastIntScore =  -1;
+
+    public float totalMoney;
+
     private void Awake()
     {
         if (Instance != null)
@@ -53,8 +60,6 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-
         MoneyText.text = "" + PlayerMoney;
 
         MoneyInGameText.text = "" + MoneyInGame;
@@ -62,6 +67,11 @@ public class ScoreManager : MonoBehaviour
         if(MoneyInGame >= 9999)
         {
             MoneyInGame = 9999;
+        }
+
+        if (totalMoney >= 9999)
+        {
+            totalMoney = 9999;
         }
 
         if (!gm.IsPlayerDead && gm.HasGameStarted)
@@ -107,31 +117,47 @@ public class ScoreManager : MonoBehaviour
             //    Debug.Log("Score 3");
             //}
 
-            bool doOnce1 = false;
-            bool doOnce2 = false;
-            bool doOnce3 = false;
+            #region UnlockAchievements
 
-            if(PlayerScore >= 20 && !doOnce1)
+            for(int i = 0; i < doOnce.Length; i++)
+            {
+                doOnce[i] = false;
+            }
+
+            if(PlayerScore >= 20 && !doOnce[0])
             {
                 UIScript.Instance.ScoreAchievement1();
                 doOnce1 = true;
-                Debug.Log("Score 1");
             }
 
-            if (PlayerScore >= 2000 && !doOnce2)
+            if (PlayerScore >= 2000 && !doOnce[1])
             {
                 UIScript.Instance.ScoreAchievement2();
                 doOnce2 = true;
-
             }
 
-            if (PlayerScore >= 10000 && !doOnce3)
+            if (PlayerScore >= 10000 && !doOnce[2])
             {
                 UIScript.Instance.ScoreAchievement3();
                 doOnce3 = true;
-
             }
 
+            if(totalMoney >= 300 && !doOnce[3])
+            {
+                UIScript.Instance.MoneyAchievement1();
+            }
+
+            if(totalMoney >= 3000 && !doOnce[4])
+            {
+                UIScript.Instance.MoneyAchievement2();
+            }
+
+            if(totalMoney >= 6000 && !doOnce[5])
+            {
+                UIScript.Instance.MoneyAchievement3();
+            }
+
+            #endregion /UnlockAchievements
 
             //if(ComboValue <= 1)
             //{

@@ -7,13 +7,18 @@ public class DataScript
 {
 
     public bool[] isLocked /*= new bool[6]*/;
-
     public bool[] isEquipped;
 
     public float money;
+    public float totalMoney;
 
     public float bestScore;
 
+    public int deaths;
+
+    public int walls;
+
+    public int bougthSkins;
 
     public DataScript(bool[] skins, bool[] skinsEquipped)
     {
@@ -34,8 +39,8 @@ public class DataScript
 
     public DataScript()
     {
-        isLocked = new bool[17];
-        isEquipped = new bool[17];
+        isLocked = new bool[19];
+        isEquipped = new bool[19];
 
         for (int i = 0; i < isLocked.Length; i++)
         {
@@ -47,15 +52,24 @@ public class DataScript
             isEquipped[i] = false;
         }
 
+        isEquipped[0] = true;
+
     }
 
     public DataScript(ScoreManager player)
     {
 
         money = player.PlayerMoney;
+        totalMoney = player.totalMoney;
+
         if(money >= 9999)
         {
             money = 9999;
+        }
+
+        if (totalMoney >= 9999)
+        {
+            totalMoney = 9999;
         }
     }
 
@@ -63,6 +77,21 @@ public class DataScript
     {
 
         bestScore = player.PlayerBestScore;
+    }
+
+    public DataScript(GameManager deathAndWalls)
+    {
+        deaths = deathAndWalls.nbDeaths;
+        walls = deathAndWalls.nbDestroyedWallsTotal;
+    }
+
+    //public DataScript(BilleMovement nbWalls)
+    //{
+    //}
+
+    public DataScript(SkinMenu skins)
+    {
+        bougthSkins = skins.boughtSkins;
     }
 }
 

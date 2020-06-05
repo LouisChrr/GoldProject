@@ -9,6 +9,7 @@ public class SkinLock : MonoBehaviour
     public bool isLocked = true;
     public bool isEquipped = false;
     public bool isSelected = false;
+    public bool isFree = false;
 
 
     public GameObject locker;
@@ -65,8 +66,16 @@ public class SkinLock : MonoBehaviour
             }
             else
             {
-                buttonEquip.GetComponent<Image>().color = Color.white;
-                buttonEquipShadow.GetComponent<Image>().color = Color.white;
+                if (isLocked)
+                {
+                    buttonEquip.GetComponent<Image>().color = Color.grey;
+                    buttonEquipShadow.GetComponent<Image>().color = Color.grey;
+                }
+                else
+                {
+                    buttonEquip.GetComponent<Image>().color = Color.white;
+                    buttonEquipShadow.GetComponent<Image>().color = Color.white;
+                }
             }
         }
     }

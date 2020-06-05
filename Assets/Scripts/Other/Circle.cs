@@ -185,11 +185,11 @@ public class Circle : MonoBehaviour
         if (Mathf.RoundToInt(sm.distance) % ((gm.CirclesNumber + 5) + Mathf.RoundToInt(gm.LevelSpeed)) == 0 && gm.HasGameStarted && sm.lastScore > 10)
         {
 
-               previousCircle.ResetObstacle(true);
-                previousCircle.previousCircle.ResetObstacle(true);
-                previousCircle.previousCircle.previousCircle.ResetObstacle(true);
-                previousCircle.previousCircle.previousCircle.previousCircle.ResetObstacle(true);
-                previousCircle.previousCircle.previousCircle.previousCircle.previousCircle.ResetObstacle(true);
+               //previousCircle.ResetObstacle(true);
+               // previousCircle.previousCircle.ResetObstacle(true);
+               // previousCircle.previousCircle.previousCircle.ResetObstacle(true);
+               // previousCircle.previousCircle.previousCircle.previousCircle.ResetObstacle(true);
+               // previousCircle.previousCircle.previousCircle.previousCircle.previousCircle.ResetObstacle(true);
                // previousCircle.previousCircle.previousCircle.previousCircle.previousCircle.previousCircle.ResetObstacle();
                // previousCircle.previousCircle.previousCircle.previousCircle.previousCircle.previousCircle.previousCircle.ResetObstacle();
             
@@ -220,6 +220,25 @@ public class Circle : MonoBehaviour
         }
         else if (IsObstacle)
         {
+            if  (
+                (Mathf.RoundToInt(sm.distance + 1) % ((gm.CirclesNumber + 5) + Mathf.RoundToInt(gm.LevelSpeed))) == 0 ||
+                (Mathf.RoundToInt(sm.distance + 2) % ((gm.CirclesNumber + 5) + Mathf.RoundToInt(gm.LevelSpeed))) == 0 ||
+                (Mathf.RoundToInt(sm.distance + 3) % ((gm.CirclesNumber + 5) + Mathf.RoundToInt(gm.LevelSpeed))) == 0 ||
+                (Mathf.RoundToInt(sm.distance + 4) % ((gm.CirclesNumber + 5) + Mathf.RoundToInt(gm.LevelSpeed))) == 0 ||
+                (Mathf.RoundToInt(sm.distance + 5) % ((gm.CirclesNumber + 5) + Mathf.RoundToInt(gm.LevelSpeed))) == 0
+                )
+            {
+                childCircle.SetActive(false);
+                spriterenderer.material = materials[1];
+                AssignNewColor(Time.deltaTime);
+                transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
+                rotationSpeed = Time.deltaTime * Random.Range(-20, 20);
+                CoinSpawner.Instance.SpawnCoin(CirclesNb);
+               // LayerManager.Instance.SetCurrentDepth();
+                print("prevent obstacle before wall");
+                return;
+            }
+
             childCircle.GetComponent<Obstacle>().IsMuret = Random.Range(0, 4) <= 1;
             childCircle.GetComponent<Obstacle>().MuretCollider.enabled = childObstacle.IsMuret;
             childCircle.GetComponent<Obstacle>().HeliceCollider.enabled = !childObstacle.IsMuret;
@@ -290,7 +309,7 @@ public class Circle : MonoBehaviour
         }
             CoinSpawner.Instance.SpawnCoin(CirclesNb);
 
-        LayerManager.Instance.SetCurrentDepth();
+       // LayerManager.Instance.SetCurrentDepth();
         //AssignNewColor(Time.deltaTime);
     }
 

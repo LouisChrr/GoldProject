@@ -1382,6 +1382,7 @@ MonoBehaviour:
   isLocked: 1
   isEquipped: 0
   isSelected: 0
+  isFree: 0
   locker: {fileID: 331457178}
   priceTxt: {fileID: 1463937204}
   buttonBuy: {fileID: 425679259}
@@ -1716,7 +1717,7 @@ RectTransform:
   m_GameObject: {fileID: 243649216}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.421622, y: 1.421622, z: 1.421622}
+  m_LocalScale: {x: 1.4216218, y: 1.4216218, z: 1.4216218}
   m_Children:
   - {fileID: 899327187}
   m_Father: {fileID: 1976191001}
@@ -1724,8 +1725,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -427.20386, y: -477.91278}
-  m_SizeDelta: {x: 314.5542, y: 22.203735}
+  m_AnchoredPosition: {x: -559.0875, y: -477.91272}
+  m_SizeDelta: {x: 50.799072, y: 22.203735}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &243649218
 MonoBehaviour:
@@ -2189,6 +2190,7 @@ MonoBehaviour:
   isLocked: 1
   isEquipped: 0
   isSelected: 0
+  isFree: 0
   locker: {fileID: 1320538881}
   priceTxt: {fileID: 153861101}
   buttonBuy: {fileID: 425679259}
@@ -2746,6 +2748,134 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 489, y: 18.1, z: 1}
   m_Center: {x: 249.38, y: 0, z: 0}
+--- !u!1 &374731373
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 374731375}
+  - component: {fileID: 374731374}
+  m_Layer: 0
+  m_Name: Refus Sound
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &374731374
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 374731373}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -640695541446647847, guid: eb6953ca0345d6f41add8abbb848e6c3,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: af74b092763f460479bc766447f63c4b, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &374731375
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 374731373}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -14.718702, y: 401.67166, z: -5174.7266}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &394054622
 GameObject:
   m_ObjectHideFlags: 0
@@ -3131,8 +3261,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 162720200}
-        m_MethodName: Play
+      - m_Target: {fileID: 762786923}
+        m_MethodName: BuySoundPlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3252,6 +3382,7 @@ MonoBehaviour:
   isLocked: 1
   isEquipped: 0
   isSelected: 0
+  isFree: 0
   locker: {fileID: 1351265369}
   priceTxt: {fileID: 1909988947}
   buttonBuy: {fileID: 425679259}
@@ -4014,6 +4145,7 @@ MonoBehaviour:
   isLocked: 1
   isEquipped: 0
   isSelected: 0
+  isFree: 0
   locker: {fileID: 759919185}
   priceTxt: {fileID: 2073845553}
   buttonBuy: {fileID: 425679259}
@@ -4317,6 +4449,7 @@ MonoBehaviour:
   isLocked: 1
   isEquipped: 0
   isSelected: 0
+  isFree: 0
   locker: {fileID: 1875454936}
   priceTxt: {fileID: 1636698758}
   buttonBuy: {fileID: 425679259}
@@ -5365,6 +5498,7 @@ MonoBehaviour:
   isLocked: 1
   isEquipped: 0
   isSelected: 0
+  isFree: 0
   locker: {fileID: 2069806268}
   priceTxt: {fileID: 1334816955}
   buttonBuy: {fileID: 425679259}
@@ -5662,9 +5796,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8206ea0d8358e1d448a0f19a13492ee2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isLocked: 1
-  isEquipped: 0
+  isLocked: 0
+  isEquipped: 1
   isSelected: 0
+  isFree: 0
   locker: {fileID: 1976053327}
   priceTxt: {fileID: 909967040}
   buttonBuy: {fileID: 425679259}
@@ -5856,6 +5991,9 @@ MonoBehaviour:
   - {fileID: 1570892988}
   - {fileID: 1509739117}
   bigBossID: 0
+  boughtSkins: 0
+  refus: {fileID: 374731374}
+  accept: {fileID: 162720200}
 --- !u!1 &781398663
 GameObject:
   m_ObjectHideFlags: 0
@@ -6185,14 +6323,14 @@ RectTransform:
   m_GameObject: {fileID: 861178139}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.3786004, y: 3.3786004, z: 3.3786004}
+  m_LocalScale: {x: 3.3786, y: 3.3786, z: 3.3786}
   m_Children: []
   m_Father: {fileID: 1976191001}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -272, y: 21.040588}
+  m_AnchoredPosition: {x: -403.8837, y: 21.040588}
   m_SizeDelta: {x: 128.42361, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &861178141
@@ -6368,7 +6506,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: -2, y: -3.0996094}
-  m_SizeDelta: {x: 4221.6455, y: 197.3269}
+  m_SizeDelta: {x: 4069.8643, y: 197.3269}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &899327188
 MonoBehaviour:
@@ -6899,6 +7037,7 @@ MonoBehaviour:
   isLocked: 1
   isEquipped: 0
   isSelected: 0
+  isFree: 0
   locker: {fileID: 122952460}
   priceTxt: {fileID: 311485824}
   buttonBuy: {fileID: 425679259}
@@ -7061,7 +7200,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 762786923}
-        m_MethodName: ChooseSkin
+        m_MethodName: EquipSoundPlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7071,8 +7210,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 162720200}
-        m_MethodName: Play
+      - m_Target: {fileID: 762786923}
+        m_MethodName: ChooseSkin
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7266,6 +7405,7 @@ MonoBehaviour:
   isLocked: 1
   isEquipped: 0
   isSelected: 0
+  isFree: 0
   locker: {fileID: 937940567}
   priceTxt: {fileID: 2109761501}
   buttonBuy: {fileID: 425679259}
@@ -7513,6 +7653,7 @@ GameObject:
   - component: {fileID: 1179838699}
   - component: {fileID: 1179838698}
   - component: {fileID: 1179838702}
+  - component: {fileID: 1179838703}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -7641,6 +7782,103 @@ MonoBehaviour:
   BestScoreText: {fileID: 0}
   MenuMoneyText: {fileID: 0}
   PlayerBestScore: 0
+--- !u!82 &1179838703
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1179838697}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -6976040165346399881, guid: eb6953ca0345d6f41add8abbb848e6c3,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: 76a78610c8de866469e264a9fb4e4626, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.2
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 256
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1198812110
 GameObject:
   m_ObjectHideFlags: 0
@@ -8180,6 +8418,7 @@ MonoBehaviour:
   isLocked: 0
   isEquipped: 0
   isSelected: 0
+  isFree: 0
   locker: {fileID: 1385533062}
   priceTxt: {fileID: 1972221233}
   buttonBuy: {fileID: 425679259}
@@ -9318,6 +9557,7 @@ MonoBehaviour:
   isLocked: 1
   isEquipped: 0
   isSelected: 0
+  isFree: 0
   locker: {fileID: 828352123}
   priceTxt: {fileID: 639481431}
   buttonBuy: {fileID: 425679259}
@@ -9780,6 +10020,7 @@ MonoBehaviour:
   isLocked: 1
   isEquipped: 0
   isSelected: 0
+  isFree: 0
   locker: {fileID: 1237498491}
   priceTxt: {fileID: 351897363}
   buttonBuy: {fileID: 425679259}
@@ -10081,6 +10322,7 @@ MonoBehaviour:
   isLocked: 1
   isEquipped: 0
   isSelected: 0
+  isFree: 0
   locker: {fileID: 2047975180}
   priceTxt: {fileID: 261813124}
   buttonBuy: {fileID: 425679259}
@@ -10232,6 +10474,7 @@ MonoBehaviour:
   isLocked: 1
   isEquipped: 0
   isSelected: 0
+  isFree: 0
   locker: {fileID: 2103086383}
   priceTxt: {fileID: 1471875998}
   buttonBuy: {fileID: 425679259}
@@ -10608,6 +10851,7 @@ MonoBehaviour:
   isLocked: 1
   isEquipped: 0
   isSelected: 0
+  isFree: 0
   locker: {fileID: 0}
   priceTxt: {fileID: 0}
   buttonBuy: {fileID: 0}
@@ -10759,6 +11003,7 @@ MonoBehaviour:
   isLocked: 1
   isEquipped: 0
   isSelected: 0
+  isFree: 0
   locker: {fileID: 1335048945}
   priceTxt: {fileID: 1950660101}
   buttonBuy: {fileID: 425679259}
@@ -12515,6 +12760,7 @@ MonoBehaviour:
   distance: 0
   ComboValue: 1
   bestScore: 0
+  totalMoney: 0
 --- !u!1 &1943494609
 GameObject:
   m_ObjectHideFlags: 0
@@ -12819,6 +13065,7 @@ MonoBehaviour:
   isLocked: 1
   isEquipped: 0
   isSelected: 0
+  isFree: 0
   locker: {fileID: 1747666318}
   priceTxt: {fileID: 2082357857}
   buttonBuy: {fileID: 425679259}
@@ -13323,8 +13570,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 52.30005, y: 322.5}
-  m_SizeDelta: {x: -212.00537, y: 325.7789}
+  m_AnchoredPosition: {x: 117.84, y: 322.5}
+  m_SizeDelta: {x: 51.749756, y: 325.7789}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1976191002
 MonoBehaviour:
@@ -13440,6 +13687,7 @@ MonoBehaviour:
   isLocked: 1
   isEquipped: 0
   isSelected: 0
+  isFree: 0
   locker: {fileID: 1536775892}
   priceTxt: {fileID: 502476851}
   buttonBuy: {fileID: 425679259}
@@ -13591,6 +13839,7 @@ MonoBehaviour:
   isLocked: 1
   isEquipped: 0
   isSelected: 0
+  isFree: 0
   locker: {fileID: 1809372428}
   priceTxt: {fileID: 2070838219}
   buttonBuy: {fileID: 425679259}
@@ -13691,7 +13940,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2017068675
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13707,9 +13956,9 @@ RectTransform:
   m_Father: {fileID: 899327187}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 4124.3345, y: 0}
   m_SizeDelta: {x: 196.21667, y: 198.02496}
   m_Pivot: {x: 0, y: 1}
 --- !u!65 &2017068676
@@ -13740,6 +13989,7 @@ MonoBehaviour:
   isLocked: 1
   isEquipped: 0
   isSelected: 0
+  isFree: 0
   locker: {fileID: 0}
   priceTxt: {fileID: 0}
   buttonBuy: {fileID: 0}
@@ -14107,6 +14357,7 @@ MonoBehaviour:
   isLocked: 1
   isEquipped: 0
   isSelected: 0
+  isFree: 0
   locker: {fileID: 817052630}
   priceTxt: {fileID: 1225463551}
   buttonBuy: {fileID: 425679259}

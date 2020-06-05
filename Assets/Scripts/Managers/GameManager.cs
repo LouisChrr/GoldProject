@@ -25,7 +25,10 @@ public class GameManager : MonoBehaviour
     private ScoreManager sm;
     public int CirclesNumber { get => circlesNumber; }
     private AchievementsManager am;
-    
+
+    public int nbDeaths = 0;
+    public int nbDestroyedWallsTotal;
+
 
     public CircleGenerator generator;
 
@@ -47,6 +50,9 @@ public class GameManager : MonoBehaviour
         am = AchievementsManager.Instance;
 
         AssignColorToAll();
+
+        LoadNbDeathsAndWalls();
+        //LoadNbWalls();
     }
 
     private void AssignColorToAll()
@@ -112,6 +118,8 @@ public class GameManager : MonoBehaviour
     {
         Handheld.Vibrate();
         ScoreManager.Instance.PlayerMoney += ScoreManager.Instance.MoneyInGame;
+        ScoreManager.Instance.totalMoney += ScoreManager.Instance.MoneyInGame;
+
         PlayerAudioSource.PlayOneShot(PlayerAudioClips[1]);
         if (am == null) am = AchievementsManager.Instance;
         AchievementsManager.Instance.AddScore(Mathf.RoundToInt(ScoreManager.Instance.PlayerScore));
@@ -124,6 +132,43 @@ public class GameManager : MonoBehaviour
         ObjectsMovementManager.Instance.bonusSpeed = 0;
 
         SaveSystem.SaveMoney(ScoreManager.Instance);
+
+        nbDeaths++;
+
+        if (nbDeaths <= 10)
+        {
+            UIScript.Instance.DieAchievementIncrement1();
+        }
+
+        if (nbDeaths <= 100)
+        {
+            UIScript.Instance.DieAchievementIncrement2();
+        }
+
+        if (nbDeaths <= 500)
+        {
+            UIScript.Instance.DieAchievementIncrement3();
+        }
+
+        nbDestroyedWallsTotal += BilleMovement.Instance.nbDestroyedWallsInGame;
+        //SaveNbWalls();
+
+        SaveNbDeathsAndNbWalls();
+
+        if (nbDestroyedWallsTotal <= 10)
+        {
+            UIScript.Instance.DestroyAchievementIncrement1();
+        }
+
+        if (nbDestroyedWallsTotal <= 50)
+        {
+            UIScript.Instance.DestroyAchievementIncrement2();
+        }
+
+        if (nbDestroyedWallsTotal <= 100)
+        {
+            UIScript.Instance.DestroyAchievementIncrement3();
+        }
 
     }
 
@@ -140,5 +185,32 @@ public class GameManager : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+    }
+    
+    //public void SaveNbWalls()
+    //{
+    //    SaveSystem.SaveNbWalls(BilleMovement.Instance);
+    //}
+
+    //public void LoadNbWalls()
+    //{
+    //    DataScript data = SaveSystem.LoadNbWalls();
+        
+    //    nbDestroyedWallsTotal = data.walls;
+
+    //}
+    
+    public void SaveNbDeathsAndNbWalls()
+    {
+        SaveSystem.SaveNbDeathsAndNbWalls(this);
+    }
+
+    public void LoadNbDeathsAndWalls()
+    {
+        DataScript data = SaveSystem.LoadNbDeathsAndNbWalls();
+
+        nbDeaths = data.deaths;
+        nbDestroyedWallsTotal = data.walls;
+
     }
 }

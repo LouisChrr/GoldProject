@@ -20,7 +20,9 @@ public class BilleMovement : MonoBehaviour
     private Vector3 targetPos;
     private float speedLerpTimer;
     private Animator BilleAnimator;
- 
+
+    public static BilleMovement Instance;
+
     [Header("Do not modify!")]
     public float speed;
 
@@ -32,6 +34,8 @@ public class BilleMovement : MonoBehaviour
     private float dragOrigin;
 
     public Material shadow;
+
+    public int nbDestroyedWallsInGame;
 
     // Start is called before the first frame update
 
@@ -45,7 +49,7 @@ public class BilleMovement : MonoBehaviour
 
     void Start()
     {
-
+        Instance = this;
         layerManager = LayerManager.Instance;
         gm = GameManager.Instance;
         screenWidth = Screen.width;
@@ -59,6 +63,7 @@ public class BilleMovement : MonoBehaviour
 
         shadow.SetVector("_Position", new Vector4(transform.localPosition.x * 0.7f + 0.5f, transform.localPosition.y * 0.7f + 0.5f, 0, 1));
 
+        nbDestroyedWallsInGame = 0;
 
         // BilleAnimator = GetComponent<Animator>();
         SpawnBullets();
@@ -241,8 +246,11 @@ public class BilleMovement : MonoBehaviour
     {
         if (collision.transform.tag == "Obstacle" && gm.HasGameStarted)
         {
+            
             if (collision.transform.GetComponent<Obstacle>().IsBumper)
             {
+                collision.transform.parent.GetChild(1).GetComponent<ParticleSystem>().Play();
+
                 gm.PlayerAudioSource.PlayOneShot(gm.PlayerAudioClips[0]);
                 collision.transform.GetComponent<Obstacle>().HP -= 1;
                 collision.transform.GetComponent<Obstacle>().SetSprite();
