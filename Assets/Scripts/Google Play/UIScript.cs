@@ -120,6 +120,11 @@ public class UIScript : MonoBehaviour
         PlayGames.ShowLeaderboardsUI();
     }
 
+    public void AddScoreToLeaderboard(string leaderboardID, long score)
+    {
+        PlayGames.AddScoreToLeaderBoard(leaderboardID, score);
+    }
+
     #endregion /UI
 
 }

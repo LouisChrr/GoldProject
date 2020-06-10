@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class MenuManager : MonoBehaviour
 {
@@ -90,9 +91,10 @@ public class MenuManager : MonoBehaviour
             //PlayerPrefs.SetFloat("BestScore", ScoreManager.Instance.PlayerScore);
             PlayerBestScore = ScoreManager.Instance.PlayerScore;
             SaveBestScore();
+            PlayGames.AddScoreToLeaderBoard(GPGSIds.leaderboard_leaderboard, Convert.ToInt64(PlayerBestScore));
         }
         BestScoreText.text = "" + (int)PlayerBestScore;
-
+        
     }
 
     public void MyLoadScene(string nameScene)
