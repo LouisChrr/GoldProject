@@ -9801,7 +9801,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AllActiveSprites: []
-  baseTickrate: 300
+  baseTickrate: 150
   tickrate: 250
 --- !u!4 &1725340290
 Transform:
